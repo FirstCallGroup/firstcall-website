@@ -1,0 +1,84 @@
+{
+  "slug": "columbus",
+  "name": "FirstCall Mechanical — Columbus",
+  "shortName": "Columbus",
+  "tagline": "Columbus, Ohio",
+  "heroHeading": "Mechanical service. Built for Columbus.",
+  "heroParagraph": "Our Columbus team keeps central Ohio's commercial buildings running — HVAC, building controls, plumbing, and project work, backed by a national platform.",
+  "phone": "(614) 253-9001",
+  "phoneE164": "+16142539001",
+  "phoneTodo": "VERIFY — phone is approximated from prior screenshots; confirm with the branch",
+  "email": "dispatch@firstcallmechanical.com",
+  "emailTodo": "VERIFY — email is a reasonable default, confirm with the branch",
+  "address": {
+    "street": "5929 Haughn Road",
+    "city": "Grove City",
+    "state": "OH",
+    "zip": "43123"
+  },
+  "mapCoords": { "lat": 39.8814, "lng": -83.0930 },
+  "parentLink": "https://firstcallmechanical.com",
+  "isExternalDomain": false,
+  "navLinks": [
+    { "label": "Careers", "href": "https://www.paycomonline.net/v4/ats/web.php/jobs?clientkey=TODO" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+  "heroPhoto": "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=1600&q=85&auto=format&fit=crop",
+  "photoStrip": [
+    "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=900&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=900&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=900&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=900&q=80&auto=format&fit=crop"
+  ],
+  "services": [
+    {
+      "key": "hvac",
+      "title": "HVAC Services",
+      "body": "Comprehensive heating, ventilation, and air conditioning service for commercial and industrial facilities."
+    },
+    {
+      "key": "controls",
+      "title": "Building Controls",
+      "body": "Design, installation, and integration of building automation systems that reduce operating costs."
+    },
+    {
+      "key": "planned",
+      "title": "Planned Maintenance",
+      "body": "Programmatic preventive maintenance with predictable scheduling and asset-level tracking."
+    },
+    {
+      "key": "emergency",
+      "title": "Emergency Services",
+      "body": "24 / 7 emergency response — staffed dispatch and an on-call technician roster, always available."
+    },
+    {
+      "key": "projects",
+      "title": "Project Support",
+      "body": "Design-build, retrofit, and equipment-upgrade projects delivered by tradespeople who know the install — and the service after."
+    }
+  ],
+  "servicesTodo": "Columbus may not offer plumbing — confirm with branch and add 'plumbing' service block if applicable",
+  "technicalExperience": [
+    "Air Handlers (AHUs)",
+    "Boilers — Hot Water & Steam",
+    "Booster Pumps",
+    "Chillers — Air-Cooled",
+    "Chillers — Water-Cooled",
+    "Cooling Towers",
+    "DOAS Units",
+    "Exhaust Fans",
+    "Fan Coil Units",
+    "Heat Pumps",
+    "Humidification Systems",
+    "Make-Up Air Units",
+    "Pumps & Pump Stations",
+    "Rooftop Units (RTUs)",
+    "Split Systems",
+    "Steam Traps",
+    "VAV / VFD Systems",
+    "VRF / VRV Systems",
+    "Water-Source Heat Pumps"
+  ],
+  "stateLicenses": [],
+  "stateLicensesTodo": "OH does not require state-level HVAC licensing the way TX does — confirm whether any local/municipal license disclosures should appear here"
+}

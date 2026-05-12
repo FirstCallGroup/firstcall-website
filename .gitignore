@@ -1,0 +1,30 @@
+﻿# Local Claude config
+.claude/
+
+# Reference materials and source assets (not needed to run the site)
+reference/
+
+# OneDrive / Windows junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+
+# Editor files
+.vscode/
+.idea/
+
+# Block large media everywhere by default
+*.mov
+*.mp4
+*.heic
+*.psd
+*.ai
+*.sketch
+
+# But allow videos that the site actually uses
+!shared/img/videos/
+!shared/img/videos/**
+
+# Node (if you add it later)
+node_modules/

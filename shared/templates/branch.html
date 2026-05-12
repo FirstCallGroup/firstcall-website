@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  FirstCall Branch Template
+  ============================================================
+
+  Canonical source for every branch site (FirstCall Mechanical
+  subpages + standalone-domain branches). Hydrated from each
+  branch's config.json by a future scripts/build-branches.js
+  step (see Milestone 5).
+
+  Placeholders use {{handlebar}} syntax for simple field
+  substitution and {{#each list}}...{{/each}} for repeats.
+
+  For the live, fully-rendered example, see
+  branches/columbus/index.html. That file is the manually-built
+  reference instance — when build-branches.js is wired up, it
+  should produce a byte-identical output for the Columbus
+  config.json.
+
+  All CSS / JS / logo SVGs are inlined per branch so each page
+  renders standalone (no sibling-file dependencies). This is
+  intentional — branch sites may live at different domains
+  (strmechanical.com, c2h.com) and shouldn't share runtime
+  assets cross-origin.
+  ============================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{name}}</title>
+  <meta name="description" content="{{name}} — commercial HVAC, building controls, plumbing, planned maintenance, and emergency service. {{address.city}}, {{address.state}}." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{name}}" />
+  <meta property="og:description" content="Commercial mechanical service for {{address.city}}, {{address.state}}." />
+  <meta property="og:url" content="{{canonicalUrl}}" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- LocalBusiness JSON-LD for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "{{name}}",
+    "image": "{{heroPhoto}}",
+    "telephone": "{{phoneE164}}",
+    "email": "{{email}}",
+    "url": "{{canonicalUrl}}",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "{{address.street}}",
+      "addressLocality": "{{address.city}}",
+      "addressRegion": "{{address.state}}",
+      "postalCode": "{{address.zip}}",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": {{mapCoords.lat}},
+      "longitude": {{mapCoords.lng}}
+    },
+    "openingHours": "Mo-Fr 07:00-17:00",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "FirstCall Mechanical",
+      "url": "https://firstcallmechanical.com"
+    }
+  }
+  </script>
+
+  <style>
+    /* ============================================================
+       TOKENS, BASE, BUTTONS, HEADER, FOOTER, PAGE: BRANCH
+
+       Build step should inline the contents of
+       shared/css/tokens.css + base.css + components.css here,
+       plus the branch-specific page styles. For the reference
+       implementation, see branches/columbus/index.html.
+       ============================================================ */
+
+    /* {{INLINE_CSS}} */
+  </style>
+</head>
+
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="{{parentLink}}" aria-label="{{name}}, home">
+        <!-- {{INLINE_LOGO_WHITE}} — FirstCall Mechanical wordmark in white -->
+        <span class="site-header__tagline">{{shortName}}, {{address.state}}</span>
+      </a>
+
+      <nav class="site-nav" data-site-nav aria-label="Primary">
+        {{#each navLinks}}
+        <a class="site-nav__link" href="{{href}}"{{#if external}} rel="noopener"{{/if}}>{{label}}</a>
+        {{/each}}
+      </nav>
+
+      <div class="site-header__cta">
+        <a class="btn btn--primary btn--sm hide-mobile" href="tel:{{phoneE164}}">Call {{phone}}</a>
+        <button class="menu-toggle" data-menu-toggle aria-label="Open menu" aria-expanded="false">
+          <span class="menu-toggle__bars" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- 1. HERO -->
+    <section class="branch-hero">
+      <div class="container">
+        <div class="branch-hero__inner">
+          <div>
+            <span class="branch-hero__eyebrow">FirstCall Mechanical · {{shortName}}, {{address.state}}</span>
+            <h1 class="branch-hero__title">{{heroHeading}}</h1>
+            <p class="branch-hero__lede">{{heroParagraph}}</p>
+            <div class="branch-hero__cta">
+              <a class="btn btn--primary btn--lg" href="tel:{{phoneE164}}">Call {{phone}}</a>
+              <a class="btn btn--outline btn--lg" href="#contact">Request Service</a>
+            </div>
+          </div>
+
+          <div class="branch-hero__photo">
+            <img src="{{heroPhoto}}" alt="{{name}} — commercial mechanical service" loading="eager" fetchpriority="high" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. PHOTO STRIP -->
+    <section class="photo-strip-section">
+      <div class="container">
+        <div class="photo-strip">
+          {{#each photoStrip}}
+          <div class="photo-strip__item"><img src="{{this}}" alt="{{../shortName}} branch photo" loading="lazy" /></div>
+          {{/each}}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. OUR CAPABILITIES -->
+    <section class="section" aria-labelledby="caps-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Our Capabilities</span>
+          <h2 id="caps-heading">Comprehensive mechanical service for {{shortName}}.</h2>
+          <p class="lead">From chillers and rooftop units to building controls and emergency response — our {{shortName}} team delivers the full stack.</p>
+        </div>
+
+        <div class="capabilities">
+          {{#each services}}
+          <article class="capability">
+            <span class="capability__icon" aria-hidden="true">
+              <!-- {{INLINE_SERVICE_ICON key}} — looks up SVG by service key -->
+            </span>
+            <h4 class="capability__title">{{title}}</h4>
+            <p class="capability__body">{{body}}</p>
+          </article>
+          {{/each}}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. TECHNICAL EXPERIENCE -->
+    <section class="section section--soft" aria-labelledby="tech-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Technical Experience</span>
+          <h2 id="tech-heading">Equipment we service every day.</h2>
+          <p class="lead">A representative list of the systems and equipment our {{shortName}} team works with.</p>
+        </div>
+
+        <ul class="tech-list">
+          {{#each technicalExperience}}
+          <li>{{this}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    </section>
+
+    <!-- 5. MARKETS SERVED -->
+    <section class="section" aria-labelledby="markets-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Markets Served</span>
+          <h2 id="markets-heading">Built for the buildings that matter.</h2>
+          <p class="lead">FirstCall teams support the most demanding commercial and institutional facilities across the country.</p>
+        </div>
+
+        <!-- {{INLINE_MARKETS_HONEYCOMB}} — shared Markets Served hex SVG -->
+      </div>
+    </section>
+
+    <!-- 6. A FIRSTCALL COMPANY -->
+    <section class="section firstcall-block" aria-labelledby="firstcall-heading">
+      <div class="container firstcall-block__inner">
+        <span class="eyebrow">A FirstCall Company</span>
+        <h2 id="firstcall-heading">Local team. National platform.</h2>
+        <p class="lead">
+          {{name}} is part of FirstCall Mechanical — a network of leading regional
+          commercial service companies. We bring the depth of a national platform
+          while keeping the local leadership, identity, and reputation that's built
+          this branch's business. Local stays local. The national platform
+          multiplies what we can do.
+        </p>
+        <a href="{{parentLink}}" class="link-arrow" style="margin-top:var(--space-5); display:inline-flex">Learn about FirstCall Mechanical</a>
+      </div>
+    </section>
+
+    <!-- 7. SERVICE FORM -->
+    <section class="section section--tinted" id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">How Can We Help?</span>
+          <h2 id="contact-heading">At {{name}}, we're dedicated to helping.</h2>
+          <p class="lead">Tell us about your facility and we'll get back to you within one business day. For emergencies, call us — we're on call around the clock.</p>
+        </div>
+
+        <div class="contact-row">
+          <form class="service-form" action="#" method="post" novalidate>
+            <div class="form-grid">
+              <div class="form-field">
+                <label class="form-label" for="f-name">Full name <span class="required">*</span></label>
+                <input class="form-input" id="f-name" name="name" type="text" required autocomplete="name" />
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="f-company">Company / Organization</label>
+                <input class="form-input" id="f-company" name="company" type="text" autocomplete="organization" />
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="f-email">Work email <span class="required">*</span></label>
+                <input class="form-input" id="f-email" name="email" type="email" required autocomplete="email" />
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="f-phone">Phone</label>
+                <input class="form-input" id="f-phone" name="phone" type="tel" autocomplete="tel" />
+              </div>
+              <div class="form-field form-field--full">
+                <label class="form-label" for="f-addr">Service address</label>
+                <input class="form-input" id="f-addr" name="address" type="text" placeholder="Building name, street, city" autocomplete="street-address" />
+              </div>
+              <div class="form-field form-field--full">
+                <label class="form-label" for="f-service">Service needed</label>
+                <select class="form-select" id="f-service" name="service">
+                  <option value="hvac">HVAC service</option>
+                  <option value="controls">Building controls</option>
+                  <option value="planned">Planned maintenance</option>
+                  <option value="emergency">Emergency response</option>
+                  <option value="project">Project / retrofit / upgrade</option>
+                  <option value="other">Something else</option>
+                </select>
+              </div>
+              <div class="form-field form-field--full">
+                <label class="form-label" for="f-msg">Tell us about your facility</label>
+                <textarea class="form-textarea" id="f-msg" name="message" placeholder="Building type, square footage, current equipment, the issue you're seeing..."></textarea>
+                <span class="form-help">Including equipment model numbers (if you have them) helps us send the right tech.</span>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn--primary btn--lg">Request Service</button>
+              <span class="form-help">Or call <a href="tel:{{phoneE164}}" style="font-weight: 600">{{phone}}</a> for immediate dispatch.</span>
+            </div>
+          </form>
+
+          <aside class="contact-card" aria-label="Branch contact information">
+            <h3>{{name}}</h3>
+            <div class="contact-card__row">
+              <div class="contact-card__label">Address</div>
+              <div class="contact-card__value">
+                {{address.street}}<br>
+                {{address.city}}, {{address.state}} {{address.zip}}
+              </div>
+            </div>
+            <div class="contact-card__row">
+              <div class="contact-card__label">Phone</div>
+              <div class="contact-card__value"><a href="tel:{{phoneE164}}">{{phone}}</a></div>
+            </div>
+            <div class="contact-card__row">
+              <div class="contact-card__label">Email</div>
+              <div class="contact-card__value"><a href="mailto:{{email}}">{{email}}</a></div>
+            </div>
+            <div class="contact-card__row">
+              <div class="contact-card__label">Hours</div>
+              <div class="contact-card__value">
+                Mon–Fri 7:00 a.m. – 5:00 p.m.<br>
+                <strong style="color: var(--color-accent);">24 / 7 emergency response</strong>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <!-- {{INLINE_LOGO_WHITE}} — FirstCall Mechanical wordmark in white -->
+          <p>{{name}} — commercial HVAC, building controls, plumbing, and project work, backed by a national platform.</p>
+        </div>
+        <div>
+          <div class="site-footer__heading">{{shortName}}</div>
+          <ul class="site-footer__list">
+            <li><span>{{address.street}}</span></li>
+            <li><span>{{address.city}}, {{address.state}} {{address.zip}}</span></li>
+            <li><a href="tel:{{phoneE164}}">{{phone}}</a></li>
+            <li><a href="mailto:{{email}}">{{email}}</a></li>
+          </ul>
+          {{#each stateLicenses}}
+          <p class="site-footer__license">{{body}} {{number}}</p>
+          {{/each}}
+        </div>
+        <div>
+          <div class="site-footer__heading">Connect</div>
+          <ul class="site-footer__list">
+            <li><a href="https://www.linkedin.com/company/first-call-mechanical/" rel="noopener">LinkedIn</a></li>
+            <li><a href="{{careersUrl}}" rel="noopener">Careers</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="site-footer__heading">FirstCall Network</div>
+          <ul class="site-footer__list">
+            <li><a href="{{parentLink}}">FirstCall Mechanical</a></li>
+            <li><a href="{{parentLink}}/locations.html">All Locations</a></li>
+            <li><a href="{{parentLink}}/acquisitions.html">Acquisitions</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <span>&copy; {{copyrightYear}} {{name}}. All rights reserved.</span>
+        <span><a href="{{parentLink}}">FirstCall Mechanical</a> &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* {{INLINE_BRANCH_JS}} — mobile-nav toggle, header scroll, form handler */
+  </script>
+</body>
+</html>

@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FirstCall Group — Durable Partnerships</title>
+  <link rel="canonical" href="https://firstcallgroup.com/" />
+  <meta name="description" content="FirstCall is a coast-to-coast commercial mechanical service organization — HVAC, building controls, plumbing, and electrical — with 24 branches partnering with property owners and facility managers nationwide." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="FirstCall Group — Durable Partnerships" />
+  <meta property="og:description" content="A coast-to-coast commercial mechanical service organization with 24 branches across the United States." />
+  <meta property="og:url" content="https://firstcallgroup.com/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <style>
+    /* ===== TOKENS ===== */
+    :root {
+      --color-primary: #1A4120;
+      --color-primary-dark: #0F2814;
+      --color-primary-mid: #2D5F36;
+      --color-primary-soft: #4A7D52;
+      --color-accent: #00558C;
+      --color-accent-dark: #003D66;
+      --color-accent-light: #5BA3D6;
+      --color-bg: #FCFBF7;
+      --color-bg-soft: #F4F2EA;
+      --color-bg-section: #EDE9DC;
+      --color-bg-dark: #0F2814;
+      --color-bg-card: #FFFFFF;
+      --color-text: #1A2331;
+      --color-text-muted: #5A6371;
+      --color-text-light: #8A93A1;
+      --color-text-on-dark: #F2EFE3;
+      --color-text-on-primary: #FFFFFF;
+      --color-border: #E5E1D2;
+      --color-border-strong: #C9C7B7;
+
+      --font-display: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --font-body:    "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+      --text-xs: 0.75rem; --text-sm: 0.875rem; --text-base: 1rem;
+      --text-lg: 1.125rem; --text-xl: 1.25rem; --text-2xl: 1.5rem;
+      --text-3xl: 1.875rem; --text-4xl: 2.25rem; --text-5xl: 3rem;
+      --text-6xl: 3.75rem; --text-7xl: 4.5rem;
+
+      --weight-regular: 400; --weight-medium: 500; --weight-semibold: 600;
+      --weight-bold: 700; --weight-extrabold: 800;
+      --leading-tight: 1.15; --leading-snug: 1.3;
+      --leading-normal: 1.55; --leading-relaxed: 1.7;
+      --tracking-tight: -0.02em; --tracking-normal: 0; --tracking-caps: 0.08em;
+
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+      --space-4: 1rem; --space-5: 1.5rem; --space-6: 2rem;
+      --space-7: 3rem; --space-8: 4rem; --space-9: 6rem; --space-10: 8rem;
+
+      --container-content: 1440px;
+      --container-2xl: 1600px;
+      --header-height: 80px;
+      --pad-x: clamp(1.25rem, 4vw, 3rem);
+
+      --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px;
+      --radius-xl: 16px; --radius-pill: 999px;
+
+      --shadow-sm: 0 1px 3px rgba(15, 42, 31, 0.06), 0 1px 2px rgba(15, 42, 31, 0.04);
+      --shadow-md: 0 4px 12px rgba(15, 42, 31, 0.08), 0 2px 4px rgba(15, 42, 31, 0.04);
+      --shadow-lg: 0 12px 32px rgba(15, 42, 31, 0.10), 0 4px 8px rgba(15, 42, 31, 0.04);
+      --shadow-xl: 0 24px 48px rgba(15, 42, 31, 0.14), 0 8px 16px rgba(15, 42, 31, 0.06);
+
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --duration-fast: 150ms; --duration-base: 200ms; --duration-slow: 320ms;
+      --z-header: 300; --z-toast: 600;
+      --focus-ring: 0 0 0 3px rgba(0, 85, 140, 0.35);
+    }
+
+    /* ===== BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; }
+    * { margin: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: var(--leading-normal);
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    img, svg { display: block; max-width: 100%; height: auto; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    button { background: none; border: none; cursor: pointer; }
+    a { color: var(--color-accent); text-decoration: none; transition: color var(--duration-base) var(--ease-out); }
+    a:hover { color: var(--color-accent-dark); }
+    a:focus-visible, button:focus-visible {
+      outline: none; box-shadow: var(--focus-ring); border-radius: var(--radius-sm);
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-display);
+      font-weight: var(--weight-bold);
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text);
+    }
+    h1 { font-size: clamp(2.25rem, 4.5vw, var(--text-6xl)); }
+    h2 { font-size: clamp(1.875rem, 3.5vw, var(--text-5xl)); }
+    h3 { font-size: clamp(1.5rem, 2.5vw, var(--text-4xl)); }
+    h4 { font-size: var(--text-2xl); letter-spacing: var(--tracking-normal); }
+    p { line-height: var(--leading-normal); color: var(--color-text); }
+    .lead {
+      font-size: var(--text-lg);
+      line-height: var(--leading-relaxed);
+      color: var(--color-text-muted);
+      max-width: 60ch;
+    }
+    .eyebrow {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-caps);
+      color: var(--color-accent);
+      margin-bottom: var(--space-3);
+    }
+    .text-muted { color: var(--color-text-muted); }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-content);
+      margin-inline: auto;
+      padding-inline: var(--pad-x);
+    }
+    .section { padding-block: var(--space-9); }
+    @media (max-width: 767px) { .section { padding-block: var(--space-7); } }
+    .section--soft { background: var(--color-bg-soft); }
+    .section--tinted { background: var(--color-bg-section); }
+
+    .skip-link {
+      position: absolute; top: -100px; left: var(--space-4);
+      padding: var(--space-3) var(--space-5);
+      background: var(--color-primary); color: var(--color-text-on-primary);
+      border-radius: var(--radius-md);
+      font-weight: var(--weight-semibold);
+      z-index: var(--z-toast);
+      transition: top var(--duration-base) var(--ease-out);
+    }
+    .skip-link:focus { top: var(--space-4); }
+    ::selection { background: var(--color-accent); color: #fff; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-6);
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      line-height: 1;
+      border: 2px solid transparent;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color var(--duration-base) var(--ease-out),
+                  border-color var(--duration-base) var(--ease-out),
+                  color var(--duration-base) var(--ease-out),
+                  transform var(--duration-fast) var(--ease-out),
+                  box-shadow var(--duration-base) var(--ease-out);
+      white-space: nowrap;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn--primary {
+      background: var(--color-accent);
+      color: #fff;
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn--primary:hover {
+      background: var(--color-accent-dark);
+      border-color: var(--color-accent-dark);
+      color: #fff;
+      box-shadow: var(--shadow-md);
+    }
+    .btn--outline {
+      background: transparent;
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+    .btn--outline:hover { background: var(--color-primary); color: #fff; }
+    .btn--outline-on-dark {
+      background: transparent; color: #fff;
+      border-color: rgba(255,255,255,0.4);
+    }
+    .btn--outline-on-dark:hover { background: rgba(255,255,255,0.1); border-color: #fff; color: #fff; }
+    .btn--sm { padding: var(--space-2) var(--space-4); font-size: var(--text-sm); }
+    .btn--lg { padding: var(--space-4) var(--space-7); font-size: var(--text-lg); }
+
+    .link-arrow {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      font-weight: var(--weight-semibold);
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: gap var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out);
+    }
+    .link-arrow::after { content: "→"; transition: transform var(--duration-base) var(--ease-out); font-weight: var(--weight-regular); }
+    .link-arrow:hover { color: var(--color-accent-dark); gap: var(--space-3); }
+    .link-arrow:hover::after { transform: translateX(2px); }
+
+    /* ===== HEADER ===== */
+    .site-header {
+      position: sticky; top: 0;
+      z-index: var(--z-header);
+      background: rgba(15, 40, 20, 0.92);
+      backdrop-filter: saturate(180%) blur(10px);
+      -webkit-backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid rgba(74, 125, 82, 0.35);
+      height: var(--header-height);
+      display: flex; align-items: center;
+      transition: box-shadow var(--duration-base) var(--ease-out), background var(--duration-base) var(--ease-out);
+    }
+    .site-header.is-scrolled {
+      box-shadow: 0 1px 0 rgba(0,0,0,0.4), var(--shadow-sm);
+      background: rgba(15, 40, 20, 0.97);
+    }
+    .site-header__inner {
+      width: 100%;
+      max-width: var(--container-2xl);
+      margin-inline: auto;
+      padding-inline: var(--pad-x);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: var(--space-6);
+    }
+    .site-header__logo { display: inline-flex; align-items: center; text-decoration: none; }
+    .site-header__logo svg { height: 40px; width: auto; display: block; }
+
+    .site-nav { display: flex; align-items: center; gap: var(--space-6); }
+    .site-nav__link {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-on-dark);
+      text-decoration: none;
+      padding: var(--space-2) 0;
+      position: relative;
+      transition: color var(--duration-base) var(--ease-out);
+    }
+    .site-nav__link::after {
+      content: ""; position: absolute;
+      left: 0; bottom: -4px;
+      width: 0; height: 2px;
+      background: var(--color-accent-light);
+      transition: width var(--duration-base) var(--ease-out);
+    }
+    .site-nav__link:hover { color: var(--color-accent-light); }
+    .site-nav__link:hover::after { width: 100%; }
+
+    .site-header__cta { display: flex; align-items: center; gap: var(--space-3); }
+    .menu-toggle {
+      display: none; width: 44px; height: 44px;
+      align-items: center; justify-content: center;
+      border-radius: var(--radius-md);
+    }
+    .menu-toggle:hover { background: rgba(242, 239, 227, 0.1); }
+    .menu-toggle__bars,
+    .menu-toggle__bars::before,
+    .menu-toggle__bars::after {
+      display: block; width: 22px; height: 2px;
+      background: var(--color-text-on-dark);
+      position: relative;
+      transition: transform var(--duration-base) var(--ease-out), top var(--duration-base) var(--ease-out);
+    }
+    .menu-toggle__bars::before, .menu-toggle__bars::after { content: ""; position: absolute; left: 0; }
+    .menu-toggle__bars::before { top: -7px; }
+    .menu-toggle__bars::after { top: 7px; }
+
+    @media (max-width: 1023px) {
+      .menu-toggle { display: inline-flex; }
+      .site-nav {
+        position: fixed;
+        top: var(--header-height); left: 0; right: 0;
+        background: var(--color-primary-dark);
+        flex-direction: column; align-items: stretch;
+        padding: var(--space-5);
+        border-bottom: 1px solid var(--color-border);
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-120%);
+        transition: transform var(--duration-slow) var(--ease-out);
+        gap: 0;
+      }
+      .site-nav.is-open { transform: translateY(0); }
+      .site-nav__link {
+        padding-block: var(--space-4);
+        border-bottom: 1px solid rgba(74, 125, 82, 0.4);
+        font-size: var(--text-lg);
+      }
+      .site-nav__link::after { display: none; }
+      .site-header__cta .btn { display: none; }
+      .hide-mobile { display: none !important; }
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      background: var(--color-bg-dark);
+      color: var(--color-text-on-dark);
+      padding-block: var(--space-9) var(--space-6);
+    }
+    .site-footer a { color: var(--color-text-on-dark); text-decoration: none; }
+    .site-footer a:hover { color: var(--color-accent-light); }
+    .site-footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--space-7);
+      margin-bottom: var(--space-8);
+    }
+    @media (max-width: 1023px) { .site-footer__grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 639px) { .site-footer__grid { grid-template-columns: 1fr; } }
+    .site-footer__brand svg { height: 48px; width: auto; margin-bottom: var(--space-3); display: block; }
+    .site-footer__brand p {
+      color: rgba(241, 244, 241, 0.7);
+      max-width: 36ch;
+      margin-top: var(--space-3);
+      line-height: var(--leading-relaxed);
+    }
+    .site-footer__heading {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-caps);
+      color: var(--color-accent-light);
+      margin-bottom: var(--space-4);
+    }
+    .site-footer__list {
+      list-style: none; padding: 0;
+      display: flex; flex-direction: column; gap: var(--space-2);
+    }
+    .site-footer__list a { font-size: var(--text-base); }
+    .site-footer__bottom {
+      padding-top: var(--space-5);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex; justify-content: space-between; flex-wrap: wrap;
+      gap: var(--space-4);
+      font-size: var(--text-sm);
+      color: rgba(241, 244, 241, 0.6);
+    }
+
+    /* ===== HERO — full-bleed video ===== */
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex; align-items: center;
+      padding-block: var(--space-9);
+      overflow: hidden;
+      background: var(--color-primary-dark);
+      color: #fff;
+      isolation: isolate;
+      margin-top: calc(var(--header-height) * -1);
+      padding-top: calc(var(--header-height) + var(--space-9));
+    }
+    @media (max-width: 767px) {
+      .hero { min-height: 72vh; padding-block: var(--space-8); padding-top: calc(var(--header-height) + var(--space-7)); }
+    }
+    .hero__video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      background:
+        linear-gradient(100deg, rgba(15, 40, 20, 0.88) 0%, rgba(15, 40, 20, 0.62) 38%, rgba(15, 40, 20, 0.32) 70%, rgba(15, 40, 20, 0.22) 100%),
+        linear-gradient(180deg, rgba(15, 40, 20, 0.35) 0%, rgba(15, 40, 20, 0.10) 30%, rgba(15, 40, 20, 0.10) 70%, rgba(15, 40, 20, 0.55) 100%);
+    }
+    .hero__inner { position: relative; max-width: 760px; }
+    .hero__eyebrow {
+      display: inline-block;
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-caps);
+      color: var(--color-accent-light);
+      margin-bottom: var(--space-4);
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+    }
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5.5rem);
+      font-weight: var(--weight-bold);
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tight);
+      margin-bottom: var(--space-5);
+      color: #fff;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+      max-width: 18ch;
+    }
+    .hero__lede {
+      font-size: var(--text-xl);
+      line-height: var(--leading-relaxed);
+      color: rgba(255, 255, 255, 0.94);
+      max-width: 56ch;
+      margin-bottom: var(--space-6);
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
+    }
+    .hero__cta { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+    .hero .btn--outline {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.55);
+    }
+    .hero .btn--outline:hover {
+      background: #fff;
+      color: var(--color-primary);
+      border-color: #fff;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero__video { display: none; }
+    }
+
+    /* Section head shared */
+    .section-head {
+      max-width: 720px;
+      margin-inline: auto;
+      text-align: center;
+      margin-bottom: var(--space-7);
+    }
+    .section-head .lead { margin-inline: auto; }
+
+    /* ===== BY THE NUMBERS ===== */
+    .by-numbers {
+      background: var(--color-bg-dark);
+      color: var(--color-text-on-dark);
+      padding-block: var(--space-9);
+      position: relative;
+      overflow: hidden;
+    }
+    .by-numbers::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 96'><polygon points='28,4 52,18 52,46 28,60 4,46 4,18' fill='none' stroke='%235BA3D6' stroke-width='1' opacity='0.12'/><polygon points='0,52 24,66 24,94 0,108 -24,94 -24,66' fill='none' stroke='%235BA3D6' stroke-width='1' opacity='0.12'/><polygon points='56,52 80,66 80,94 56,108 32,94 32,66' fill='none' stroke='%235BA3D6' stroke-width='1' opacity='0.12'/></svg>");
+      background-size: 56px 96px;
+      pointer-events: none;
+    }
+    .by-numbers > .container { position: relative; }
+    .by-numbers .eyebrow { color: var(--color-accent-light); }
+    .by-numbers h2 { color: #fff; max-width: 24ch; margin-inline: auto; }
+    .by-numbers .lead { color: rgba(242, 239, 227, 0.8); }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+      margin-top: var(--space-8);
+    }
+    @media (max-width: 1023px) { .stats-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-7); } }
+    @media (max-width: 639px)  { .stats-grid { grid-template-columns: 1fr; } }
+    .stat { text-align: center; padding-inline: var(--space-3); position: relative; }
+    .stat + .stat::before {
+      content: ""; position: absolute;
+      left: 0; top: 12%; bottom: 12%;
+      width: 1px;
+      background: rgba(242, 239, 227, 0.12);
+    }
+    @media (max-width: 1023px) { .stat + .stat::before { display: none; } }
+    .stat__number {
+      font-family: var(--font-display);
+      font-size: clamp(2.75rem, 6vw, 4.5rem);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-tight);
+      line-height: 1;
+      color: #fff;
+      display: inline-flex;
+      align-items: baseline;
+      justify-content: center;
+    }
+    .stat__suffix {
+      font-size: 0.55em;
+      font-weight: var(--weight-semibold);
+      color: var(--color-accent-light);
+      margin-left: 2px;
+    }
+    .stat__label {
+      margin-top: var(--space-4);
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-caps);
+      color: rgba(242, 239, 227, 0.75);
+    }
+    .stat {
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    }
+    .stat.is-visible { opacity: 1; transform: translateY(0); }
+    .stat:nth-child(2).is-visible { transition-delay: 0.10s; }
+    .stat:nth-child(3).is-visible { transition-delay: 0.20s; }
+    .stat:nth-child(4).is-visible { transition-delay: 0.30s; }
+    @media (prefers-reduced-motion: reduce) {
+      .stat { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ===== OUR APPROACH ===== */
+    .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+    @media (max-width: 1023px) { .approach-grid { grid-template-columns: 1fr; } }
+    .approach-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      display: flex; flex-direction: column;
+      gap: var(--space-3);
+    }
+    .approach-card__num {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-extrabold);
+      color: var(--color-accent);
+      letter-spacing: 0;
+    }
+    .approach-card h4 {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-tight);
+    }
+    .approach-card p {
+      color: var(--color-text-muted);
+      line-height: var(--leading-relaxed);
+      font-size: var(--text-base);
+    }
+
+    /* ===== OUR COMPANIES (portfolio) ===== */
+    .companies-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-5);
+    }
+    @media (max-width: 1023px) { .companies-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 639px)  { .companies-grid { grid-template-columns: 1fr; } }
+    .company-card {
+      position: relative;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      display: flex; flex-direction: column;
+      gap: var(--space-2);
+      color: var(--color-text);
+      transition: border-color var(--duration-base) var(--ease-out),
+                  box-shadow var(--duration-base) var(--ease-out),
+                  transform var(--duration-base) var(--ease-out);
+    }
+    .company-card:hover {
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+    .company-card__location {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-caps);
+      color: var(--color-accent);
+    }
+    .company-card__brand {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-tight);
+      margin: 0;
+    }
+    .company-card__link {
+      color: inherit; text-decoration: none;
+    }
+    .company-card__link::after {
+      content: ""; position: absolute; inset: 0; z-index: 1;
+      border-radius: var(--radius-lg);
+    }
+    .company-card__desc {
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+      color: var(--color-text-muted);
+      margin-top: var(--space-1);
+    }
+    .company-card__cta {
+      margin-top: auto;
+      padding-top: var(--space-4);
+      font-size: var(--text-sm);
+      color: var(--color-accent);
+      font-weight: var(--weight-semibold);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .company-card__cta::after {
+      content: "→";
+      transition: transform var(--duration-base) var(--ease-out);
+      font-weight: var(--weight-regular);
+    }
+    .company-card:hover .company-card__cta::after { transform: translateX(3px); }
+
+    /* ===== CAPABILITIES ===== */
+    .capabilities {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-5);
+    }
+    @media (max-width: 1023px) { .capabilities { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 639px)  { .capabilities { grid-template-columns: 1fr; } }
+    .capability {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      display: flex; flex-direction: column; gap: var(--space-3);
+      transition: border-color var(--duration-base) var(--ease-out),
+                  box-shadow var(--duration-base) var(--ease-out),
+                  transform var(--duration-base) var(--ease-out);
+    }
+    .capability:hover {
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+    .capability__icon {
+      width: 56px; height: 56px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--color-primary);
+      color: #fff;
+      border-radius: var(--radius-md);
+    }
+    .capability__icon svg { width: 28px; height: 28px; }
+    .capability__title {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-tight);
+    }
+    .capability__body {
+      color: var(--color-text-muted);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* ===== INDUSTRIES HONEYCOMB ===== */
+    .markets-honeycomb { max-width: 760px; margin-inline: auto; display: block; }
+    .hex-fill        { fill: #00558C; }
+    .hex-accent      { fill: #1A4120; }
+    .hex-soft        { fill: #D6E8F2; stroke: #00558C; stroke-width: 1.5; }
+    .hex-label       { fill: #fff; font-family: "Manrope", sans-serif; font-weight: 700; font-size: 13px; pointer-events: none; }
+    .hex-label-dark  { fill: #00558C; font-family: "Manrope", sans-serif; font-weight: 700; font-size: 13px; pointer-events: none; }
+
+    /* Scroll-in + hover animation for each industry hex */
+    .industry-hex {
+      opacity: 0;
+      transform: translateY(14px) scale(0.92);
+      transform-origin: center;
+      transform-box: fill-box;
+      transition:
+        opacity 0.7s var(--ease-out),
+        transform 0.7s var(--ease-out);
+      cursor: default;
+    }
+    .industry-hex.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .industry-hex polygon {
+      transition: filter 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+    .industry-hex:hover polygon {
+      transform: scale(1.06);
+      filter: drop-shadow(0 6px 14px rgba(0, 85, 140, 0.32));
+    }
+    .industry-hex.industry-hex--accent:hover polygon {
+      filter: drop-shadow(0 6px 14px rgba(26, 65, 32, 0.35));
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .industry-hex { opacity: 1; transform: none; transition: none; }
+      .industry-hex:hover polygon { transform: none; }
+    }
+
+    /* ===== MAP ===== */
+    .map-preview {
+      position: relative;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-3);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+    #fc-map {
+      width: 100%; height: 500px;
+      border-radius: var(--radius-lg);
+      background: var(--color-bg-soft);
+      font-family: var(--font-body);
+      position: relative;
+      isolation: isolate;
+    }
+    @media (max-width: 767px) { #fc-map { height: 400px; } }
+    .fc-marker { position: relative; width: 18px; height: 18px; }
+    .fc-marker__dot {
+      position: absolute; inset: 0;
+      background: #00558C;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+      transition: transform var(--duration-base) var(--ease-out);
+    }
+    .fc-marker:hover .fc-marker__dot { transform: scale(1.25); }
+    .fc-marker__pulse {
+      position: absolute; inset: 0;
+      background: #00558C;
+      border-radius: 50%;
+      opacity: 0.35;
+      animation: fc-pulse 2.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    }
+    @keyframes fc-pulse {
+      0%   { transform: scale(1);   opacity: 0.4; }
+      70%  { transform: scale(2.6); opacity: 0; }
+      100% { transform: scale(2.6); opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fc-marker__pulse { animation: none; opacity: 0; }
+    }
+    .fc-popup .leaflet-popup-content-wrapper {
+      border-radius: var(--radius-lg);
+      box-shadow: 0 10px 30px rgba(15, 42, 31, 0.18);
+      padding: 0;
+    }
+    .fc-popup .leaflet-popup-content {
+      margin: var(--space-5);
+      font-family: var(--font-body);
+      line-height: var(--leading-normal);
+      color: var(--color-text);
+      min-width: 200px;
+    }
+    .fc-popup__location {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-caps);
+      color: var(--color-accent);
+      margin-bottom: var(--space-2);
+    }
+    .fc-popup__brand {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text);
+      margin-bottom: var(--space-2);
+      line-height: 1.2;
+    }
+    .fc-popup__addr {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-3);
+    }
+    .fc-popup__phone {
+      display: block;
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--color-text);
+      margin-bottom: var(--space-3);
+      text-decoration: none;
+    }
+    .fc-popup__phone:hover { color: var(--color-accent); }
+    .fc-popup__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+    .fc-popup__cta::after { content: "→"; transition: transform var(--duration-base) var(--ease-out); }
+    .fc-popup__cta:hover { color: var(--color-accent-dark); }
+    .fc-popup__cta:hover::after { transform: translateX(3px); }
+    .leaflet-container a { color: var(--color-accent); }
+    .leaflet-container { font: inherit; }
+
+    /* ===== ACQUISITIONS CTA ===== */
+    .acq-cta {
+      background: var(--color-bg-dark);
+      color: var(--color-text-on-dark);
+      padding-block: var(--space-10);
+      position: relative;
+      overflow: hidden;
+    }
+    .acq-cta::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 96'><polygon points='28,4 52,18 52,46 28,60 4,46 4,18' fill='none' stroke='%23ffffff' stroke-width='1' opacity='0.06'/><polygon points='0,52 24,66 24,94 0,108 -24,94 -24,66' fill='none' stroke='%23ffffff' stroke-width='1' opacity='0.06'/><polygon points='56,52 80,66 80,94 56,108 32,94 32,66' fill='none' stroke='%23ffffff' stroke-width='1' opacity='0.06'/></svg>");
+      background-size: 56px 96px;
+      pointer-events: none;
+    }
+    .acq-cta__inner {
+      position: relative;
+      max-width: 820px;
+      margin-inline: auto;
+      text-align: center;
+    }
+    .acq-cta__inner h2 { color: #fff; max-width: 22ch; margin-inline: auto; }
+    .acq-cta__inner p { color: rgba(255,255,255,0.85); }
+    .cta-row { display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center; }
+  </style>
+</head>
+
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="/" aria-label="FirstCall Group — home">
+        <!-- Inline FirstCall Group white logo -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 339.464" aria-hidden="true">
+          <g fill="#fff">
+            <path d="M294.63,151.706c-3.194-1.849-6.995-3.523-11.509-3.523-17.708,0-46.733,27.178-94.111,88.123-20.791,25.395-37.669,38.446-50.764,45.386h107.263l62.085-107.534-12.964-22.453Z"/>
+            <path d="M176.315,226.178c35.368-45.502,59.716-71.488,78.904-84.207,10.128-6.712,19.236-9.976,27.848-9.976.062,0,.125.007.187.007l-7.798-13.507-.104-.064c-3.453-2.133-7.677-4.314-12.83-4.314-17.708,0-46.732,27.178-94.109,88.123-28.376,34.658-49.467,46.33-63.59,50.844l11.402,19.749c11.569-2.714,30.973-11.095,60.09-46.656Z"/>
+            <path d="M148.852,167.918c-28.522,34.84-49.681,46.448-63.806,50.912l11.399,19.744c11.657-2.921,30.835-11.73,59.273-46.461,35.369-45.502,59.717-71.489,78.905-84.208,10.127-6.711,19.236-9.975,27.847-9.975.38,0,.758.031,1.137.044l-8.105-14.038c-3.4-2.077-7.528-4.141-12.54-4.141-17.709,0-46.734,27.178-94.111,88.123Z"/>
+            <path d="M136.157,157.79c35.368-45.502,59.716-71.488,78.906-84.207,4.566-3.028,8.917-5.316,13.118-6.957h-106.84l-62.085,107.534,17.406,30.147c11.635-2.864,30.877-11.562,59.496-46.516Z"/>
+            <path d="M377.043,111.249v20.155h44.916v23.034h-44.916v34.695h-29.944v-100.918h78.316v23.034h-48.372Z"/>
+            <path d="M434.571,189.133v-81.419h24.158v81.419h-24.158Z"/>
+            <path d="M507.042,167.181h-12.776v21.952h-24.158v-81.419h37.979c21.836,0,34.379,10.454,34.379,28.921,0,12.079-4.878,20.906-13.705,25.901l16.492,26.597h-27.41l-10.802-21.952ZM508.087,148.598c7.201,0,11.382-3.949,11.382-11.266,0-7.085-4.181-11.034-11.382-11.034h-13.821v22.3h13.821Z"/>
+            <path d="M621.788,116.077l-8.943,18.583c-8.363-4.762-20.21-9.059-27.062-9.059-4.065,0-6.737,1.394-6.737,4.413,0,11.963,42.51,4.878,42.51,34.263,0,17.306-15.332,25.552-33.566,25.552-13.821,0-28.921-4.878-39.142-12.893l9.059-18.351c8.363,7.085,21.952,12.428,30.315,12.428,5.11,0,8.363-1.742,8.363-5.459,0-12.312-42.51-4.53-42.51-33.218,0-15.679,13.357-25.669,33.683-25.669,12.428,0,25.203,3.717,34.03,9.408Z"/>
+            <path d="M674.396,126.995v62.138h-24.274v-62.138h-23.578v-19.281h71.545v19.281h-23.694Z"/>
+            <path d="M799.862,105.203l-17.276,20.443c-6.335-8.062-15.692-13.389-24.042-13.389-13.677,0-24.042,11.085-24.042,25.914s10.365,26.057,24.042,26.057c7.774,0,17.132-4.607,24.042-11.661l17.276,18.427c-10.942,11.805-27.497,19.435-42.757,19.435-30.664,0-53.267-22.17-53.267-51.97,0-29.369,23.034-51.107,54.275-51.107,15.26,0,31.528,6.91,41.749,17.851Z"/>
+            <path d="M826.362,176.125l-4.878,13.008h-24.855l34.728-81.419h24.855l33.566,81.419h-25.784l-4.762-13.008h-32.87ZM843.087,131.873l-9.989,26.597h19.745l-9.756-26.597Z"/>
+            <path d="M954,168.924v20.209h-58.305v-81.419h24.158v61.209h34.147Z"/>
+            <path d="M1020.662,168.924v20.209h-58.305v-81.419h24.158v61.209h34.147Z"/>
+            <path d="M396.389,226.428h-15.182c-1.583-2.662-4.461-4.174-8.347-4.174-7.124,0-11.441,4.966-11.441,12.737,0,8.707,4.461,13.384,12.809,13.384,4.893,0,8.49-2.303,10.577-6.692h-14.175v-10.146h26.336v13.672c-3.023,7.412-10.866,15.615-24.106,15.615-15.543,0-25.76-10.649-25.76-25.832s10.145-25.76,25.688-25.76c12.809,0,21.587,6.62,23.601,17.197Z"/>
+            <path d="M425.52,209.735c12.593,0,18.925,7.195,18.925,16.262,0,6.62-3.598,12.376-11.153,14.679l11.441,19.788h-15.758l-10.074-18.708h-1.511v18.708h-14.103v-50.729h22.234ZM424.37,221.535h-6.98v10.578h6.98c3.814,0,5.756-1.871,5.756-5.325,0-3.166-1.942-5.253-5.756-5.253Z"/>
+            <path d="M475.161,260.967c-14.391,0-26.048-10.793-26.048-26.048s11.657-25.976,26.048-25.976c14.464,0,25.977,10.721,25.977,25.976s-11.585,26.048-25.977,26.048ZM475.161,247.872c7.267,0,11.657-5.11,11.657-12.952,0-7.988-4.389-13.024-11.657-13.024-7.339,0-11.657,5.037-11.657,13.024,0,7.843,4.317,12.952,11.657,12.952Z"/>
+            <path d="M507.244,209.735h14.031v29.43c0,5.253,2.375,8.562,7.699,8.562s7.844-3.31,7.844-8.562v-29.43h14.103v29.43c0,14.463-10.074,21.802-22.235,21.802-12.232,0-21.443-7.339-21.443-21.802v-29.43Z"/>
+            <path d="M579.765,243.338h-6.98v17.125h-14.103v-50.729h21.083c12.592,0,18.996,7.124,18.996,16.909,0,8.851-6.116,16.694-18.996,16.694ZM578.398,232.113c4.246,0,5.973-2.159,5.973-5.469,0-3.382-1.727-5.54-5.973-5.54h-5.612v11.009h5.612Z"/>
+            <rect x="612.765" y="212.234" width="408.751" height="7.861"/>
+          </g>
+        </svg>
+      </a>
+
+      <nav class="site-nav" data-site-nav aria-label="Primary">
+        <a class="site-nav__link" href="#acquisitions">Acquisitions</a>
+        <a class="site-nav__link" href="#locations">Locations</a>
+        <a class="site-nav__link" href="#team">Team</a>
+        <a class="site-nav__link" href="#news">News</a>
+        <a class="site-nav__link" href="https://www.linkedin.com/company/first-call-mechanical/" rel="noopener">Careers</a>
+        <a class="site-nav__link" href="#contact">Contact</a>
+      </nav>
+
+      <div class="site-header__cta">
+        <a class="btn btn--primary btn--sm hide-mobile" href="#contact">Get in Touch</a>
+        <button class="menu-toggle" data-menu-toggle aria-label="Open menu" aria-expanded="false">
+          <span class="menu-toggle__bars" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- 1. HERO -->
+    <section class="hero">
+      <video class="hero__video" autoplay muted loop playsinline preload="metadata"
+             poster="https://images.unsplash.com/photo-1572976831834-d8c9a0e54fdf?w=1600&q=85&auto=format&fit=crop"
+             aria-hidden="true">
+        <source src="shared/img/videos/production-flyover.mp4" type="video/mp4" />
+      </video>
+
+      <div class="container">
+        <div class="hero__inner">
+          <span class="hero__eyebrow">FirstCall · Coast-to-Coast Commercial Mechanical</span>
+          <h1 class="hero__title">Durable partnerships, built across the country.</h1>
+          <p class="hero__lede">
+            FirstCall is a coast-to-coast commercial mechanical service organization —
+            HVAC, building controls, plumbing, and electrical — with 24 branches partnering
+            with property owners and facility managers across the United States.
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn--primary btn--lg" href="#locations">Our Branches</a>
+            <a class="btn btn--outline btn--lg" href="#acquisitions">Partner with Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. BY THE NUMBERS -->
+    <section class="by-numbers" aria-labelledby="numbers-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">By the Numbers</span>
+          <h2 id="numbers-heading">The scale to deliver. The team to back it.</h2>
+          <p class="lead">A growing, coast-to-coast organization with branches in major US metros.</p>
+        </div>
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat__number"><span data-stat-num data-stat-value="25">0</span><span class="stat__suffix">+</span></div>
+            <div class="stat__label">Branches Nationwide</div>
+          </div>
+          <div class="stat">
+            <div class="stat__number"><span data-stat-num data-stat-value="11">0</span><span class="stat__suffix"></span></div>
+            <div class="stat__label">States Served</div>
+          </div>
+          <div class="stat">
+            <div class="stat__number"><span data-stat-num data-stat-value="500">0</span><span class="stat__suffix">+</span></div>
+            <div class="stat__label">Technicians on the Ground</div>
+          </div>
+          <div class="stat">
+            <div class="stat__number"><span data-stat-static>24/7</span></div>
+            <div class="stat__label">Emergency Response</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. OUR APPROACH -->
+    <section class="section section--soft" id="approach" aria-labelledby="approach-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Our Approach</span>
+          <h2 id="approach-heading">What partnership with FirstCall looks like.</h2>
+          <p class="lead">We partner with owners who built strong, durable businesses — and we structure deals that keep what works.</p>
+        </div>
+        <div class="approach-grid">
+          <div class="approach-card">
+            <div class="approach-card__num">01</div>
+            <h4>Local stays local.</h4>
+            <p>Branch leadership, branch name, branch identity — they stay. Customers, technicians, and partners deal with the same team they always have.</p>
+          </div>
+          <div class="approach-card">
+            <div class="approach-card__num">02</div>
+            <h4>We add depth underneath.</h4>
+            <p>Capital, shared services, cross-branch tech transfer, recruiting, and a national platform that compounds what each branch can do alone.</p>
+          </div>
+          <div class="approach-card">
+            <div class="approach-card__num">03</div>
+            <h4>We're patient owners.</h4>
+            <p>We're not a financial flip. We invest in branches for the long term, partnering with leadership to grow steadily and reliably.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. OUR BRANCHES -->
+    <section class="section" id="branches" aria-labelledby="branches-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Our Branches</span>
+          <h2 id="branches-heading">Twenty-five branches. One team.</h2>
+          <p class="lead">Local teams, local reputations, local relationships — connected by a single national service organization.</p>
+        </div>
+        <div class="companies-grid">
+          <article class="company-card">
+            <span class="company-card__location">Lawrenceville, GA</span>
+            <h3 class="company-card__brand"><a class="company-card__link" href="https://c2h.com/" rel="noopener">C2H</a></h3>
+            <p class="company-card__desc">Commercial HVAC, building controls, electrical, and plumbing — full-service mechanical for the Atlanta market and the Southeast.</p>
+            <span class="company-card__cta">Visit c2h.com</span>
+          </article>
+
+          <article class="company-card">
+            <span class="company-card__location">Charlotte, NC</span>
+            <h3 class="company-card__brand"><a class="company-card__link" href="https://ctccontrols.com/" rel="noopener">Charlotte Temp Controls</a></h3>
+            <p class="company-card__desc">Charlotte-area building controls specialist — design, installation, and integration of BAS / DDC systems.</p>
+            <span class="company-card__cta">Visit ctccontrols.com</span>
+          </article>
+
+          <article class="company-card">
+            <span class="company-card__location">Mentor, OH</span>
+            <h3 class="company-card__brand"><a class="company-card__link" href="https://clsfacilityservices.com/" rel="noopener">CLS Facility Services</a></h3>
+            <p class="company-card__desc">Total facility services across northeast Ohio — mechanical, electrical, and maintenance under one roof.</p>
+            <span class="company-card__cta">Visit clsfacilityservices.com</span>
+          </article>
+
+          <article class="company-card">
+            <span class="company-card__location">Columbus, OH</span>
+            <h3 class="company-card__brand"><a class="company-card__link" href="https://www.comfortrol.com/" rel="noopener">Comfortrol</a></h3>
+            <p class="company-card__desc">Columbus, Ohio HVAC and building controls — commercial service, install, and project work.</p>
+            <span class="company-card__cta">Visit comfortrol.com</span>
+          </article>
+
+          <article class="company-card">
+            <span class="company-card__location">Macon, GA</span>
+            <h3 class="company-card__brand"><a class="company-card__link" href="https://www.conditionedairinc.com/" rel="noopener">Conditioned Air</a></h3>
+            <p class="company-card__desc">Central Georgia commercial HVAC service and project work — Macon and the surrounding region.</p>
+            <span class="company-card__cta">Visit conditionedairinc.com</span>
+          </article>
+
+          <article class="company-card">
+            <span class="company-card__location">DFW · Austin · Columbus</span>
+            <h3 class="company-card__brand"><a class="company-card__link" href="https://firstcallmechanical.com/" rel="noopener">FirstCall Mechanical</a></h3>
+            <p class="company-card__desc">FirstCall's flagship operating brand — commercial HVAC, building controls, plumbing, and project work across Texas and Ohio.</p>
+            <span class="company-card__cta">Visit firstcallmechanical.com</span>
+          </article>
+
+          <article class="company-card">
+            <span class="company-card__location">Freeport, NY</span>
+            <h3 class="company-card__brand"><a class="company-card__link" href="https://www.industrialcoolinginc.com/welcome.php" rel="noopener">ICACS</a></h3>
+            <p class="company-card__desc">Long Island industrial cooling specialist — mission-critical HVAC and process-cooling systems.</p>
+            <span class="company-card__cta">Visit industrialcoolinginc.com</span>
+          </article>
+
+          <article class="company-card">
+            <span class="company-card__location">Wellsville, NY</span>
+            <h3 class="company-card__brand"><a class="company-card__link" href="https://kats.pro/" rel="noopener">KATS Solutions</a></h3>
+            <p class="company-card__desc">Western New York commercial mechanical service, project work, and building solutions.</p>
+            <span class="company-card__cta">Visit kats.pro</span>
+          </article>
+
+          <article class="company-card">
+            <span class="company-card__location">Tampa, FL</span>
+            <h3 class="company-card__brand"><a class="company-card__link" href="https://kenyonandpartners.com/" rel="noopener">Kenyon &amp; Partners</a></h3>
+            <p class="company-card__desc">Florida mechanical engineering and consulting services — design, commissioning, and energy services.</p>
+            <span class="company-card__cta">Visit kenyonandpartners.com</span>
+          </article>
+
+          <article class="company-card">
+            <span class="company-card__location">Tampa, FL</span>
+            <h3 class="company-card__brand"><a class="company-card__link" href="https://kpiengineering.com/" rel="noopener">KPI Engineering</a></h3>
+            <p class="company-card__desc">Engineering services for the Florida market — MEP design, commissioning, and project oversight.</p>
+            <span class="company-card__cta">Visit kpiengineering.com</span>
+          </article>
+
+          <article class="company-card">
+            <span class="company-card__location">Boston, MA</span>
+            <h3 class="company-card__brand"><a class="company-card__link" href="https://www.lc-anderson.com/" rel="noopener">LC Anderson</a></h3>
+            <p class="company-card__desc">Boston-area commercial HVAC service and project work — full-service mechanical for greater New England.</p>
+            <span class="company-card__cta">Visit lc-anderson.com</span>
+          </article>
+
+          <article class="company-card">
+            <span class="company-card__location">Clearwater, FL</span>
+            <h3 class="company-card__brand"><a class="company-card__link" href="https://www.meconinc.com/" rel="noopener">Mecon</a></h3>
+            <p class="company-card__desc">Florida commercial mechanical service — Tampa Bay, central Florida, and South Florida markets.</p>
+            <span class="company-card__cta">Visit meconinc.com</span>
+          </article>
+
+          <article class="company-card">
+            <span class="company-card__location">Belle Chasse, LA</span>
+            <h3 class="company-card__brand"><span class="company-card__link">Optimum Air Solutions</span></h3>
+            <p class="company-card__desc">Louisiana commercial mechanical service — greater New Orleans and surrounding Gulf Coast markets.</p>
+            <span class="company-card__cta" style="color:var(--color-text-light)">Contact branch</span>
+          </article>
+
+          <article class="company-card">
+            <span class="company-card__location">Asheville, NC</span>
+            <h3 class="company-card__brand"><a class="company-card__link" href="https://rw-mechanical.com/" rel="noopener">R&amp;W Mechanical</a></h3>
+            <p class="company-card__desc">Western North Carolina commercial mechanical service — Asheville and the surrounding region.</p>
+            <span class="company-card__cta">Visit rw-mechanical.com</span>
+          </article>
+
+          <article class="company-card">
+            <span class="company-card__location">West Babylon, NY</span>
+            <h3 class="company-card__brand"><a class="company-card__link" href="https://www.selectenv.com/" rel="noopener">Select Environmental</a></h3>
+            <p class="company-card__desc">Long Island commercial environmental and mechanical services — HVAC, IAQ, and building systems.</p>
+            <span class="company-card__cta">Visit selectenv.com</span>
+          </article>
+
+          <article class="company-card">
+            <span class="company-card__location">Lebanon, VA</span>
+            <h3 class="company-card__brand"><a class="company-card__link" href="https://starnesinc.com/" rel="noopener">Starnes</a></h3>
+            <p class="company-card__desc">Southwest Virginia commercial mechanical service — full-service HVAC, controls, and projects.</p>
+            <span class="company-card__cta">Visit starnesinc.com</span>
+          </article>
+
+          <article class="company-card">
+            <span class="company-card__location">Macon, GA</span>
+            <h3 class="company-card__brand"><a class="company-card__link" href="https://www.starrelectric.biz/" rel="noopener">Starr</a></h3>
+            <p class="company-card__desc">Central Georgia commercial electrical service — install, service, and project work.</p>
+            <span class="company-card__cta">Visit starrelectric.biz</span>
+          </article>
+
+          <article class="company-card">
+            <span class="company-card__location">South Amboy, NJ</span>
+            <h3 class="company-card__brand"><span class="company-card__link">Statewide</span></h3>
+            <p class="company-card__desc">New Jersey commercial mechanical service — covering the state and the broader NY/NJ metro.</p>
+            <span class="company-card__cta" style="color:var(--color-text-light)">Contact branch</span>
+          </article>
+
+          <article class="company-card">
+            <span class="company-card__location">Charlotte · Raleigh · Greenville · Chesapeake</span>
+            <h3 class="company-card__brand"><a class="company-card__link" href="https://strmechanical.com/" rel="noopener">STR Mechanical</a></h3>
+            <p class="company-card__desc">Carolinas and Virginia commercial mechanical service — Charlotte HQ with four locations across NC, SC, and VA.</p>
+            <span class="company-card__cta">Visit strmechanical.com</span>
+          </article>
+
+          <article class="company-card">
+            <span class="company-card__location">Buford, GA</span>
+            <h3 class="company-card__brand"><a class="company-card__link" href="https://timcoair.com/" rel="noopener">Timco</a></h3>
+            <p class="company-card__desc">North Atlanta commercial HVAC service and project work — Buford and the metro corridor.</p>
+            <span class="company-card__cta">Visit timcoair.com</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. CAPABILITIES -->
+    <section class="section section--soft" aria-labelledby="capabilities-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Capabilities Across the Network</span>
+          <h2 id="capabilities-heading">Comprehensive commercial mechanical service.</h2>
+          <p class="lead">From chillers and rooftop units to building controls and emergency response, the FirstCall network delivers the full stack across every market we serve.</p>
+        </div>
+        <div class="capabilities">
+          <article class="capability">
+            <span class="capability__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
+            </span>
+            <h4 class="capability__title">HVAC Services</h4>
+            <p class="capability__body">Comprehensive heating, ventilation, and air conditioning service — install, repair, and optimization for commercial and industrial facilities.</p>
+          </article>
+          <article class="capability">
+            <span class="capability__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </span>
+            <h4 class="capability__title">Building Controls</h4>
+            <p class="capability__body">Design, installation, and integration of building automation and controls systems that reduce operating costs and improve comfort.</p>
+          </article>
+          <article class="capability">
+            <span class="capability__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4-3 8-7 8-12a8 8 0 1 0-16 0c0 5 4 9 8 12z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <h4 class="capability__title">Plumbing Services</h4>
+            <p class="capability__body">Full-service commercial plumbing — install, repair, and maintenance — backed by licensed and certified tradespeople.</p>
+          </article>
+          <article class="capability">
+            <span class="capability__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v6h-6"/></svg>
+            </span>
+            <h4 class="capability__title">Planned Maintenance</h4>
+            <p class="capability__body">Programmatic preventive maintenance with predictable scheduling, transparent reporting, and asset-level tracking.</p>
+          </article>
+          <article class="capability">
+            <span class="capability__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10"/></svg>
+            </span>
+            <h4 class="capability__title">Emergency Services</h4>
+            <p class="capability__body">24 / 7 emergency response across our service territory — staffed dispatch and an on-call technician roster, always available.</p>
+          </article>
+          <article class="capability">
+            <span class="capability__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            </span>
+            <h4 class="capability__title">Project Support</h4>
+            <p class="capability__body">Design-build, retrofit, and equipment-upgrade projects — delivered by tradespeople who know the install, and the service that follows.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. INDUSTRIES SERVED -->
+    <section class="section section--tinted" aria-labelledby="industries-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Industries We Serve</span>
+          <h2 id="industries-heading">Built for the buildings that matter.</h2>
+          <p class="lead">FirstCall branches support the most demanding commercial, institutional, and mission-critical facilities across the country.</p>
+        </div>
+
+        <!-- Teardrop honeycomb: rows of 2 / 3 / 4 / 3, 12 industries total -->
+        <svg class="markets-honeycomb" viewBox="0 0 500 480" role="img" aria-label="Industries we serve">
+          <!-- Row 1 (top): 2 hexes — Industrial, Office -->
+          <g class="industry-hex">
+            <polygon class="hex-fill" points="190,10 250,45 250,115 190,150 130,115 130,45"/>
+            <text class="hex-label" text-anchor="middle" x="190" y="85">Industrial</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex-soft" points="310,10 370,45 370,115 310,150 250,115 250,45"/>
+            <text class="hex-label-dark" text-anchor="middle" x="310" y="85">Office</text>
+          </g>
+
+          <!-- Row 2: 3 hexes — Healthcare, Data Centers (accent), Higher Education -->
+          <g class="industry-hex">
+            <polygon class="hex-fill" points="130,115 190,150 190,220 130,255 70,220 70,150"/>
+            <text class="hex-label" text-anchor="middle" x="130" y="190">Healthcare</text>
+          </g>
+          <g class="industry-hex industry-hex--accent">
+            <polygon class="hex-accent" points="250,115 310,150 310,220 250,255 190,220 190,150"/>
+            <text class="hex-label" text-anchor="middle" x="250" y="183">Data</text>
+            <text class="hex-label" text-anchor="middle" x="250" y="200">Centers</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex-fill" points="370,115 430,150 430,220 370,255 310,220 310,150"/>
+            <text class="hex-label" text-anchor="middle" x="370" y="183">Higher</text>
+            <text class="hex-label" text-anchor="middle" x="370" y="200">Education</text>
+          </g>
+
+          <!-- Row 3 (widest): 4 hexes — K-12, Life Sciences, Retail, Hospitality -->
+          <g class="industry-hex">
+            <polygon class="hex-soft" points="70,220 130,255 130,325 70,360 10,325 10,255"/>
+            <text class="hex-label-dark" text-anchor="middle" x="70" y="295">K–12</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex-fill" points="190,220 250,255 250,325 190,360 130,325 130,255"/>
+            <text class="hex-label" text-anchor="middle" x="190" y="288">Life</text>
+            <text class="hex-label" text-anchor="middle" x="190" y="305">Sciences</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex-fill" points="310,220 370,255 370,325 310,360 250,325 250,255"/>
+            <text class="hex-label" text-anchor="middle" x="310" y="295">Retail</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex-fill" points="430,220 490,255 490,325 430,360 370,325 370,255"/>
+            <text class="hex-label" text-anchor="middle" x="430" y="295">Hospitality</text>
+          </g>
+
+          <!-- Row 4 (bottom): 3 hexes — Government, Multifamily, Distribution -->
+          <g class="industry-hex">
+            <polygon class="hex-fill" points="130,325 190,360 190,430 130,465 70,430 70,360"/>
+            <text class="hex-label" text-anchor="middle" x="130" y="400">Government</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex-soft" points="250,325 310,360 310,430 250,465 190,430 190,360"/>
+            <text class="hex-label-dark" text-anchor="middle" x="250" y="400">Multifamily</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex-fill" points="370,325 430,360 430,430 370,465 310,430 310,360"/>
+            <text class="hex-label" text-anchor="middle" x="370" y="393">Distribution</text>
+            <text class="hex-label" text-anchor="middle" x="370" y="410">&amp; Logistics</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 7. LOCATIONS MAP -->
+    <section class="section" id="locations" aria-labelledby="locations-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Our Locations</span>
+          <h2 id="locations-heading">24 branches. 11 states. Growing.</h2>
+          <p class="lead">From coast to coast — FirstCall companies are on the ground in major US metros.</p>
+        </div>
+        <div class="map-preview">
+          <div id="fc-map" data-fc-map aria-label="Interactive US map of FirstCall branch locations"></div>
+          <script id="fc-map-data" type="application/json">[{"brand":"C2H","city":"Lawrenceville","state":"GA","addr":"1625 Lakes Parkway, Suite H, Lawrenceville, GA 30043","url":"https://c2h.com/","phone":"(678) 837-3224","lat":33.9562,"lng":-83.9879},{"brand":"Conditioned Air","city":"Macon","state":"GA","addr":"241 South Street, Macon, GA 31206","url":"https://www.conditionedairinc.com/","phone":null,"lat":32.8407,"lng":-83.6324},{"brand":"Starr","city":"Macon","state":"GA","addr":"539 Bartlett Street, Macon, GA 31204","url":"https://www.starrelectric.biz/","phone":null,"lat":32.843,"lng":-83.619},{"brand":"Timco","city":"Buford","state":"GA","addr":"5309 Palmero Court, Suite 200, Buford, GA 30518","url":"https://timcoair.com/","phone":null,"lat":34.1209,"lng":-83.9889},{"brand":"CLS Facility Services","city":"Mentor","state":"OH","addr":"8061 Tyler Boulevard, Mentor, OH 44060","url":"https://clsfacilityservices.com/","phone":null,"lat":41.6661,"lng":-81.3396},{"brand":"Comfortrol","city":"Columbus","state":"OH","addr":"3155 Lamb Avenue, Columbus, OH 43219","url":"https://www.comfortrol.com/","phone":null,"lat":39.9842,"lng":-82.9381},{"brand":"Charlotte Temp Controls","city":"Charlotte","state":"NC","addr":"1705-A Orr Industrial Court, Charlotte, NC 28213","url":"https://ctccontrols.com/","phone":null,"lat":35.2811,"lng":-80.7833},{"brand":"R&W Mechanical","city":"Asheville","state":"NC","addr":"90 London Road, Asheville, NC 28803","url":"https://rw-mechanical.com/","phone":null,"lat":35.5563,"lng":-82.5408},{"brand":"STR Mechanical","city":"Charlotte","state":"NC","addr":"11704 Reames Road, Charlotte, NC 28269","url":"https://strmechanical.com/","phone":null,"lat":35.347,"lng":-80.846},{"brand":"STR Mechanical — Raleigh","city":"Raleigh","state":"NC","addr":"551 C Pylon Drive, Suite C, Raleigh, NC 27606","url":"https://strmechanical.com/","phone":null,"lat":35.7926,"lng":-78.7036},{"brand":"FirstCall Mechanical — DFW","city":"Carrollton","state":"TX","addr":"1750 Briercroft Court, Suite 128, Carrollton, TX 75006","url":"https://firstcallmechanical.com/","phone":"(469) 669-0978","lat":32.9537,"lng":-96.8903},{"brand":"FirstCall Mechanical — Austin","city":"Austin","state":"TX","addr":"10421 Old Manchaca Road, Suite 410, Austin, TX 78748","url":"https://firstcallmechanical.com/","phone":null,"lat":30.1763,"lng":-97.8362},{"brand":"ICACS (Industrial Cooling)","city":"Freeport","state":"NY","addr":"83 Hampton Road, Freeport, NY 11520","url":"https://www.industrialcoolinginc.com/welcome.php","phone":null,"lat":40.6576,"lng":-73.5832},{"brand":"KATS Solutions","city":"Wellsville","state":"NY","addr":"37 Coats Street, Wellsville, NY 14895","url":"https://kats.pro/","phone":null,"lat":42.1223,"lng":-77.9483},{"brand":"Select Environmental","city":"West Babylon","state":"NY","addr":"210 Dale Street, West Babylon, NY 11704","url":"https://www.selectenv.com/","phone":null,"lat":40.7104,"lng":-73.3565},{"brand":"Kenyon & Partners","city":"Tampa","state":"FL","addr":"3203 Queen Palm Drive, Tampa, FL 33619","url":"https://kenyonandpartners.com/","phone":null,"lat":27.9506,"lng":-82.4067},{"brand":"KPI Engineering","city":"Tampa","state":"FL","addr":"3203 Queen Palm Drive, Tampa, FL 33619","url":"https://kpiengineering.com/","phone":null,"lat":27.9506,"lng":-82.4067},{"brand":"Mecon","city":"Clearwater","state":"FL","addr":"4181 116th Terrace N, Clearwater, FL 33762","url":"https://www.meconinc.com/","phone":null,"lat":27.9099,"lng":-82.7155},{"brand":"Starnes","city":"Lebanon","state":"VA","addr":"4082 US Highway 19, Lebanon, VA 24266","url":"https://starnesinc.com/","phone":null,"lat":36.9077,"lng":-82.0793},{"brand":"STR Mechanical — Technical Services","city":"Chesapeake","state":"VA","addr":"825 Green Briar Circle, Suite A, Chesapeake, VA 23320","url":"https://strmechanical.com/","phone":null,"lat":36.7682,"lng":-76.2875},{"brand":"STR Mechanical — Greenville","city":"Liberty","state":"SC","addr":"550 Blackbottom Road, Liberty, SC 29657","url":"https://strmechanical.com/","phone":null,"lat":34.7873,"lng":-82.6943},{"brand":"LC Anderson","city":"Boston","state":"MA","addr":"15 Soldiers Field Place, Boston, MA 02135","url":"https://www.lc-anderson.com/","phone":null,"lat":42.3601,"lng":-71.0589},{"brand":"Optimum Air Solutions","city":"Belle Chasse","state":"LA","addr":"127 Keating Drive, Belle Chasse, LA 70037","url":null,"phone":null,"lat":29.8552,"lng":-89.9906},{"brand":"Statewide","city":"South Amboy","state":"NJ","addr":"6200 Main Street, South Amboy, NJ 08879","url":null,"phone":null,"lat":40.4862,"lng":-74.2782}]</script>
+        </div>
+        <div style="text-align:center; margin-top:var(--space-6)">
+          <a href="locations.html" class="btn btn--primary">View All Locations</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. ACQUISITIONS CTA -->
+    <section class="acq-cta" id="acquisitions" aria-labelledby="acq-heading">
+      <div class="container acq-cta__inner">
+        <span class="eyebrow" style="color: var(--color-accent-light)">Acquisitions Program</span>
+        <h2 id="acq-heading">Considering selling your commercial service business?</h2>
+        <p class="lead" style="margin-block: var(--space-4) var(--space-6); max-width:54ch; margin-inline:auto;">
+          We partner with owners who built strong, durable businesses — and we
+          structure deals that keep what works. Local leadership stays. The
+          team stays. We add depth and capital underneath.
+        </p>
+        <div class="cta-row">
+          <a href="#contact" class="btn btn--primary btn--lg">Start a Conversation</a>
+          <a href="#approach" class="btn btn--outline-on-dark btn--lg">Our Approach</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 339.464" aria-label="FirstCall Group">
+            <g fill="#fff">
+              <path d="M294.63,151.706c-3.194-1.849-6.995-3.523-11.509-3.523-17.708,0-46.733,27.178-94.111,88.123-20.791,25.395-37.669,38.446-50.764,45.386h107.263l62.085-107.534-12.964-22.453Z"/>
+              <path d="M176.315,226.178c35.368-45.502,59.716-71.488,78.904-84.207,10.128-6.712,19.236-9.976,27.848-9.976.062,0,.125.007.187.007l-7.798-13.507-.104-.064c-3.453-2.133-7.677-4.314-12.83-4.314-17.708,0-46.732,27.178-94.109,88.123-28.376,34.658-49.467,46.33-63.59,50.844l11.402,19.749c11.569-2.714,30.973-11.095,60.09-46.656Z"/>
+              <path d="M148.852,167.918c-28.522,34.84-49.681,46.448-63.806,50.912l11.399,19.744c11.657-2.921,30.835-11.73,59.273-46.461,35.369-45.502,59.717-71.489,78.905-84.208,10.127-6.711,19.236-9.975,27.847-9.975.38,0,.758.031,1.137.044l-8.105-14.038c-3.4-2.077-7.528-4.141-12.54-4.141-17.709,0-46.734,27.178-94.111,88.123Z"/>
+              <path d="M136.157,157.79c35.368-45.502,59.716-71.488,78.906-84.207,4.566-3.028,8.917-5.316,13.118-6.957h-106.84l-62.085,107.534,17.406,30.147c11.635-2.864,30.877-11.562,59.496-46.516Z"/>
+              <path d="M377.043,111.249v20.155h44.916v23.034h-44.916v34.695h-29.944v-100.918h78.316v23.034h-48.372Z"/>
+              <path d="M434.571,189.133v-81.419h24.158v81.419h-24.158Z"/>
+              <path d="M507.042,167.181h-12.776v21.952h-24.158v-81.419h37.979c21.836,0,34.379,10.454,34.379,28.921,0,12.079-4.878,20.906-13.705,25.901l16.492,26.597h-27.41l-10.802-21.952ZM508.087,148.598c7.201,0,11.382-3.949,11.382-11.266,0-7.085-4.181-11.034-11.382-11.034h-13.821v22.3h13.821Z"/>
+              <path d="M621.788,116.077l-8.943,18.583c-8.363-4.762-20.21-9.059-27.062-9.059-4.065,0-6.737,1.394-6.737,4.413,0,11.963,42.51,4.878,42.51,34.263,0,17.306-15.332,25.552-33.566,25.552-13.821,0-28.921-4.878-39.142-12.893l9.059-18.351c8.363,7.085,21.952,12.428,30.315,12.428,5.11,0,8.363-1.742,8.363-5.459,0-12.312-42.51-4.53-42.51-33.218,0-15.679,13.357-25.669,33.683-25.669,12.428,0,25.203,3.717,34.03,9.408Z"/>
+              <path d="M674.396,126.995v62.138h-24.274v-62.138h-23.578v-19.281h71.545v19.281h-23.694Z"/>
+              <path d="M799.862,105.203l-17.276,20.443c-6.335-8.062-15.692-13.389-24.042-13.389-13.677,0-24.042,11.085-24.042,25.914s10.365,26.057,24.042,26.057c7.774,0,17.132-4.607,24.042-11.661l17.276,18.427c-10.942,11.805-27.497,19.435-42.757,19.435-30.664,0-53.267-22.17-53.267-51.97,0-29.369,23.034-51.107,54.275-51.107,15.26,0,31.528,6.91,41.749,17.851Z"/>
+              <path d="M826.362,176.125l-4.878,13.008h-24.855l34.728-81.419h24.855l33.566,81.419h-25.784l-4.762-13.008h-32.87ZM843.087,131.873l-9.989,26.597h19.745l-9.756-26.597Z"/>
+              <path d="M954,168.924v20.209h-58.305v-81.419h24.158v61.209h34.147Z"/>
+              <path d="M1020.662,168.924v20.209h-58.305v-81.419h24.158v61.209h34.147Z"/>
+              <path d="M396.389,226.428h-15.182c-1.583-2.662-4.461-4.174-8.347-4.174-7.124,0-11.441,4.966-11.441,12.737,0,8.707,4.461,13.384,12.809,13.384,4.893,0,8.49-2.303,10.577-6.692h-14.175v-10.146h26.336v13.672c-3.023,7.412-10.866,15.615-24.106,15.615-15.543,0-25.76-10.649-25.76-25.832s10.145-25.76,25.688-25.76c12.809,0,21.587,6.62,23.601,17.197Z"/>
+              <path d="M425.52,209.735c12.593,0,18.925,7.195,18.925,16.262,0,6.62-3.598,12.376-11.153,14.679l11.441,19.788h-15.758l-10.074-18.708h-1.511v18.708h-14.103v-50.729h22.234ZM424.37,221.535h-6.98v10.578h6.98c3.814,0,5.756-1.871,5.756-5.325,0-3.166-1.942-5.253-5.756-5.253Z"/>
+              <path d="M475.161,260.967c-14.391,0-26.048-10.793-26.048-26.048s11.657-25.976,26.048-25.976c14.464,0,25.977,10.721,25.977,25.976s-11.585,26.048-25.977,26.048ZM475.161,247.872c7.267,0,11.657-5.11,11.657-12.952,0-7.988-4.389-13.024-11.657-13.024-7.339,0-11.657,5.037-11.657,13.024,0,7.843,4.317,12.952,11.657,12.952Z"/>
+              <path d="M507.244,209.735h14.031v29.43c0,5.253,2.375,8.562,7.699,8.562s7.844-3.31,7.844-8.562v-29.43h14.103v29.43c0,14.463-10.074,21.802-22.235,21.802-12.232,0-21.443-7.339-21.443-21.802v-29.43Z"/>
+              <path d="M579.765,243.338h-6.98v17.125h-14.103v-50.729h21.083c12.592,0,18.996,7.124,18.996,16.909,0,8.851-6.116,16.694-18.996,16.694ZM578.398,232.113c4.246,0,5.973-2.159,5.973-5.469,0-3.382-1.727-5.54-5.973-5.54h-5.612v11.009h5.612Z"/>
+              <rect x="612.765" y="212.234" width="408.751" height="7.861"/>
+            </g>
+          </svg>
+          <p>FirstCall is a coast-to-coast commercial mechanical service organization — partnering with property owners and facility managers across the United States.</p>
+        </div>
+        <div>
+          <div class="site-footer__heading">FirstCall</div>
+          <ul class="site-footer__list">
+            <li><a href="#acquisitions">Acquisitions</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#news">News</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="site-footer__heading">Capabilities</div>
+          <ul class="site-footer__list">
+            <li><a href="#capabilities-heading">HVAC Services</a></li>
+            <li><a href="#capabilities-heading">Building Controls</a></li>
+            <li><a href="#capabilities-heading">Plumbing</a></li>
+            <li><a href="#capabilities-heading">Emergency Service</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="site-footer__heading">Connect</div>
+          <ul class="site-footer__list">
+            <li><a href="https://www.linkedin.com/company/first-call-mechanical/" rel="noopener">LinkedIn</a></li>
+            <li><a href="#acquisitions">Sell Your Business</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <span>&copy; 2026 FirstCall Group. All rights reserved.</span>
+        <span><a href="#">Privacy</a> &middot; <a href="#">Terms</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet library -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <script>
+    (function () {
+      "use strict";
+
+      function initMobileNav() {
+        var toggle = document.querySelector("[data-menu-toggle]");
+        var nav = document.querySelector("[data-site-nav]");
+        if (!toggle || !nav) return;
+        toggle.addEventListener("click", function () {
+          var open = nav.classList.toggle("is-open");
+          toggle.setAttribute("aria-expanded", open ? "true" : "false");
+          document.body.style.overflow = open ? "hidden" : "";
+        });
+        nav.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            nav.classList.remove("is-open");
+            toggle.setAttribute("aria-expanded", "false");
+            document.body.style.overflow = "";
+          });
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && nav.classList.contains("is-open")) {
+            nav.classList.remove("is-open");
+            toggle.setAttribute("aria-expanded", "false");
+            document.body.style.overflow = "";
+            toggle.focus();
+          }
+        });
+      }
+
+      function initHeaderScroll() {
+        var header = document.querySelector(".site-header");
+        if (!header) return;
+        var ticking = false;
+        function update() {
+          if (window.scrollY > 8) header.classList.add("is-scrolled");
+          else header.classList.remove("is-scrolled");
+          ticking = false;
+        }
+        window.addEventListener("scroll", function () {
+          if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+        }, { passive: true });
+        update();
+      }
+
+      function animateCount(el, target) {
+        var duration = 1600;
+        var start = performance.now();
+        function tick(now) {
+          var elapsed = now - start;
+          var p = Math.min(elapsed / duration, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased).toLocaleString();
+          if (p < 1) requestAnimationFrame(tick);
+          else el.textContent = target.toLocaleString();
+        }
+        requestAnimationFrame(tick);
+      }
+
+      function initIndustries() {
+        var hexes = document.querySelectorAll(".industry-hex");
+        if (!hexes.length) return;
+        var prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (prefersReduced || !("IntersectionObserver" in window)) {
+          hexes.forEach(function (h) { h.classList.add("is-visible"); });
+          return;
+        }
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            // Stagger reveal by hex order in the SVG
+            var idx = Array.prototype.indexOf.call(hexes, entry.target);
+            setTimeout(function () { entry.target.classList.add("is-visible"); }, idx * 70);
+            obs.unobserve(entry.target);
+          });
+        }, { threshold: 0.25 });
+        hexes.forEach(function (h) { obs.observe(h); });
+      }
+
+      function initStats() {
+        var stats = document.querySelectorAll(".stat");
+        if (!stats.length) return;
+        var prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (prefersReduced || !("IntersectionObserver" in window)) {
+          stats.forEach(function (stat) {
+            stat.classList.add("is-visible");
+            var num = stat.querySelector("[data-stat-num]");
+            if (num) num.textContent = (num.getAttribute("data-stat-value") || "0");
+          });
+          return;
+        }
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var stat = entry.target;
+            stat.classList.add("is-visible");
+            var num = stat.querySelector("[data-stat-num]");
+            if (num) {
+              var target = parseInt(num.getAttribute("data-stat-value"), 10);
+              if (!isNaN(target)) animateCount(num, target);
+            }
+            observer.unobserve(stat);
+          });
+        }, { threshold: 0.35 });
+        stats.forEach(function (stat) { observer.observe(stat); });
+      }
+
+      /* ---------- Leaflet map ---------- */
+      function escHtml(s) {
+        return String(s == null ? "" : s)
+          .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+      }
+      function popupHtml(b) {
+        var phoneRow = b.phone
+          ? '<a class="fc-popup__phone" href="tel:' + escHtml(b.phone.replace(/[^0-9+]/g, "")) + '">' + escHtml(b.phone) + '</a>'
+          : '';
+        var ctaRow = b.url
+          ? '<a class="fc-popup__cta" href="' + escHtml(b.url) + '" rel="noopener" target="_blank">Visit website</a>'
+          : '';
+        return (
+          '<div class="fc-popup__location">' + escHtml(b.city + ', ' + b.state) + '</div>' +
+          '<div class="fc-popup__brand">' + escHtml(b.brand) + '</div>' +
+          '<div class="fc-popup__addr">' + escHtml(b.addr) + '</div>' +
+          phoneRow + ctaRow
+        );
+      }
+      function initMap() {
+        if (typeof L === "undefined") return;
+        var el = document.getElementById("fc-map");
+        var dataEl = document.getElementById("fc-map-data");
+        if (!el || !dataEl) return;
+        var branches;
+        try { branches = JSON.parse(dataEl.textContent || "[]"); }
+        catch (e) { console.error("fc-map-data parse failed", e); return; }
+        if (!branches.length) return;
+        var US_BOUNDS = L.latLngBounds([[27, -100], [44, -68]]);
+        var map = L.map(el, {
+          zoomControl: true,
+          scrollWheelZoom: false,
+          attributionControl: true,
+          maxBounds: L.latLngBounds([[15, -140], [55, -55]]),
+          maxBoundsViscosity: 1.0,
+          minZoom: 3,
+        });
+        map.attributionControl.setPrefix('<a href="https://leafletjs.com" rel="noopener">Leaflet</a>');
+        L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+          subdomains: "abcd",
+          maxZoom: 19,
+          tileSize: 512,
+          zoomOffset: -1,
+          detectRetina: true,
+          noWrap: true,
+          bounds: [[-85, -180], [85, 180]],
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions" rel="noopener">CARTO</a>',
+        }).addTo(map);
+
+        // Continental US sanity bounds — skip any branch whose coords fall
+        // outside this box (catches mis-geocoded data before it renders into
+        // the ocean / Mexico / Caribbean).
+        var US_LAT_MIN = 24, US_LAT_MAX = 50;
+        var US_LNG_MIN = -125, US_LNG_MAX = -66;
+
+        var rendered = 0, skipped = 0;
+        branches.forEach(function (b) {
+          if (typeof b.lat !== "number" || typeof b.lng !== "number") {
+            console.warn("[fc-map] missing coords:", b.brand, b.city);
+            skipped++;
+            return;
+          }
+          if (b.lat < US_LAT_MIN || b.lat > US_LAT_MAX ||
+              b.lng < US_LNG_MIN || b.lng > US_LNG_MAX) {
+            console.warn("[fc-map] coords out of US bounds, skipping:",
+              b.brand, b.city, b.state, "@", b.lat + "," + b.lng);
+            skipped++;
+            return;
+          }
+          var marker = L.circleMarker([b.lat, b.lng], {
+            radius: 8,
+            fillColor: "#00558C",
+            fillOpacity: 1,
+            color: "#ffffff",
+            weight: 2,
+            opacity: 1,
+            interactive: true,
+          }).addTo(map);
+          marker.bindPopup(popupHtml(b), { className: "fc-popup", maxWidth: 280, offset: [0, -8] });
+          marker.on("mouseover", function () { this.openPopup(); });
+          rendered++;
+        });
+        console.log("[fc-map] rendered " + rendered + " branches, skipped " + skipped);
+        map.once("click", function () { map.scrollWheelZoom.enable(); });
+        map.fitBounds(US_BOUNDS, { padding: [10, 10] });
+        setTimeout(function () { map.invalidateSize(); map.fitBounds(US_BOUNDS, { padding: [10, 10] }); }, 100);
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", function () {
+          initMobileNav();
+          initHeaderScroll();
+          initStats();
+          initIndustries();
+          initMap();
+        });
+      } else {
+        initMobileNav();
+        initHeaderScroll();
+        initStats();
+        initIndustries();
+        initMap();
+      }
+    })();
+  </script>
+</body>
+</html>

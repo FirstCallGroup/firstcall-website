@@ -1,0 +1,165 @@
+/* ============================================================
+   FirstCall Design Tokens — single source of truth
+   Edit any value here and the entire network of sites updates.
+   ============================================================ */
+
+:root {
+  /* --------------------------------------------------------
+     COLOR — Brand
+     Forest green dominates (page bg, sections, header, footer).
+     Blue is the highlight (CTAs, eyebrows, map pins).
+     Greens derived from the FirstCall Group logo's #1A4120.
+     -------------------------------------------------------- */
+  --color-primary:        #1A4120;  /* Forest green — primary surface */
+  --color-primary-dark:   #0F2814;  /* Deepest — footer, deepest CTAs */
+  --color-primary-mid:    #2D5F36;  /* Lifted green — cards, hover */
+  --color-primary-soft:   #4A7D52;  /* Pale green — borders, badge fills */
+
+  /* Accent — bright blue. Pops against dark green bg.
+     Used for CTAs, eyebrows, links, map pins, hex highlights. */
+  --color-accent:         #5BA3D6;
+  --color-accent-dark:    #00558C;  /* brand primary blue — hover state */
+  --color-accent-light:   #88B8D6;  /* light blue — soft on dark surfaces */
+
+  /* --------------------------------------------------------
+     COLOR — Backgrounds (all greens)
+     -------------------------------------------------------- */
+  --color-bg:             #1A4120;  /* page background — the dominant forest green */
+  --color-bg-soft:        #214D2A;  /* slight lift — alt section bands */
+  --color-bg-section:     #143619;  /* slight darken — tinted bands */
+  --color-bg-dark:        #0F2814;  /* deepest — footer, deep CTAs */
+  --color-bg-card:        #2D5F36;  /* lifted surface — cards on green bg */
+
+  --color-text:           #F2EFE3;  /* warm cream — primary body text */
+  --color-text-muted:     #C9C7B7;  /* secondary copy, captions */
+  --color-text-light:     #8E8C7E;  /* tertiary, meta */
+  --color-text-on-dark:   #F2EFE3;  /* body on dark surfaces */
+  --color-text-on-primary:#FFFFFF;
+
+  --color-border:         #2D5F36;
+  --color-border-strong:  #4A7D52;
+  --color-border-dark:    #0F2814;
+
+  /* --------------------------------------------------------
+     COLOR — Semantic
+     -------------------------------------------------------- */
+  --color-success:        #5BA3D6;
+  --color-warning:        #B8861A;
+  --color-danger:         #C0392B;
+  --color-info:           #5BA3D6;
+
+  /* --------------------------------------------------------
+     TYPOGRAPHY
+     Manrope (display/headings) + IBM Plex Sans (body)
+     Loaded from Google Fonts in each HTML <head>
+     -------------------------------------------------------- */
+  --font-display: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body:    "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Type scale — minor third (1.2) on a 16px base */
+  --text-xs:    0.75rem;   /* 12 */
+  --text-sm:    0.875rem;  /* 14 */
+  --text-base:  1rem;      /* 16 */
+  --text-lg:    1.125rem;  /* 18 */
+  --text-xl:    1.25rem;   /* 20 */
+  --text-2xl:   1.5rem;    /* 24 */
+  --text-3xl:   1.875rem;  /* 30 */
+  --text-4xl:   2.25rem;   /* 36 */
+  --text-5xl:   3rem;      /* 48 */
+  --text-6xl:   3.75rem;   /* 60 */
+  --text-7xl:   4.5rem;    /* 72 */
+
+  /* Weights — Manrope ships 200-800, Plex 300-700 */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-extrabold:800;
+
+  /* Line heights */
+  --leading-tight:   1.15;
+  --leading-snug:    1.3;
+  --leading-normal:  1.55;
+  --leading-relaxed: 1.7;
+
+  /* Letter spacing */
+  --tracking-tight:  -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.02em;
+  --tracking-caps:   0.08em;
+
+  /* --------------------------------------------------------
+     SPACING — 4px base, doubling at the high end
+     -------------------------------------------------------- */
+  --space-1:   0.25rem;  /* 4  */
+  --space-2:   0.5rem;   /* 8  */
+  --space-3:   0.75rem;  /* 12 */
+  --space-4:   1rem;     /* 16 */
+  --space-5:   1.5rem;   /* 24 */
+  --space-6:   2rem;     /* 32 */
+  --space-7:   3rem;     /* 48 */
+  --space-8:   4rem;     /* 64 */
+  --space-9:   6rem;     /* 96 */
+  --space-10:  8rem;     /* 128 */
+  --space-11: 10rem;     /* 160 */
+
+  /* --------------------------------------------------------
+     LAYOUT
+     -------------------------------------------------------- */
+  --container-sm:  640px;
+  --container-md:  768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl:1440px;
+  --container-content: 1200px; /* default content width */
+
+  --header-height: 80px;
+  --header-height-mobile: 64px;
+
+  /* --------------------------------------------------------
+     RADII
+     -------------------------------------------------------- */
+  --radius-none: 0;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-2xl:  24px;
+  --radius-pill: 999px;
+
+  /* --------------------------------------------------------
+     SHADOWS
+     -------------------------------------------------------- */
+  --shadow-xs: 0 1px 2px rgba(15, 42, 31, 0.04);
+  --shadow-sm: 0 1px 3px rgba(15, 42, 31, 0.06), 0 1px 2px rgba(15, 42, 31, 0.04);
+  --shadow-md: 0 4px 12px rgba(15, 42, 31, 0.08), 0 2px 4px rgba(15, 42, 31, 0.04);
+  --shadow-lg: 0 12px 32px rgba(15, 42, 31, 0.10), 0 4px 8px rgba(15, 42, 31, 0.04);
+  --shadow-xl: 0 24px 48px rgba(15, 42, 31, 0.14), 0 8px 16px rgba(15, 42, 31, 0.06);
+
+  /* --------------------------------------------------------
+     MOTION
+     -------------------------------------------------------- */
+  --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:  cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast:   150ms;
+  --duration-base:   200ms;
+  --duration-slow:   320ms;
+
+  /* --------------------------------------------------------
+     Z-INDEX
+     -------------------------------------------------------- */
+  --z-base:     1;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-header:   300;
+  --z-overlay:  400;
+  --z-modal:    500;
+  --z-toast:    600;
+}
+
+/* Focus ring — applied via :focus-visible across the system.
+   Uses primary blue at 35% alpha for visibility on any surface. */
+:root {
+  --focus-ring: 0 0 0 3px rgba(0, 85, 140, 0.35);
+}

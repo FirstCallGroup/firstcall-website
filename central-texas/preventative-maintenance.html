@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preventative Maintenance — FirstCall Mechanical Central Texas</title>
+  <meta name="description" content="Programmatic preventive maintenance for commercial HVAC and building controls — predictable scheduling, transparent reporting, asset-level tracking. Central Ohio." />
+  <link rel="canonical" href="https://firstcallmechanical.com/central-texas/preventative-maintenance" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --color-primary: #1A4120; --color-primary-dark: #0F2814; --color-primary-mid: #2D5F36; --color-primary-soft: #4A7D52;
+      --color-accent: #00558C; --color-accent-dark: #003D66; --color-accent-light: #5BA3D6;
+      --color-bg: #FCFBF7; --color-bg-soft: #F4F2EA; --color-bg-section: #EDE9DC; --color-bg-dark: #0F2814; --color-bg-card: #FFFFFF;
+      --color-text: #1A2331; --color-text-muted: #5A6371; --color-text-on-dark: #F2EFE3;
+      --color-border: #E5E1D2;
+      --font-display: "Manrope", system-ui, sans-serif;
+      --font-body: "IBM Plex Sans", system-ui, sans-serif;
+      --text-sm: 0.875rem; --text-base: 1rem; --text-lg: 1.125rem; --text-xl: 1.25rem; --text-2xl: 1.5rem; --text-3xl: 1.875rem; --text-4xl: 2.25rem; --text-5xl: 3rem; --text-6xl: 3.75rem;
+      --weight-medium: 500; --weight-semibold: 600; --weight-bold: 700;
+      --leading-tight: 1.15; --leading-normal: 1.55; --leading-relaxed: 1.7;
+      --tracking-tight: -0.02em; --tracking-caps: 0.08em;
+      --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-5: 1.5rem; --space-6: 2rem; --space-7: 3rem; --space-8: 4rem; --space-9: 6rem;
+      --container-content: 1440px; --container-2xl: 1600px; --header-height: 80px; --pad-x: clamp(1.25rem, 4vw, 3rem);
+      --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px; --radius-xl: 16px;
+      --shadow-sm: 0 1px 3px rgba(15,42,31,.06), 0 1px 2px rgba(15,42,31,.04);
+      --shadow-md: 0 4px 12px rgba(15,42,31,.08), 0 2px 4px rgba(15,42,31,.04);
+      --shadow-lg: 0 12px 32px rgba(15,42,31,.10), 0 4px 8px rgba(15,42,31,.04);
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --duration-base: 200ms; --duration-slow: 320ms;
+      --z-header: 300;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    * { margin: 0; }
+    html { scroll-behavior: smooth; }
+    body { min-height: 100vh; font-family: var(--font-body); font-size: var(--text-base); line-height: var(--leading-normal); color: var(--color-text); background: var(--color-bg); -webkit-font-smoothing: antialiased; }
+    img, svg { display: block; max-width: 100%; height: auto; }
+    button { background: none; border: none; cursor: pointer; font: inherit; color: inherit; }
+    a { color: var(--color-accent); text-decoration: none; transition: color var(--duration-base) var(--ease-out); }
+    a:hover { color: var(--color-accent-dark); }
+    h1, h2, h3, h4 { font-family: var(--font-display); font-weight: var(--weight-bold); line-height: var(--leading-tight); letter-spacing: var(--tracking-tight); color: var(--color-text); }
+    h1 { font-size: clamp(2.25rem, 4.5vw, var(--text-6xl)); }
+    h2 { font-size: clamp(1.875rem, 3.5vw, var(--text-5xl)); }
+    h3 { font-size: var(--text-2xl); }
+    .lead { font-size: var(--text-lg); line-height: var(--leading-relaxed); color: var(--color-text-muted); max-width: 60ch; }
+    .eyebrow { display: inline-block; font-family: var(--font-body); font-size: var(--text-sm); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--color-accent); margin-bottom: var(--space-3); }
+    .container { width: 100%; max-width: var(--container-content); margin-inline: auto; padding-inline: var(--pad-x); }
+    .section { padding-block: var(--space-9); }
+    @media (max-width: 767px) { .section { padding-block: var(--space-7); } }
+    .section--soft { background: var(--color-bg-soft); }
+    .skip-link { position: absolute; top: -100px; left: var(--space-4); padding: var(--space-3) var(--space-5); background: var(--color-primary); color: #fff; border-radius: var(--radius-md); font-weight: var(--weight-semibold); z-index: 600; }
+    .skip-link:focus { top: var(--space-4); }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-3) var(--space-6); font-family: var(--font-body); font-size: var(--text-base); font-weight: var(--weight-semibold); line-height: 1; border: 2px solid transparent; border-radius: var(--radius-md); cursor: pointer; text-decoration: none; transition: background var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out); white-space: nowrap; }
+    .btn--primary { background: var(--color-accent); color: #fff; border-color: var(--color-accent); box-shadow: var(--shadow-sm); }
+    .btn--primary:hover { background: var(--color-accent-dark); border-color: var(--color-accent-dark); color: #fff; }
+    .btn--outline { background: transparent; color: var(--color-primary); border-color: var(--color-primary); }
+    .btn--outline:hover { background: var(--color-primary); color: #fff; }
+    .btn--sm { padding: var(--space-2) var(--space-4); font-size: var(--text-sm); }
+    .btn--lg { padding: var(--space-4) var(--space-7); font-size: var(--text-lg); }
+
+    /* Header */
+    .site-header { position: sticky; top: 0; z-index: var(--z-header); background: rgba(15,40,20,.92); backdrop-filter: saturate(180%) blur(10px); -webkit-backdrop-filter: saturate(180%) blur(10px); border-bottom: 1px solid rgba(74,125,82,.35); height: var(--header-height); display: flex; align-items: center; transition: background var(--duration-base) var(--ease-out); }
+    .site-header.is-scrolled { background: rgba(15,40,20,.97); box-shadow: 0 1px 0 rgba(0,0,0,.4), var(--shadow-sm); }
+    .site-header__inner { width: 100%; max-width: var(--container-2xl); margin-inline: auto; padding-inline: var(--pad-x); display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); }
+    .site-header__logo { display: inline-flex; align-items: center; text-decoration: none; }
+    .site-header__logo svg { height: 36px; width: auto; display: block; }
+
+    .site-nav { display: flex; align-items: center; gap: var(--space-6); }
+    .site-nav__link { font-family: var(--font-body); font-size: var(--text-base); font-weight: var(--weight-medium); color: var(--color-text-on-dark); text-decoration: none; padding: var(--space-2) 0; position: relative; transition: color var(--duration-base) var(--ease-out); }
+    .site-nav__link::after { content: ""; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: var(--color-accent-light); transition: width var(--duration-base) var(--ease-out); }
+    .site-nav__link[aria-current="page"] { color: var(--color-accent-light); }
+    .site-nav__link[aria-current="page"]::after, .site-nav__link:hover::after { width: 100%; }
+    .site-nav__link:hover { color: var(--color-accent-light); }
+
+    .site-nav__dropdown-wrap { position: relative; }
+    .site-nav__dropdown-toggle { display: inline-flex; align-items: center; gap: 6px; }
+    .site-nav__caret { width: 12px; height: 12px; transition: transform var(--duration-base) var(--ease-out); }
+    .site-nav__dropdown-toggle[aria-expanded="true"] .site-nav__caret { transform: rotate(180deg); }
+    .site-nav__dropdown { position: absolute; top: calc(100% + 6px); left: -8px; min-width: 280px; background: rgba(15,40,20,.97); backdrop-filter: saturate(180%) blur(10px); -webkit-backdrop-filter: saturate(180%) blur(10px); border: 1px solid rgba(74,125,82,.35); border-radius: var(--radius-md); padding: var(--space-2); box-shadow: var(--shadow-lg); opacity: 0; pointer-events: none; transform: translateY(-4px); transition: opacity var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out); z-index: 1; }
+    .site-nav__dropdown.is-open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .site-nav__dropdown-link { display: block; padding: var(--space-3); color: var(--color-text-on-dark); border-radius: var(--radius-sm); font-size: var(--text-base); font-weight: var(--weight-medium); text-decoration: none; transition: background var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out); }
+    .site-nav__dropdown-link:hover, .site-nav__dropdown-link:focus-visible { background: rgba(91,163,214,.15); color: var(--color-accent-light); }
+    .site-nav__dropdown-link[aria-current="page"] { background: rgba(91,163,214,.15); color: var(--color-accent-light); }
+
+    .site-header__cta { display: flex; align-items: center; gap: var(--space-3); }
+    .menu-toggle { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border-radius: var(--radius-md); }
+    .menu-toggle:hover { background: rgba(242,239,227,.1); }
+    .menu-toggle__bars, .menu-toggle__bars::before, .menu-toggle__bars::after { display: block; width: 22px; height: 2px; background: var(--color-text-on-dark); position: relative; transition: transform var(--duration-base) var(--ease-out); }
+    .menu-toggle__bars::before, .menu-toggle__bars::after { content: ""; position: absolute; left: 0; }
+    .menu-toggle__bars::before { top: -7px; }
+    .menu-toggle__bars::after { top: 7px; }
+
+    @media (max-width: 1023px) {
+      .menu-toggle { display: inline-flex; }
+      .site-nav { position: fixed; top: var(--header-height); left: 0; right: 0; background: var(--color-primary-dark); flex-direction: column; align-items: stretch; padding: var(--space-5); box-shadow: var(--shadow-lg); transform: translateY(-120%); transition: transform var(--duration-slow) var(--ease-out); gap: 0; }
+      .site-nav.is-open { transform: translateY(0); }
+      .site-nav__link { padding-block: var(--space-4); border-bottom: 1px solid rgba(74,125,82,.4); font-size: var(--text-lg); }
+      .site-nav__link::after { display: none; }
+      .site-header__cta .btn { display: none; }
+      .hide-mobile { display: none !important; }
+      .site-nav__dropdown-wrap { width: 100%; }
+      .site-nav__dropdown-toggle { width: 100%; justify-content: space-between; padding-block: var(--space-4); border-bottom: 1px solid rgba(74,125,82,.4); font-size: var(--text-lg); }
+      .site-nav__dropdown { position: static; opacity: 1; pointer-events: auto; transform: none; background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; border: none; border-radius: 0; box-shadow: none; padding: 0; min-width: 0; max-height: 0; overflow: hidden; transition: max-height var(--duration-slow) var(--ease-out); }
+      .site-nav__dropdown.is-open { max-height: 400px; }
+      .site-nav__dropdown-link { padding-block: var(--space-3); padding-left: var(--space-5); border-bottom: 1px solid rgba(74,125,82,.25); }
+    }
+
+    /* Page hero */
+    .page-hero { position: relative; padding-bottom: var(--space-9); padding-top: calc(var(--header-height) + var(--space-9)); margin-top: calc(var(--header-height) * -1); background: var(--color-primary-dark); color: #fff; text-align: center; }
+    @media (max-width: 767px) { .page-hero { padding-bottom: var(--space-7); padding-top: calc(var(--header-height) + var(--space-6)); } }
+    .page-hero__inner { max-width: 760px; margin-inline: auto; }
+    .page-hero__eyebrow { display: inline-block; font-size: var(--text-sm); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--color-accent-light); margin-bottom: var(--space-4); }
+    .page-hero__title { font-size: clamp(2.25rem, 5vw, 4rem); color: #fff; margin-bottom: var(--space-5); }
+    .page-hero__lede { font-size: var(--text-xl); line-height: var(--leading-relaxed); color: rgba(255,255,255,.92); max-width: 56ch; margin-inline: auto; }
+
+    /* Feature cards */
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+    @media (max-width: 1023px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 639px) { .feature-grid { grid-template-columns: 1fr; } }
+    .feature { background: var(--color-bg-card); padding: var(--space-6); border-radius: var(--radius-lg); border: 1px solid var(--color-border); box-shadow: var(--shadow-sm); transition: transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out); }
+    .feature:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .feature__icon { width: 44px; height: 44px; border-radius: var(--radius-md); background: rgba(0,85,140,.12); color: var(--color-accent); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4); }
+    .feature__icon svg { width: 22px; height: 22px; }
+    .feature h3 { font-size: var(--text-xl); margin-bottom: var(--space-2); }
+    .feature p { color: var(--color-text-muted); line-height: var(--leading-relaxed); font-size: var(--text-sm); }
+
+    /* Two-column info block */
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: center; }
+    @media (max-width: 1023px) { .info-grid { grid-template-columns: 1fr; gap: var(--space-6); } }
+    .info-grid h2 { margin-bottom: var(--space-4); max-width: 18ch; }
+    .info-grid p { color: var(--color-text-muted); margin-bottom: var(--space-4); max-width: 56ch; }
+    .info-grid ul { list-style: none; padding: 0; }
+    .info-grid li { padding-left: var(--space-5); position: relative; margin-bottom: var(--space-3); color: var(--color-text); }
+    .info-grid li::before { content: ""; position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-accent); }
+
+    /* CTA band */
+    .cta-band { background: var(--color-bg-dark); color: var(--color-text-on-dark); padding-block: var(--space-9); text-align: center; }
+    .cta-band__inner { max-width: 700px; margin-inline: auto; }
+    .cta-band h2 { color: #fff; margin-bottom: var(--space-4); }
+    .cta-band p { color: rgba(255,255,255,.85); margin-bottom: var(--space-6); }
+    .cta-band__row { display: flex; justify-content: center; gap: var(--space-3); flex-wrap: wrap; }
+
+    /* Footer */
+    .site-footer { background: var(--color-bg-dark); color: var(--color-text-on-dark); padding-block: var(--space-9) var(--space-6); border-top: 1px solid rgba(74,125,82,.25); }
+    .site-footer a { color: var(--color-text-on-dark); }
+    .site-footer a:hover { color: var(--color-accent-light); }
+    .site-footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--space-7); margin-bottom: var(--space-8); }
+    @media (max-width: 1023px) { .site-footer__grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 639px) { .site-footer__grid { grid-template-columns: 1fr; } }
+    .site-footer__brand svg { height: 44px; width: auto; margin-bottom: var(--space-3); }
+    .site-footer__brand p { color: rgba(241,244,241,.7); max-width: 36ch; margin-top: var(--space-3); }
+    .site-footer__heading { font-size: var(--text-sm); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--color-accent-light); margin-bottom: var(--space-4); }
+    .site-footer__list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+    .site-footer__list a, .site-footer__list span { font-size: var(--text-base); color: rgba(241,244,241,.85); }
+    .site-footer__bottom { padding-top: var(--space-5); border-top: 1px solid rgba(255,255,255,.1); display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--space-4); font-size: var(--text-sm); color: rgba(241,244,241,.6); }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="../central-texas.html" aria-label="FirstCall Mechanical — Central Texas, home">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1502.68 337.31" aria-hidden="true"><g fill="#fff"><path d="M367.89,132.98c-4.99-2.89-10.93-5.51-17.99-5.51-27.68,0-73.04,42.48-147.1,137.74-32.5,39.69-58.88,60.09-79.34,70.94h167.65l97.04-168.07-20.26-35.09Z"/><path d="M182.96,249.38c55.28-71.12,93.34-111.73,123.33-131.62,15.83-10.49,30.07-15.59,43.53-15.59.1,0,.19.01.29.01l-12.19-21.11-.16-.1c-5.4-3.33-12-6.74-20.05-6.74-27.68,0-73.04,42.48-147.09,137.74-44.35,54.17-77.32,72.41-99.39,79.47l17.82,30.87c18.08-4.24,48.41-17.34,93.92-72.92Z"/><path d="M140.04,158.32c-44.58,54.45-77.65,72.6-99.73,79.58l17.82,30.86c18.22-4.57,48.19-18.33,92.64-72.62,55.28-71.12,93.34-111.74,123.33-131.62,15.83-10.49,30.07-15.59,43.52-15.59.59,0,1.18.05,1.78.07l-12.67-21.94c-5.31-3.25-11.77-6.47-19.6-6.47-27.68,0-73.04,42.48-147.1,137.74Z"/><path d="M120.2,142.49C175.48,71.37,213.53,30.75,243.53,10.87c7.14-4.73,13.94-8.31,20.5-10.87H97.04L0,168.07l27.2,47.12c18.19-4.48,48.26-18.07,92.99-72.7Z"/><path d="M496.7,69.75v31.5h70.2v36h-70.2v54.23h-46.8V33.74h122.41v36h-75.6Z"/><path d="M586.62,191.48v-127.26h37.76v127.26h-37.76Z"/><path d="M699.89,157.17h-19.97v34.31h-37.76v-127.26h59.36c34.13,0,53.73,16.34,53.73,45.2,0,18.88-7.62,32.68-21.42,40.48l25.78,41.57h-42.84l-16.88-34.31ZM701.52,128.12c11.26,0,17.79-6.17,17.79-17.61s-6.53-17.25-17.79-17.25h-21.6v34.85h21.6Z"/><path d="M879.24,77.29l-13.98,29.05c-13.07-7.44-31.59-14.16-42.3-14.16-6.35,0-10.53,2.18-10.53,6.9,0,18.7,66.44,7.62,66.44,53.55,0,27.05-23.96,39.94-52.46,39.94-21.6,0-45.2-7.62-61.18-20.15l14.16-28.68c13.07,11.07,34.31,19.42,47.38,19.42,7.99,0,13.07-2.72,13.07-8.53,0-19.24-66.44-7.08-66.44-51.92,0-24.51,20.88-40.12,52.65-40.12,19.42,0,39.39,5.81,53.19,14.7Z"/><path d="M961.46,94.36v97.12h-37.94v-97.12h-36.85v-30.14h111.83v30.14h-37.03Z"/><path d="M1157.57,60.3l-27,31.95c-9.9-12.6-24.53-20.93-37.58-20.93-21.38,0-37.58,17.33-37.58,40.5s16.2,40.73,37.58,40.73c12.15,0,26.78-7.2,37.58-18.23l27,28.8c-17.1,18.45-42.98,30.38-66.83,30.38-47.93,0-83.26-34.65-83.26-81.23s36-79.88,84.83-79.88c23.85,0,49.28,10.8,65.25,27.9Z"/><path d="M1198.98,171.15l-7.62,20.33h-38.85l54.28-127.26h38.85l52.46,127.26h-40.3l-7.44-20.33h-51.38ZM1225.13,101.98l-15.61,41.57h30.86l-15.25-41.57Z"/><path d="M1398.48,159.89v31.59h-91.13v-127.26h37.76v95.67h53.37Z"/><path d="M1502.68,159.89v31.59h-91.13v-127.26h37.76v95.67h53.37Z"/><path d="M542.82,335.83l-.14-68.51-32.7,56.7h-8.24l-32.7-55.82v67.63h-17.63v-103.36h15.21l39.52,68.51,38.81-68.51h15.21l.14,103.36h-17.48Z"/><path d="M661.8,319.74v16.09h-74.63v-103.36h72.64v16.09h-54.16v26.87h48.05v15.8h-48.05v28.5h56.15Z"/><path d="M674.87,284.15c0-30.86,22.74-53.16,53.31-53.16,16.21,0,30.14,6.05,39.38,17.28l-11.94,11.67c-7.25-8.12-16.21-12.11-26.58-12.11-20.61,0-35.54,15.06-35.54,36.32s14.93,36.32,35.54,36.32c10.38,0,19.33-3.99,26.58-12.26l11.94,11.81c-9.24,11.22-23.17,17.28-39.52,17.28-30.42,0-53.16-22.3-53.16-53.16Z"/><path d="M873.74,232.47v103.36h-18.48v-44.3h-51.46v44.3h-18.48v-103.36h18.48v42.67h51.46v-42.67h18.48Z"/><path d="M965,311.91h-49.75l-9.81,23.92h-19.05l44.78-103.36h18.2l44.92,103.36h-19.33l-9.95-23.92ZM958.89,296.85l-18.76-45.18-18.62,45.18h37.39Z"/><path d="M1095.35,232.47v103.36h-15.21l-54.87-69.99v69.99h-18.34v-103.36h15.21l54.87,69.99v-69.99h18.34Z"/><path d="M1122.08,232.47h18.48v103.36h-18.48v-103.36Z"/><path d="M1160.31,284.15c0-30.86,22.74-53.16,53.31-53.16,16.21,0,30.14,6.05,39.38,17.28l-11.94,11.67c-7.25-8.12-16.21-12.11-26.58-12.11-20.61,0-35.54,15.06-35.54,36.32s14.93,36.32,35.54,36.32c10.38,0,19.33-3.99,26.58-12.26l11.94,11.81c-9.24,11.22-23.17,17.28-39.52,17.28-30.42,0-53.16-22.3-53.16-53.16Z"/><path d="M1333.17,311.91h-49.75l-9.81,23.92h-19.05l44.78-103.36h18.2l44.92,103.36h-19.33l-9.95-23.92ZM1327.06,296.85l-18.76-45.18-18.62,45.18h37.39Z"/><path d="M1375.1,232.47h18.48v87.12h52.03v16.24h-70.51v-103.36Z"/></g></svg>
+      </a>
+      <nav class="site-nav" data-site-nav aria-label="Primary">
+        <div class="site-nav__dropdown-wrap" data-dropdown>
+          <button type="button" class="site-nav__link site-nav__dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-dropdown-toggle>
+            Services
+            <svg class="site-nav__caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="site-nav__dropdown" data-dropdown-menu>
+            <a class="site-nav__dropdown-link" href="preventative-maintenance.html" aria-current="page">Preventative Maintenance</a>
+            <a class="site-nav__dropdown-link" href="hvac-modernization.html">HVAC Change Outs &amp; Modernization</a>
+            <a class="site-nav__dropdown-link" href="project-work.html">Project Work</a>
+          </div>
+        </div>
+        <a class="site-nav__link" href="contact.html">Contact</a>
+        <a class="site-nav__link" href="careers.html">Careers</a>
+        <a class="site-nav__link" href="https://firstcallgroup.com/" rel="noopener">FirstCall Group</a>
+      </nav>
+      <div class="site-header__cta">
+        <a class="btn btn--primary btn--sm hide-mobile" href="tel:+18447130220">Call (844) 713-0220</a>
+        <button class="menu-toggle" data-menu-toggle aria-label="Open menu" aria-expanded="false"><span class="menu-toggle__bars" aria-hidden="true"></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero__inner">
+          <span class="page-hero__eyebrow">Service</span>
+          <h1 class="page-hero__title">Preventative Maintenance</h1>
+          <p class="page-hero__lede">Programmatic preventive maintenance keeps your buildings running. Predictable scheduling, transparent reporting, asset-level tracking — designed to extend equipment life and prevent emergency calls before they happen.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="max-width: 720px; margin-inline: auto; text-align: center; margin-bottom: var(--space-7);">
+          <span class="eyebrow">What's included</span>
+          <h2>A maintenance program built around your equipment.</h2>
+          <p class="lead" style="margin-inline: auto; margin-top: var(--space-3);">Every PM contract is tailored to your facility's equipment mix, operating hours, and risk tolerance.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v6h-6"/></svg></span>
+            <h3>Scheduled inspections</h3>
+            <p>Quarterly, semi-annual, or seasonal visits aligned to manufacturer recommendations and how hard your equipment actually runs.</p>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <h3>Filter &amp; belt changes</h3>
+            <p>Filters, belts, lubrication, coil cleaning, refrigerant checks, and combustion analysis — all tracked and reported per visit.</p>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg></span>
+            <h3>Asset-level reporting</h3>
+            <p>Every piece of equipment gets a record — what we found, what we fixed, what's coming due. Reporting you can take to your CFO.</p>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6"/><path d="M12 16v6"/><path d="M4.93 4.93l4.24 4.24"/><path d="M14.83 14.83l4.24 4.24"/><circle cx="12" cy="12" r="4"/></svg></span>
+            <h3>Combustion &amp; refrigerant analysis</h3>
+            <p>Burner tuning, refrigerant pressures, and superheat/subcool measurements taken and logged — early warning on performance drift.</p>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+            <h3>24/7 emergency response</h3>
+            <p>PM customers get priority dispatch with a guaranteed response window — your equipment doesn't fail on a schedule, neither do we.</p>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+            <h3>Capital planning</h3>
+            <p>Annual reviews of equipment condition with replacement recommendations and rough-order budget numbers for your planning cycle.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft">
+      <div class="container">
+        <div class="info-grid">
+          <div>
+            <span class="eyebrow">Why it matters</span>
+            <h2>Maintained equipment lasts longer, costs less, and breaks less.</h2>
+            <p>Reactive service is expensive. Emergency overtime, expedited parts, downtime in the building — every avoidable failure is a multiple of what a quarterly PM visit would have cost.</p>
+            <p>A well-run PM program extends equipment life 20–30%, cuts energy consumption, and turns unpredictable repair spend into a predictable line item.</p>
+          </div>
+          <div>
+            <ul>
+              <li>Fewer emergency callouts and after-hours surprises</li>
+              <li>Lower energy bills from properly tuned equipment</li>
+              <li>Longer equipment life — defer capital replacement</li>
+              <li>Warranty compliance with documented service records</li>
+              <li>Better indoor air quality and tenant comfort</li>
+              <li>Predictable annual maintenance budget</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container cta-band__inner">
+        <span class="eyebrow" style="color: var(--color-accent-light)">Ready to talk?</span>
+        <h2>Let's build a PM program for your facility.</h2>
+        <p>Tell us about your equipment and we'll put together a proposal — typically within a week.</p>
+        <div class="cta-band__row">
+          <a class="btn btn--primary btn--lg" href="contact.html">Request a Proposal</a>
+          <a class="btn btn--lg" href="tel:+18447130220" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.4)">Call (844) 713-0220</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1502.68 337.31" aria-label="FirstCall Mechanical"><g fill="#fff"><path d="M367.89,132.98c-4.99-2.89-10.93-5.51-17.99-5.51-27.68,0-73.04,42.48-147.1,137.74-32.5,39.69-58.88,60.09-79.34,70.94h167.65l97.04-168.07-20.26-35.09Z"/><path d="M182.96,249.38c55.28-71.12,93.34-111.73,123.33-131.62,15.83-10.49,30.07-15.59,43.53-15.59.1,0,.19.01.29.01l-12.19-21.11-.16-.1c-5.4-3.33-12-6.74-20.05-6.74-27.68,0-73.04,42.48-147.09,137.74-44.35,54.17-77.32,72.41-99.39,79.47l17.82,30.87c18.08-4.24,48.41-17.34,93.92-72.92Z"/><path d="M140.04,158.32c-44.58,54.45-77.65,72.6-99.73,79.58l17.82,30.86c18.22-4.57,48.19-18.33,92.64-72.62,55.28-71.12,93.34-111.74,123.33-131.62,15.83-10.49,30.07-15.59,43.52-15.59.59,0,1.18.05,1.78.07l-12.67-21.94c-5.31-3.25-11.77-6.47-19.6-6.47-27.68,0-73.04,42.48-147.1,137.74Z"/><path d="M120.2,142.49C175.48,71.37,213.53,30.75,243.53,10.87c7.14-4.73,13.94-8.31,20.5-10.87H97.04L0,168.07l27.2,47.12c18.19-4.48,48.26-18.07,92.99-72.7Z"/><path d="M496.7,69.75v31.5h70.2v36h-70.2v54.23h-46.8V33.74h122.41v36h-75.6Z"/><path d="M586.62,191.48v-127.26h37.76v127.26h-37.76Z"/><path d="M699.89,157.17h-19.97v34.31h-37.76v-127.26h59.36c34.13,0,53.73,16.34,53.73,45.2,0,18.88-7.62,32.68-21.42,40.48l25.78,41.57h-42.84l-16.88-34.31ZM701.52,128.12c11.26,0,17.79-6.17,17.79-17.61s-6.53-17.25-17.79-17.25h-21.6v34.85h21.6Z"/><path d="M879.24,77.29l-13.98,29.05c-13.07-7.44-31.59-14.16-42.3-14.16-6.35,0-10.53,2.18-10.53,6.9,0,18.7,66.44,7.62,66.44,53.55,0,27.05-23.96,39.94-52.46,39.94-21.6,0-45.2-7.62-61.18-20.15l14.16-28.68c13.07,11.07,34.31,19.42,47.38,19.42,7.99,0,13.07-2.72,13.07-8.53,0-19.24-66.44-7.08-66.44-51.92,0-24.51,20.88-40.12,52.65-40.12,19.42,0,39.39,5.81,53.19,14.7Z"/><path d="M961.46,94.36v97.12h-37.94v-97.12h-36.85v-30.14h111.83v30.14h-37.03Z"/><path d="M1157.57,60.3l-27,31.95c-9.9-12.6-24.53-20.93-37.58-20.93-21.38,0-37.58,17.33-37.58,40.5s16.2,40.73,37.58,40.73c12.15,0,26.78-7.2,37.58-18.23l27,28.8c-17.1,18.45-42.98,30.38-66.83,30.38-47.93,0-83.26-34.65-83.26-81.23s36-79.88,84.83-79.88c23.85,0,49.28,10.8,65.25,27.9Z"/><path d="M1198.98,171.15l-7.62,20.33h-38.85l54.28-127.26h38.85l52.46,127.26h-40.3l-7.44-20.33h-51.38ZM1225.13,101.98l-15.61,41.57h30.86l-15.25-41.57Z"/><path d="M1398.48,159.89v31.59h-91.13v-127.26h37.76v95.67h53.37Z"/><path d="M1502.68,159.89v31.59h-91.13v-127.26h37.76v95.67h53.37Z"/></g></svg>
+          <p>FirstCall Mechanical's Central Texas team — commercial HVAC, building controls, and project work, backed by a national platform.</p>
+        </div>
+        <div>
+          <div class="site-footer__heading">Services</div>
+          <ul class="site-footer__list">
+            <li><a href="preventative-maintenance.html">Preventative Maintenance</a></li>
+            <li><a href="hvac-modernization.html">HVAC Change Outs</a></li>
+            <li><a href="project-work.html">Project Work</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="site-footer__heading">Central Texas</div>
+          <ul class="site-footer__list">
+            <li><span>10421 Old Manchaca Rd, Ste 410</span></li>
+            <li><span>Austin, TX 78748</span></li>
+            <li><a href="tel:+18447130220">(844) 713-0220</a></li>
+            <li><a href="mailto:dispatch@firstcallmechanical.com">dispatch@firstcallmechanical.com</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="site-footer__heading">Connect</div>
+          <ul class="site-footer__list">
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="https://firstcallgroup.com/" rel="noopener">FirstCall Group</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <span>&copy; 2026 FirstCall Mechanical — Central Texas. All rights reserved.</span>
+        <span><a href="#">Privacy</a> &middot; <a href="#">Terms</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () { "use strict";
+      function initMobileNav() {
+        var toggle = document.querySelector("[data-menu-toggle]");
+        var nav = document.querySelector("[data-site-nav]");
+        if (!toggle || !nav) return;
+        toggle.addEventListener("click", function () {
+          var open = nav.classList.toggle("is-open");
+          toggle.setAttribute("aria-expanded", open ? "true" : "false");
+          document.body.style.overflow = open ? "hidden" : "";
+        });
+        nav.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            nav.classList.remove("is-open");
+            toggle.setAttribute("aria-expanded", "false");
+            document.body.style.overflow = "";
+          });
+        });
+      }
+      function initNavDropdown() {
+        var toggle = document.querySelector("[data-dropdown-toggle]");
+        var menu = document.querySelector("[data-dropdown-menu]");
+        if (!toggle || !menu) return;
+        function close() { menu.classList.remove("is-open"); toggle.setAttribute("aria-expanded", "false"); }
+        toggle.addEventListener("click", function (e) { e.preventDefault(); e.stopPropagation(); var open = menu.classList.toggle("is-open"); toggle.setAttribute("aria-expanded", open ? "true" : "false"); });
+        document.addEventListener("click", function (e) { if (!toggle.contains(e.target) && !menu.contains(e.target)) close(); });
+        document.addEventListener("keydown", function (e) { if (e.key === "Escape" && menu.classList.contains("is-open")) { close(); toggle.focus(); } });
+      }
+      function initHeaderScroll() {
+        var header = document.querySelector(".site-header"); if (!header) return; var ticking = false;
+        function update() { if (window.scrollY > 8) header.classList.add("is-scrolled"); else header.classList.remove("is-scrolled"); ticking = false; }
+        window.addEventListener("scroll", function () { if (!ticking) { window.requestAnimationFrame(update); ticking = true; } }, { passive: true });
+        update();
+      }
+      if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", function () { initMobileNav(); initNavDropdown(); initHeaderScroll(); }); }
+      else { initMobileNav(); initNavDropdown(); initHeaderScroll(); }
+    })();
+  </script>
+</body>
+</html>
