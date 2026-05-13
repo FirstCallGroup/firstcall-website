@@ -1,0 +1,11 @@
+# FirstCall — robots.txt
+# Default: allow all crawlers, point them at the sitemap.
+
+User-agent: *
+Allow: /
+
+# Block obvious admin / build artifacts (none currently, but future-proof)
+Disallow: /scripts/
+Disallow: /reference/
+
+Sitemap: https://firstcallgroup.com/sitemap.xml

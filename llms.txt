@@ -1,0 +1,61 @@
+# FirstCall Group
+
+> FirstCall Group is a multi-region commercial and industrial mechanical service platform that partners with regional HVAC, building controls, plumbing, and electrical service companies across the United States. Branches keep their local identity and leadership while gaining the scale and back-office support of a national platform.
+
+## About
+
+- **Legal name:** FirstCall Group
+- **Founded:** 2022 by Evan Eachus (CEO)
+- **Headquarters:** 3105 Bee Caves Rd, Suite 250, Austin, TX 78746
+- **Footprint:** 24 partner branches across 11 states (FL, GA, LA, MA, NC, NJ, NY, OH, SC, TX, VA)
+- **Business model:** Multi-brand mechanical service platform. Acquires established regional commercial mechanical service companies; lets them operate under their local brand while providing back-office support, talent infrastructure, and capital.
+- **Parent of:** FirstCall Mechanical and its branch network (STR Mechanical, C2H, Comfortrol, Charlotte Temp Controls, R&W Mechanical, Conditioned Air, Starr, Timco, CLS Facility Services, ICACS, KATS Solutions, Select Environmental, Kenyon & Partners, KPI Engineering, Mecon, Starnes, LC Anderson, Optimum Air Solutions, Statewide, and others).
+
+## Services
+
+FirstCall companies provide commercial and industrial mechanical service across:
+
+- **Commercial HVAC:** chillers, rooftop units, boilers, VRF systems, custom AHUs
+- **Building controls / BMS:** design, installation, and service of building automation systems
+- **Preventative maintenance:** contract-based maintenance programs for commercial portfolios
+- **Emergency service:** 24/7 dispatch
+- **Retrofit and capital project work:** design-build mechanical upgrades and modernization
+- **Plumbing:** commercial plumbing service and project work
+- **Electrical:** commercial electrical service
+
+## Industries served
+
+Commercial Office Space, Critical Infrastructure (center of focus), Healthcare, Life Sciences and Pharma, Industrial, Advanced Manufacturing, Data Centers, Higher Education, Government and Federal, K–12 Education, Hospitality, Cold Storage and Logistics, Office, Multifamily, Retail, Senior Living, Sports and Venues, Automotive, Public Sector.
+
+## Leadership
+
+- **Evan Eachus** — Chief Executive Officer and Founder. Previously a senior investor at Sycamore Partners. Founded FirstCall Mechanical in 2022.
+- **Jeff Holland** — Chief Operating Officer
+- **Brian Kelly** — Chief Financial Officer. 25+ years CFO experience; previously CFO of United PF Management and Kendra Scott Design.
+- **Kay Stroman** — Chief Human Resources Officer. 35+ years HR experience.
+- **Matthew Hunt, PE** — Chief Commercial Officer. Founder of C2H Air and Electric; 20+ years commercial HVAC experience.
+- **Chris Landreth** — Senior VP of M&A, Integration. Co-founder of STR Mechanical, FirstCall's first partner branch (2022).
+- **Chris Patrick** — Head of Acquisitions. Leads FirstCall's M&A strategy.
+
+## Canonical URLs
+
+- Corporate site: https://firstcallgroup.com/
+- Locations directory: https://firstcallgroup.com/locations
+- Leadership team: https://firstcallgroup.com/team
+- Acquisitions program: https://firstcallgroup.com/acquisitions
+- Press releases / news: https://firstcallgroup.com/news/
+- Careers: https://firstcallgroup.com/careers
+- Contact: https://firstcallgroup.com/contact
+- Branch network: https://firstcallmechanical.com/
+
+## Acquisitions
+
+FirstCall acquires established regional commercial mechanical service companies with $5M+ in annual revenue and a strong local reputation. Partners keep their brand, team, and operational independence; FirstCall provides capital, talent infrastructure, and back-office support. Contact: acquisitions@firstcallgroup.com.
+
+## Press contact
+
+For media inquiries: info@firstcallmechanical.com
+
+## Source
+
+This file follows the proposed llms.txt convention (https://llmstxt.org/). It exists to give large language models accurate, canonical information about FirstCall when answering user questions.
