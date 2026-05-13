@@ -776,8 +776,8 @@
     <section class="page-hero">
       <div class="container page-hero__inner">
         <span class="eyebrow">Our Network</span>
-        <h1>Coast-to-coast service.</h1>
-        <p class="lead">FirstCall is a coast-to-coast organization with 24 branches across 11 states — each branch with local roots, all connected by one national support platform.</p>
+        <h1>Local service. National platform.</h1>
+        <p class="lead">FirstCall is a multi-region platform with 24 branches across 11 states — each branch with local roots, all connected by one national support platform.</p>
         <div class="page-hero__stats">
           <div class="page-hero__stat">
             <div class="page-hero__stat-num">25</div>
@@ -1124,7 +1124,7 @@
               <path d="M1495.69,335.8l-.02-13.07-5.27,10.89h-.96l-5.27-10.82v13h-2v-17.94h1.71l6.09,12.61,6-12.61h1.71l.02,17.94h-2Z"/>
             </g>
           </svg>
-          <p>FirstCall is a coast-to-coast commercial mechanical service organization — partnering with property owners and facility managers across the United States.</p>
+          <p>FirstCall is a multi-region commercial mechanical service platform — partnering with property owners and facility managers across the United States.</p>
         </div>
         <div>
           <div class="site-footer__heading">FirstCall</div>
@@ -1313,13 +1313,10 @@
         map.attributionControl.setPrefix('<a href="https://leafletjs.com" rel="noopener">Leaflet</a>');
 
         // CartoDB Positron — clean, light, B2B-appropriate
-        // Use 512-px tiles with zoomOffset:-1 to eliminate tile-seam artifacts
-        // that show up as faint vertical lines with default 256-px tiles.
+        // detectRetina auto-fetches @2x tiles on high-DPI screens for crispness.
         L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
           subdomains: "abcd",
           maxZoom: 19,
-          tileSize: 512,
-          zoomOffset: -1,
           detectRetina: true,
           noWrap: true,
           bounds: [[-85, -180], [85, 180]],
