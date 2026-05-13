@@ -41,6 +41,17 @@
   --color-border-dark:    #0F2814;
 
   /* --------------------------------------------------------
+     INDUSTRIES-GRID TIER TOKENS
+     Used by the "Industries We Serve" hex grid + legend.
+     Mirrored in each production page's inline :root.
+     -------------------------------------------------------- */
+  --fc-tier-1:        #0B2E4F;   /* Specialty Focus — darkest navy */
+  --fc-tier-2:        #1E5A8A;   /* Deep Expertise — mid navy */
+  --fc-tier-3:        #A8C5DC;   /* Trusted Partner — light blue */
+  --fc-text-light:    #FFFFFF;
+  --fc-text-dark:     #0B2E4F;
+
+  /* --------------------------------------------------------
      COLOR — Semantic
      -------------------------------------------------------- */
   --color-success:        #5BA3D6;

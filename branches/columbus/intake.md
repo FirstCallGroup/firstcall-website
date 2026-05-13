@@ -153,7 +153,7 @@ None required for HVAC at the Ohio state level. Local municipal permits handled 
 TODO — Paycom link with the branch's client key
 
 **LinkedIn page URL**
-https://www.linkedin.com/company/first-call-mechanical/
+https://www.linkedin.com/company/firstcall-mechanical/
 
 ---
 

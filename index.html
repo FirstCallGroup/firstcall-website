@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FirstCall Group — Durable Partnerships</title>
   <link rel="canonical" href="https://firstcallgroup.com/" />
-  <meta name="description" content="FirstCall is a multi-region commercial mechanical service platform — HVAC, building controls, plumbing, and electrical — with 24 branches partnering with property owners and facility managers nationwide." />
+  <meta name="description" content="FirstCall is a multi-region commercial mechanical service platform — HVAC, building controls, plumbing, and electrical — partnering with property owners and facility managers across the United States." />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="FirstCall Group — Durable Partnerships" />
-  <meta property="og:description" content="A multi-region commercial mechanical service platform with 24 branches across the United States." />
+  <meta property="og:description" content="A multi-region commercial mechanical service platform with branches across the United States." />
   <meta property="og:url" content="https://firstcallgroup.com/" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -41,6 +41,13 @@
       --color-text-on-primary: #FFFFFF;
       --color-border: #E5E1D2;
       --color-border-strong: #C9C7B7;
+
+      /* Industries-grid tier tokens (Specialty / Deep Expertise / Trusted Partner + Anchor) */
+      --fc-tier-1:        #0B2E4F;
+      --fc-tier-2:        #1E5A8A;
+      --fc-tier-3:        #A8C5DC;
+      --fc-text-light:    #FFFFFF;
+      --fc-text-dark:     #0B2E4F;
 
       --font-display: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
       --font-body:    "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -658,17 +665,15 @@
     }
 
     /* ===== INDUSTRIES HONEYCOMB ===== */
-    .markets-honeycomb { max-width: 760px; margin-inline: auto; display: block; }
-    .hex-fill        { fill: #00558C; }
-    .hex-accent      { fill: #1A4120; }
-    .hex-soft        { fill: #D6E8F2; stroke: #00558C; stroke-width: 1.5; }
-    .hex-label       { fill: #fff; font-family: "Manrope", sans-serif; font-weight: 700; font-size: 13px; pointer-events: none; }
-    .hex-label-dark  { fill: #00558C; font-family: "Manrope", sans-serif; font-weight: 700; font-size: 13px; pointer-events: none; }
+    .industries-honeycomb { max-width: 760px; margin-inline: auto; display: block; }
+    .hex--tier-1 { fill: var(--fc-tier-1); }
+    .hex--tier-2 { fill: var(--fc-tier-2); stroke: var(--fc-tier-1); stroke-width: 1.5; }
+    .hex-label        { fill: var(--fc-text-light); font-family: "Manrope", sans-serif; font-weight: 700; font-size: 13px; pointer-events: none; }
 
     /* Scroll-in + hover animation for each industry hex */
     .industry-hex {
       opacity: 0;
-      transform: translateY(14px) scale(0.92);
+      transform: translateY(12px) scale(0.94);
       transform-origin: center;
       transform-box: fill-box;
       transition:
@@ -681,16 +686,13 @@
       transform: translateY(0) scale(1);
     }
     .industry-hex polygon {
-      transition: filter 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+      transition: filter 0.3s var(--ease-out), transform 0.3s var(--ease-out);
       transform-origin: center;
       transform-box: fill-box;
     }
     .industry-hex:hover polygon {
-      transform: scale(1.06);
-      filter: drop-shadow(0 6px 14px rgba(0, 85, 140, 0.32));
-    }
-    .industry-hex.industry-hex--accent:hover polygon {
-      filter: drop-shadow(0 6px 14px rgba(26, 65, 32, 0.35));
+      transform: scale(1.05);
+      filter: drop-shadow(0 6px 14px rgba(11, 46, 79, 0.32));
     }
     @media (prefers-reduced-motion: reduce) {
       .industry-hex { opacity: 1; transform: none; transition: none; }
@@ -893,7 +895,7 @@
           <h1 class="hero__title">Durable partnerships, built across the country.</h1>
           <p class="hero__lede">
             FirstCall is a multi-region commercial mechanical service platform —
-            HVAC, building controls, plumbing, and electrical — with 24 branches partnering
+            HVAC, building controls, plumbing, and electrical — with <span data-fc-count="branches">24</span> branches partnering
             with property owners and facility managers across the United States.
           </p>
           <div class="hero__cta">
@@ -914,11 +916,11 @@
         </div>
         <div class="stats-grid">
           <div class="stat">
-            <div class="stat__number"><span data-stat-num data-stat-value="25">0</span><span class="stat__suffix">+</span></div>
+            <div class="stat__number"><span data-stat-num data-stat-value="24" data-fc-count="branches">0</span><span class="stat__suffix">+</span></div>
             <div class="stat__label">Branches Nationwide</div>
           </div>
           <div class="stat">
-            <div class="stat__number"><span data-stat-num data-stat-value="11">0</span><span class="stat__suffix"></span></div>
+            <div class="stat__number"><span data-stat-num data-stat-value="11" data-fc-count="states">0</span><span class="stat__suffix"></span></div>
             <div class="stat__label">States Served</div>
           </div>
           <div class="stat">
@@ -1023,71 +1025,108 @@
         <div class="section-head">
           <span class="eyebrow">Industries We Serve</span>
           <h2 id="industries-heading">Built for the buildings that matter.</h2>
-          <p class="lead">FirstCall branches support the most demanding commercial, institutional, and mission-critical facilities across the country.</p>
+          <p class="lead">FirstCall branches support the most complex, mission-critical, and technically demanding facilities in North America.</p>
         </div>
 
-        <!-- Teardrop honeycomb: rows of 2 / 3 / 4 / 3, 12 industries total -->
-        <svg class="markets-honeycomb" viewBox="0 0 500 480" role="img" aria-label="Industries we serve">
-          <!-- Row 1 (top): 2 hexes — Industrial, Office -->
+        <!-- industries-grid:start variant=main -->
+        <svg class="industries-honeycomb" viewBox="0 0 640 600" role="img" aria-label="Industries we serve">
+          <!-- Row 1 (top, 3 hexes — all T3 outer) -->
           <g class="industry-hex">
-            <polygon class="hex-fill" points="190,10 250,45 250,115 190,150 130,115 130,45"/>
-            <text class="hex-label" text-anchor="middle" x="190" y="85">Industrial</text>
+            <polygon class="hex hex--tier-2" points="200,20 260,55 260,125 200,160 140,125 140,55"/>
+            <text class="hex-label" text-anchor="middle" x="200" y="83">Government</text>
+            <text class="hex-label" text-anchor="middle" x="200" y="100">&amp; Federal</text>
           </g>
           <g class="industry-hex">
-            <polygon class="hex-soft" points="310,10 370,45 370,115 310,150 250,115 250,45"/>
-            <text class="hex-label-dark" text-anchor="middle" x="310" y="85">Office</text>
-          </g>
-
-          <!-- Row 2: 3 hexes — Healthcare, Data Centers (accent), Higher Education -->
-          <g class="industry-hex">
-            <polygon class="hex-fill" points="130,115 190,150 190,220 130,255 70,220 70,150"/>
-            <text class="hex-label" text-anchor="middle" x="130" y="190">Healthcare</text>
-          </g>
-          <g class="industry-hex industry-hex--accent">
-            <polygon class="hex-accent" points="250,115 310,150 310,220 250,255 190,220 190,150"/>
-            <text class="hex-label" text-anchor="middle" x="250" y="183">Data</text>
-            <text class="hex-label" text-anchor="middle" x="250" y="200">Centers</text>
+            <polygon class="hex hex--tier-2" points="320,20 380,55 380,125 320,160 260,125 260,55"/>
+            <text class="hex-label" text-anchor="middle" x="320" y="83">Commercial</text>
+            <text class="hex-label" text-anchor="middle" x="320" y="100">Office Space</text>
           </g>
           <g class="industry-hex">
-            <polygon class="hex-fill" points="370,115 430,150 430,220 370,255 310,220 310,150"/>
-            <text class="hex-label" text-anchor="middle" x="370" y="183">Higher</text>
-            <text class="hex-label" text-anchor="middle" x="370" y="200">Education</text>
+            <polygon class="hex hex--tier-2" points="440,20 500,55 500,125 440,160 380,125 380,55"/>
+            <text class="hex-label" text-anchor="middle" x="440" y="95">K&ndash;12 Education</text>
           </g>
 
-          <!-- Row 3 (widest): 4 hexes — K-12, Life Sciences, Retail, Hospitality -->
+          <!-- Row 2 (4 hexes — T3 outer / T2 ring / T2 ring / T3 outer) -->
           <g class="industry-hex">
-            <polygon class="hex-soft" points="70,220 130,255 130,325 70,360 10,325 10,255"/>
-            <text class="hex-label-dark" text-anchor="middle" x="70" y="295">K–12</text>
+            <polygon class="hex hex--tier-2" points="140,125 200,160 200,230 140,265 80,230 80,160"/>
+            <text class="hex-label" text-anchor="middle" x="140" y="200">Public Sector</text>
           </g>
           <g class="industry-hex">
-            <polygon class="hex-fill" points="190,220 250,255 250,325 190,360 130,325 130,255"/>
-            <text class="hex-label" text-anchor="middle" x="190" y="288">Life</text>
-            <text class="hex-label" text-anchor="middle" x="190" y="305">Sciences</text>
+            <polygon class="hex hex--tier-1" points="260,125 320,160 320,230 260,265 200,230 200,160"/>
+            <text class="hex-label" text-anchor="middle" x="260" y="200">Healthcare</text>
           </g>
           <g class="industry-hex">
-            <polygon class="hex-fill" points="310,220 370,255 370,325 310,360 250,325 250,255"/>
-            <text class="hex-label" text-anchor="middle" x="310" y="295">Retail</text>
+            <polygon class="hex hex--tier-1" points="380,125 440,160 440,230 380,265 320,230 320,160"/>
+            <text class="hex-label" text-anchor="middle" x="380" y="188">Life Sciences</text>
+            <text class="hex-label" text-anchor="middle" x="380" y="205">&amp; Pharma</text>
           </g>
           <g class="industry-hex">
-            <polygon class="hex-fill" points="430,220 490,255 490,325 430,360 370,325 370,255"/>
-            <text class="hex-label" text-anchor="middle" x="430" y="295">Hospitality</text>
+            <polygon class="hex hex--tier-2" points="500,125 560,160 560,230 500,265 440,230 440,160"/>
+            <text class="hex-label" text-anchor="middle" x="500" y="200">Hospitality</text>
           </g>
 
-          <!-- Row 4 (bottom): 3 hexes — Government, Multifamily, Distribution -->
+          <!-- Row 3 (widest, 5 hexes — T3 / T2 / T1 (center) / T2 / T3) -->
           <g class="industry-hex">
-            <polygon class="hex-fill" points="130,325 190,360 190,430 130,465 70,430 70,360"/>
-            <text class="hex-label" text-anchor="middle" x="130" y="400">Government</text>
+            <polygon class="hex hex--tier-2" points="80,230 140,265 140,335 80,370 20,335 20,265"/>
+            <text class="hex-label" text-anchor="middle" x="80" y="305">Automotive</text>
           </g>
           <g class="industry-hex">
-            <polygon class="hex-soft" points="250,325 310,360 310,430 250,465 190,430 190,360"/>
-            <text class="hex-label-dark" text-anchor="middle" x="250" y="400">Multifamily</text>
+            <polygon class="hex hex--tier-1" points="200,230 260,265 260,335 200,370 140,335 140,265"/>
+            <text class="hex-label" text-anchor="middle" x="200" y="293">Higher</text>
+            <text class="hex-label" text-anchor="middle" x="200" y="310">Education</text>
+          </g>
+          <g class="industry-hex industry-hex--center">
+            <polygon class="hex hex--tier-1" points="320,230 380,265 380,335 320,370 260,335 260,265"/>
+            <text class="hex-label" text-anchor="middle" x="320" y="293">Critical</text>
+            <text class="hex-label" text-anchor="middle" x="320" y="310">Infrastructure</text>
           </g>
           <g class="industry-hex">
-            <polygon class="hex-fill" points="370,325 430,360 430,430 370,465 310,430 310,360"/>
-            <text class="hex-label" text-anchor="middle" x="370" y="393">Distribution</text>
-            <text class="hex-label" text-anchor="middle" x="370" y="410">&amp; Logistics</text>
+            <polygon class="hex hex--tier-1" points="440,230 500,265 500,335 440,370 380,335 380,265"/>
+            <text class="hex-label" text-anchor="middle" x="440" y="305">Industrial</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-2" points="560,230 620,265 620,335 560,370 500,335 500,265"/>
+            <text class="hex-label" text-anchor="middle" x="560" y="293">Self Storage</text>
+            <text class="hex-label" text-anchor="middle" x="560" y="310">and Logistics</text>
+          </g>
+
+          <!-- Row 4 (4 hexes — T3 outer / T2 ring / T2 ring / T3 outer) -->
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-2" points="140,335 200,370 200,440 140,475 80,440 80,370"/>
+            <text class="hex-label" text-anchor="middle" x="140" y="398">Sports</text>
+            <text class="hex-label" text-anchor="middle" x="140" y="415">&amp; Venues</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-1" points="260,335 320,370 320,440 260,475 200,440 200,370"/>
+            <text class="hex-label" text-anchor="middle" x="260" y="398">Data</text>
+            <text class="hex-label" text-anchor="middle" x="260" y="415">Centers</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-1" points="380,335 440,370 440,440 380,475 320,440 320,370"/>
+            <text class="hex-label" text-anchor="middle" x="380" y="398">Advanced</text>
+            <text class="hex-label" text-anchor="middle" x="380" y="415">Manufacturing</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-2" points="500,335 560,370 560,440 500,475 440,440 440,370"/>
+            <text class="hex-label" text-anchor="middle" x="500" y="410">Office</text>
+          </g>
+
+          <!-- Row 5 (bottom, 3 hexes — all T3 outer) -->
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-2" points="200,440 260,475 260,545 200,580 140,545 140,475"/>
+            <text class="hex-label" text-anchor="middle" x="200" y="515">Senior Living</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-2" points="320,440 380,475 380,545 320,580 260,545 260,475"/>
+            <text class="hex-label" text-anchor="middle" x="320" y="515">Retail</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-2" points="440,440 500,475 500,545 440,580 380,545 380,475"/>
+            <text class="hex-label" text-anchor="middle" x="440" y="515">Multifamily</text>
           </g>
         </svg>
+        <!-- industries-grid:end -->
+
       </div>
     </section>
 
@@ -1096,12 +1135,12 @@
       <div class="container">
         <div class="section-head">
           <span class="eyebrow">Our Locations</span>
-          <h2 id="locations-heading">24 branches. 11 states. Growing.</h2>
+          <h2 id="locations-heading"><span data-fc-count="branches">24</span> branches. <span data-fc-count="states">11</span> states. Growing.</h2>
           <p class="lead">Across major US metros — FirstCall companies are on the ground in major US metros.</p>
         </div>
         <div class="map-preview">
           <div id="fc-map" data-fc-map aria-label="Interactive US map of FirstCall branch locations"></div>
-          <script id="fc-map-data" type="application/json">[{"brand":"C2H","city":"Lawrenceville","state":"GA","addr":"1625 Lakes Parkway, Suite H, Lawrenceville, GA 30043","url":"https://c2h.com/","phone":"(678) 837-3224","lat":33.9562,"lng":-83.9879},{"brand":"Conditioned Air","city":"Macon","state":"GA","addr":"241 South Street, Macon, GA 31206","url":"https://www.conditionedairinc.com/","phone":null,"lat":32.8407,"lng":-83.6324},{"brand":"Starr","city":"Macon","state":"GA","addr":"539 Bartlett Street, Macon, GA 31204","url":"https://www.starrelectric.biz/","phone":null,"lat":32.843,"lng":-83.619},{"brand":"Timco","city":"Buford","state":"GA","addr":"5309 Palmero Court, Suite 200, Buford, GA 30518","url":"https://timcoair.com/","phone":null,"lat":34.1209,"lng":-83.9889},{"brand":"CLS Facility Services","city":"Mentor","state":"OH","addr":"8061 Tyler Boulevard, Mentor, OH 44060","url":"https://clsfacilityservices.com/","phone":null,"lat":41.6661,"lng":-81.3396},{"brand":"Comfortrol","city":"Columbus","state":"OH","addr":"3155 Lamb Avenue, Columbus, OH 43219","url":"https://www.comfortrol.com/","phone":null,"lat":39.9842,"lng":-82.9381},{"brand":"Charlotte Temp Controls","city":"Charlotte","state":"NC","addr":"1705-A Orr Industrial Court, Charlotte, NC 28213","url":"https://ctccontrols.com/","phone":null,"lat":35.2811,"lng":-80.7833},{"brand":"R&W Mechanical","city":"Asheville","state":"NC","addr":"90 London Road, Asheville, NC 28803","url":"https://rw-mechanical.com/","phone":null,"lat":35.5563,"lng":-82.5408},{"brand":"STR Mechanical","city":"Charlotte","state":"NC","addr":"11704 Reames Road, Charlotte, NC 28269","url":"https://strmechanical.com/","phone":null,"lat":35.347,"lng":-80.846},{"brand":"STR Mechanical — Raleigh","city":"Raleigh","state":"NC","addr":"551 C Pylon Drive, Suite C, Raleigh, NC 27606","url":"https://strmechanical.com/","phone":null,"lat":35.7926,"lng":-78.7036},{"brand":"FirstCall Mechanical — DFW","city":"Carrollton","state":"TX","addr":"1750 Briercroft Court, Suite 128, Carrollton, TX 75006","url":"https://firstcallmechanical.com/","phone":"(469) 669-0978","lat":32.9537,"lng":-96.8903},{"brand":"FirstCall Mechanical — Austin","city":"Austin","state":"TX","addr":"10421 Old Manchaca Road, Suite 410, Austin, TX 78748","url":"https://firstcallmechanical.com/","phone":null,"lat":30.1763,"lng":-97.8362},{"brand":"ICACS (Industrial Cooling)","city":"Freeport","state":"NY","addr":"83 Hampton Road, Freeport, NY 11520","url":"https://www.industrialcoolinginc.com/welcome.php","phone":null,"lat":40.6576,"lng":-73.5832},{"brand":"KATS Solutions","city":"Wellsville","state":"NY","addr":"37 Coats Street, Wellsville, NY 14895","url":"https://kats.pro/","phone":null,"lat":42.1223,"lng":-77.9483},{"brand":"Select Environmental","city":"West Babylon","state":"NY","addr":"210 Dale Street, West Babylon, NY 11704","url":"https://www.selectenv.com/","phone":null,"lat":40.7104,"lng":-73.3565},{"brand":"Kenyon & Partners","city":"Tampa","state":"FL","addr":"3203 Queen Palm Drive, Tampa, FL 33619","url":"https://kenyonandpartners.com/","phone":null,"lat":27.9506,"lng":-82.4067},{"brand":"KPI Engineering","city":"Tampa","state":"FL","addr":"3203 Queen Palm Drive, Tampa, FL 33619","url":"https://kpiengineering.com/","phone":null,"lat":27.9506,"lng":-82.4067},{"brand":"Mecon","city":"Clearwater","state":"FL","addr":"4181 116th Terrace N, Clearwater, FL 33762","url":"https://www.meconinc.com/","phone":null,"lat":27.9099,"lng":-82.7155},{"brand":"Starnes","city":"Lebanon","state":"VA","addr":"4082 US Highway 19, Lebanon, VA 24266","url":"https://starnesinc.com/","phone":null,"lat":36.9077,"lng":-82.0793},{"brand":"STR Mechanical — Technical Services","city":"Chesapeake","state":"VA","addr":"825 Green Briar Circle, Suite A, Chesapeake, VA 23320","url":"https://strmechanical.com/","phone":null,"lat":36.7682,"lng":-76.2875},{"brand":"STR Mechanical — Greenville","city":"Liberty","state":"SC","addr":"550 Blackbottom Road, Liberty, SC 29657","url":"https://strmechanical.com/","phone":null,"lat":34.7873,"lng":-82.6943},{"brand":"LC Anderson","city":"Boston","state":"MA","addr":"15 Soldiers Field Place, Boston, MA 02135","url":"https://www.lc-anderson.com/","phone":null,"lat":42.3601,"lng":-71.0589},{"brand":"Optimum Air Solutions","city":"Belle Chasse","state":"LA","addr":"127 Keating Drive, Belle Chasse, LA 70037","url":null,"phone":null,"lat":29.8552,"lng":-89.9906},{"brand":"Statewide","city":"South Amboy","state":"NJ","addr":"6200 Main Street, South Amboy, NJ 08879","url":null,"phone":null,"lat":40.4862,"lng":-74.2782}]</script>
+          <!-- Branch data is now in assets/js/locations-data.js as window.FC_LOCATIONS -->
         </div>
         <div style="text-align:center; margin-top:var(--space-6)">
           <a href="locations.html" class="btn btn--primary">View All Locations</a>
@@ -1179,7 +1218,7 @@
         <div>
           <div class="site-footer__heading">Connect</div>
           <ul class="site-footer__list">
-            <li><a href="https://www.linkedin.com/company/first-call-mechanical/" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://www.linkedin.com/company/firstcall-mechanical/" rel="noopener noreferrer">LinkedIn</a></li>
             <li><a href="acquisitions.html">Sell Your Business</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
@@ -1195,6 +1234,10 @@
   <!-- Leaflet library -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Branch data (single source of truth) + dynamic count populator -->
+  <script src="assets/js/locations-data.js"></script>
+  <script src="assets/js/fc-counts.js"></script>
 
   <script>
     (function () {
@@ -1326,12 +1369,10 @@
       function initMap() {
         if (typeof L === "undefined") return;
         var el = document.getElementById("fc-map");
-        var dataEl = document.getElementById("fc-map-data");
-        if (!el || !dataEl) return;
-        var branches;
-        try { branches = JSON.parse(dataEl.textContent || "[]"); }
-        catch (e) { console.error("fc-map-data parse failed", e); return; }
-        if (!branches.length) return;
+        if (!el) return;
+        // Single source of truth: assets/js/locations-data.js
+        var branches = Array.isArray(window.FC_LOCATIONS) ? window.FC_LOCATIONS : [];
+        if (!branches.length) { console.error("FC_LOCATIONS missing or empty"); return; }
         var US_BOUNDS = L.latLngBounds([[27, -100], [44, -68]]);
         var map = L.map(el, {
           zoomControl: true,

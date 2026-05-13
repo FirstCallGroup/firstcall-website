@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FirstCall Mechanical — Austin, Texas</title>
+  <title>FirstCall Mechanical — Austin</title>
   <link rel="canonical" href="https://firstcallmechanical.com/central-texas" />
-  <meta name="description" content="FirstCall Mechanical's Austin, Texas branch — commercial HVAC, building controls, planned maintenance, and emergency service for Austin, Texas." />
+  <meta name="description" content="FirstCall Mechanical's Austin branch — commercial HVAC, building controls, planned maintenance, and emergency service for Austin." />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="FirstCall Mechanical — Austin, Texas" />
-  <meta property="og:description" content="Commercial mechanical service for Austin, Texas — HVAC, building controls, planned maintenance, and 24/7 emergency response." />
+  <meta property="og:title" content="FirstCall Mechanical — Austin" />
+  <meta property="og:description" content="Commercial mechanical service for Austin — HVAC, building controls, planned maintenance, and 24/7 emergency response." />
   <meta property="og:url" content="https://firstcallmechanical.com/central-texas" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,7 +21,7 @@
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "FirstCall Mechanical — Austin, Texas",
+    "name": "FirstCall Mechanical — Austin",
     "image": "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=1200",
     "telephone": "+18447130220",
     "email": "dispatch@firstcallmechanical.com",
@@ -70,6 +70,13 @@
       --color-text-on-primary: #FFFFFF;
       --color-border: #E5E1D2;
       --color-border-strong: #C9C7B7;
+      /* Industries-grid tier tokens (Specialty / Deep Expertise / Trusted Partner + Anchor) */
+      --fc-tier-1:        #0B2E4F;
+      --fc-tier-2:        #1E5A8A;
+      --fc-tier-3:        #A8C5DC;
+      --fc-text-light:    #FFFFFF;
+      --fc-text-dark:     #0B2E4F;
+
       --color-danger: #C0392B;
 
       --font-display: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -519,7 +526,7 @@
       z-index: -2;
     }
     /* Gradient overlay — darker on the left where text sits, lighter on the right
-       so the video subject (Austin, Texas) still reads through. */
+       so the video subject (Austin) still reads through. */
     .branch-hero::before {
       content: "";
       position: absolute;
@@ -700,13 +707,39 @@
       background: var(--color-accent);
     }
 
-    /* Markets honeycomb */
-    .markets-honeycomb { max-width: 540px; margin-inline: auto; display: block; }
-    .hex-fill        { fill: #00558C; }
-    .hex-accent      { fill: #1A4120; }
-    .hex-soft        { fill: #D6E8F2; stroke: #00558C; stroke-width: 1.5; }
-    .hex-label       { fill: #fff; font-family: "Manrope", sans-serif; font-weight: 700; font-size: 14px; }
-    .hex-label-dark  { fill: #00558C; font-family: "Manrope", sans-serif; font-weight: 700; font-size: 14px; }
+        /* ===== INDUSTRIES HONEYCOMB ===== */
+    .industries-honeycomb { max-width: 760px; margin-inline: auto; display: block; }
+    .hex--tier-1 { fill: var(--fc-tier-1); }
+    .hex--tier-2 { fill: var(--fc-tier-2); stroke: var(--fc-tier-1); stroke-width: 1.5; }
+    .hex-label        { fill: var(--fc-text-light); font-family: "Manrope", sans-serif; font-weight: 700; font-size: 13px; pointer-events: none; }
+
+    /* Scroll-in + hover animation for each industry hex */
+    .industry-hex {
+      opacity: 0;
+      transform: translateY(12px) scale(0.94);
+      transform-origin: center;
+      transform-box: fill-box;
+      transition:
+        opacity 0.7s var(--ease-out),
+        transform 0.7s var(--ease-out);
+      cursor: default;
+    }
+    .industry-hex.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+    .industry-hex polygon {
+      transition: filter 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+    .industry-hex:hover polygon {
+      transform: scale(1.05);
+      filter: drop-shadow(0 6px 14px rgba(11, 46, 79, 0.32));
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .industry-hex { opacity: 1; transform: none; transition: none; }
+      .industry-hex:hover polygon { transform: none; }
+    }
+
+
 
     /* "A FirstCall Company" band */
     .firstcall-block {
@@ -832,7 +865,7 @@
   <!-- HEADER -->
   <header class="site-header" role="banner">
     <div class="site-header__inner">
-      <a class="site-header__logo" href="central-texas.html" aria-label="FirstCall Mechanical — Austin, Texas, home">
+      <a class="site-header__logo" href="central-texas.html" aria-label="FirstCall Mechanical — Austin, home">
         <svg class="fc-logo-mech" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1502.68 337.31" aria-hidden="true">
           <g fill="#fff">
             <path d="M367.89,132.98c-4.99-2.89-10.93-5.51-17.99-5.51-27.68,0-73.04,42.48-147.1,137.74-32.5,39.69-58.88,60.09-79.34,70.94h167.65l97.04-168.07-20.26-35.09Z"/>
@@ -889,7 +922,7 @@
           <div class="site-nav__dropdown" data-dropdown-menu>
             <a class="site-nav__dropdown-link" href="columbus.html">Columbus</a>
             <a class="site-nav__dropdown-link" href="dfw.html">Dallas-Fort Worth</a>
-            <a class="site-nav__dropdown-link" href="central-texas.html" aria-current="page">Austin, Texas</a>
+            <a class="site-nav__dropdown-link" href="central-texas.html" aria-current="page">Austin</a>
           </div>
         </div>
         <a class="site-nav__link" href="central-texas/careers.html">Careers</a>
@@ -908,7 +941,7 @@
 
   <main id="main">
 
-    <!-- 1. HERO — full-bleed Austin, Texas video with overlaid text -->
+    <!-- 1. HERO — full-bleed Austin video with overlaid text -->
     <section class="branch-hero">
       <!-- Decorative background video. Poster (still frame) shows while
            the video buffers and on reduced-motion / autoplay-blocked. -->
@@ -930,7 +963,7 @@
           <span class="branch-hero__eyebrow">FirstCall Mechanical · Austin, TX</span>
           <h1 class="branch-hero__title">Mechanical service. Built for Central Texas.</h1>
           <p class="branch-hero__lede">
-            Our Austin, Texas team keeps Austin, Texas's commercial buildings running —
+            Our Austin team keeps Austin's commercial buildings running —
             HVAC, building controls, and project work, backed by a national platform.
           </p>
           <div class="branch-hero__cta">
@@ -941,15 +974,15 @@
       </div>
     </section>
 
-    <!-- 2. PHOTO STRIP — real production photos from the Austin, Texas branch -->
+    <!-- 2. PHOTO STRIP — real production photos from the Austin branch -->
     <section class="photo-strip-section">
       <div class="container">
         <div class="photo-strip">
           <div class="photo-strip__item"><img src="assets/columbus/photos/production/Chiller_1.avif" alt="Commercial chiller maintenance" loading="lazy" /></div>
           <div class="photo-strip__item"><img src="assets/columbus/photos/production/Chiller_2.avif" alt="Industrial chiller plant" loading="lazy" /></div>
           <div class="photo-strip__item"><img src="assets/columbus/photos/production/Cooling%20Tower.avif" alt="Commercial cooling tower" loading="lazy" /></div>
-          <div class="photo-strip__item"><img src="assets/columbus/photos/production/IMG_3025.jpg" alt="FirstCall Austin, Texas team at work" loading="lazy" /></div>
-          <div class="photo-strip__item"><img src="assets/columbus/photos/production/IMG_3030.jpg" alt="FirstCall Austin, Texas mechanical service" loading="lazy" /></div>
+          <div class="photo-strip__item"><img src="assets/columbus/photos/production/IMG_3025.jpg" alt="FirstCall Austin team at work" loading="lazy" /></div>
+          <div class="photo-strip__item"><img src="assets/columbus/photos/production/IMG_3030.jpg" alt="FirstCall Austin mechanical service" loading="lazy" /></div>
           <div class="photo-strip__item"><img src="assets/columbus/photos/production/FC%20DFW%20Truck.jpeg" alt="FirstCall service truck on site" loading="lazy" /></div>
         </div>
       </div>
@@ -960,8 +993,8 @@
       <div class="container">
         <div class="section-head">
           <span class="eyebrow">Our Capabilities</span>
-          <h2 id="caps-heading">Comprehensive mechanical service for Austin, Texas.</h2>
-          <p class="lead">From chillers and rooftop units to building controls and emergency response — our Austin, Texas team delivers the full stack.</p>
+          <h2 id="caps-heading">Comprehensive mechanical service for Austin.</h2>
+          <p class="lead">From chillers and rooftop units to building controls and emergency response — our Austin team delivers the full stack.</p>
         </div>
 
         <div class="capabilities">
@@ -1014,7 +1047,7 @@
         <div class="section-head">
           <span class="eyebrow">Technical Experience</span>
           <h2 id="tech-heading">Equipment we service every day.</h2>
-          <p class="lead">A representative list of the systems and equipment our Austin, Texas team works with across Austin, Texas.</p>
+          <p class="lead">A representative list of the systems and equipment our Austin team works with across Austin.</p>
         </div>
 
         <ul class="tech-list">
@@ -1045,36 +1078,110 @@
     <section class="section" aria-labelledby="markets-heading">
       <div class="container">
         <div class="section-head">
-          <span class="eyebrow">Markets Served</span>
+          <span class="eyebrow">Industries We Serve</span>
           <h2 id="markets-heading">Built for the buildings that matter.</h2>
-          <p class="lead">From hospitals and higher-ed campuses to office towers and distribution centers — FirstCall Austin, Texas supports Austin, Texas's most demanding facilities.</p>
+          <p class="lead">From semiconductor fabs and life-sciences labs to higher-ed campuses and government buildings &mdash; FirstCall Mechanical supports Austin’s most demanding facilities.</p>
         </div>
 
-        <svg class="markets-honeycomb" viewBox="0 0 480 380" role="img" aria-label="Markets served — industrial, office, healthcare, higher education, retail, hospitality, government, multifamily">
-          <g>
-            <polygon class="hex-soft" points="130,10 190,45 190,115 130,150 70,115 70,45"/>
-            <text class="hex-label-dark" text-anchor="middle" x="130" y="85">Industrial</text>
-            <polygon class="hex-fill" points="250,10 310,45 310,115 250,150 190,115 190,45"/>
-            <text class="hex-label" text-anchor="middle" x="250" y="85">Office</text>
+        <!-- industries-grid:start variant=main -->
+        <svg class="industries-honeycomb" viewBox="0 0 640 600" role="img" aria-label="Industries we serve">
+          <!-- Row 1 (top, 3 hexes — all T3 outer) -->
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-2" points="200,20 260,55 260,125 200,160 140,125 140,55"/>
+            <text class="hex-label" text-anchor="middle" x="200" y="83">Government</text>
+            <text class="hex-label" text-anchor="middle" x="200" y="100">&amp; Federal</text>
           </g>
-          <g>
-            <polygon class="hex-fill" points="70,115 130,150 130,220 70,255 10,220 10,150"/>
-            <text class="hex-label" text-anchor="middle" x="70" y="190">Healthcare</text>
-            <polygon class="hex-accent" points="190,115 250,150 250,220 190,255 130,220 130,150"/>
-            <text class="hex-label" text-anchor="middle" x="190" y="183">Higher</text>
-            <text class="hex-label" text-anchor="middle" x="190" y="200">Education</text>
-            <polygon class="hex-fill" points="310,115 370,150 370,220 310,255 250,220 250,150"/>
-            <text class="hex-label" text-anchor="middle" x="310" y="190">Retail</text>
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-2" points="320,20 380,55 380,125 320,160 260,125 260,55"/>
+            <text class="hex-label" text-anchor="middle" x="320" y="83">Commercial</text>
+            <text class="hex-label" text-anchor="middle" x="320" y="100">Office Space</text>
           </g>
-          <g>
-            <polygon class="hex-soft" points="130,220 190,255 190,325 130,360 70,325 70,255"/>
-            <text class="hex-label-dark" text-anchor="middle" x="130" y="295">Hospitality</text>
-            <polygon class="hex-fill" points="250,220 310,255 310,325 250,360 190,325 190,255"/>
-            <text class="hex-label" text-anchor="middle" x="250" y="295">Government</text>
-            <polygon class="hex-soft" points="370,220 430,255 430,325 370,360 310,325 310,255"/>
-            <text class="hex-label-dark" text-anchor="middle" x="370" y="295">Multifamily</text>
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-2" points="440,20 500,55 500,125 440,160 380,125 380,55"/>
+            <text class="hex-label" text-anchor="middle" x="440" y="95">K&ndash;12 Education</text>
+          </g>
+
+          <!-- Row 2 (4 hexes — T3 outer / T2 ring / T2 ring / T3 outer) -->
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-2" points="140,125 200,160 200,230 140,265 80,230 80,160"/>
+            <text class="hex-label" text-anchor="middle" x="140" y="200">Public Sector</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-1" points="260,125 320,160 320,230 260,265 200,230 200,160"/>
+            <text class="hex-label" text-anchor="middle" x="260" y="200">Healthcare</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-1" points="380,125 440,160 440,230 380,265 320,230 320,160"/>
+            <text class="hex-label" text-anchor="middle" x="380" y="188">Life Sciences</text>
+            <text class="hex-label" text-anchor="middle" x="380" y="205">&amp; Pharma</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-2" points="500,125 560,160 560,230 500,265 440,230 440,160"/>
+            <text class="hex-label" text-anchor="middle" x="500" y="200">Hospitality</text>
+          </g>
+
+          <!-- Row 3 (widest, 5 hexes — T3 / T2 / T1 (center) / T2 / T3) -->
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-2" points="80,230 140,265 140,335 80,370 20,335 20,265"/>
+            <text class="hex-label" text-anchor="middle" x="80" y="305">Automotive</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-1" points="200,230 260,265 260,335 200,370 140,335 140,265"/>
+            <text class="hex-label" text-anchor="middle" x="200" y="293">Higher</text>
+            <text class="hex-label" text-anchor="middle" x="200" y="310">Education</text>
+          </g>
+          <g class="industry-hex industry-hex--center">
+            <polygon class="hex hex--tier-1" points="320,230 380,265 380,335 320,370 260,335 260,265"/>
+            <text class="hex-label" text-anchor="middle" x="320" y="293">Critical</text>
+            <text class="hex-label" text-anchor="middle" x="320" y="310">Infrastructure</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-1" points="440,230 500,265 500,335 440,370 380,335 380,265"/>
+            <text class="hex-label" text-anchor="middle" x="440" y="305">Industrial</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-2" points="560,230 620,265 620,335 560,370 500,335 500,265"/>
+            <text class="hex-label" text-anchor="middle" x="560" y="293">Self Storage</text>
+            <text class="hex-label" text-anchor="middle" x="560" y="310">and Logistics</text>
+          </g>
+
+          <!-- Row 4 (4 hexes — T3 outer / T2 ring / T2 ring / T3 outer) -->
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-2" points="140,335 200,370 200,440 140,475 80,440 80,370"/>
+            <text class="hex-label" text-anchor="middle" x="140" y="398">Sports</text>
+            <text class="hex-label" text-anchor="middle" x="140" y="415">&amp; Venues</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-1" points="260,335 320,370 320,440 260,475 200,440 200,370"/>
+            <text class="hex-label" text-anchor="middle" x="260" y="398">Data</text>
+            <text class="hex-label" text-anchor="middle" x="260" y="415">Centers</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-1" points="380,335 440,370 440,440 380,475 320,440 320,370"/>
+            <text class="hex-label" text-anchor="middle" x="380" y="398">Advanced</text>
+            <text class="hex-label" text-anchor="middle" x="380" y="415">Manufacturing</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-2" points="500,335 560,370 560,440 500,475 440,440 440,370"/>
+            <text class="hex-label" text-anchor="middle" x="500" y="410">Office</text>
+          </g>
+
+          <!-- Row 5 (bottom, 3 hexes — all T3 outer) -->
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-2" points="200,440 260,475 260,545 200,580 140,545 140,475"/>
+            <text class="hex-label" text-anchor="middle" x="200" y="515">Senior Living</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-2" points="320,440 380,475 380,545 320,580 260,545 260,475"/>
+            <text class="hex-label" text-anchor="middle" x="320" y="515">Retail</text>
+          </g>
+          <g class="industry-hex">
+            <polygon class="hex hex--tier-2" points="440,440 500,475 500,545 440,580 380,545 380,475"/>
+            <text class="hex-label" text-anchor="middle" x="440" y="515">Multifamily</text>
           </g>
         </svg>
+        <!-- industries-grid:end -->
+
       </div>
     </section>
 
@@ -1084,7 +1191,7 @@
         <span class="eyebrow">A FirstCall Company</span>
         <h2 id="firstcall-heading">Local team. National platform.</h2>
         <p class="lead">
-          FirstCall Austin, Texas is part of FirstCall Mechanical — a network of leading
+          FirstCall Austin is part of FirstCall Mechanical — a network of leading
           regional commercial service companies. We bring the depth of a national
           platform while keeping the local leadership, identity, and reputation
           that's built this branch's business. Local stays local. The national
@@ -1099,7 +1206,7 @@
       <div class="container">
         <div class="section-head">
           <span class="eyebrow">How Can We Help?</span>
-          <h2 id="contact-heading">At FirstCall Austin, Texas, we're dedicated to helping.</h2>
+          <h2 id="contact-heading">At FirstCall Austin, we're dedicated to helping.</h2>
           <p class="lead">Tell us about your facility and we'll get back to you within one business day. For emergencies, call us — we're on call around the clock.</p>
         </div>
 
@@ -1152,7 +1259,7 @@
 
           <!-- Contact info card -->
           <aside class="contact-card" aria-label="Branch contact information">
-            <h3>FirstCall Austin, Texas</h3>
+            <h3>FirstCall Austin</h3>
             <div class="contact-card__row">
               <div class="contact-card__label">Address</div>
               <div class="contact-card__value">
@@ -1216,10 +1323,10 @@
               <path d="M1495.69,335.8l-.02-13.07-5.27,10.89h-.96l-5.27-10.82v13h-2v-17.94h1.71l6.09,12.61,6-12.61h1.71l.02,17.94h-2Z"/>
             </g>
           </svg>
-          <p>FirstCall Mechanical's Austin, Texas team — commercial HVAC, building controls, and project work, backed by a national platform.</p>
+          <p>FirstCall Mechanical's Austin team — commercial HVAC, building controls, and project work, backed by a national platform.</p>
         </div>
         <div>
-          <div class="site-footer__heading">Austin, Texas</div>
+          <div class="site-footer__heading">Austin</div>
           <ul class="site-footer__list">
             <li><span>10421 Old Manchaca Rd, Ste 410</span></li>
             <li><span>Austin, TX 78748</span></li>
@@ -1230,7 +1337,7 @@
         <div>
           <div class="site-footer__heading">Connect</div>
           <ul class="site-footer__list">
-            <li><a href="https://www.linkedin.com/company/first-call-mechanical/" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://www.linkedin.com/company/firstcall-mechanical/" rel="noopener">LinkedIn</a></li>
             <li><a href="central-texas/careers.html">Careers</a></li>
             <li><a href="central-texas/contact.html">Contact</a></li>
           </ul>
@@ -1245,7 +1352,7 @@
         </div>
       </div>
       <div class="site-footer__bottom">
-        <span>&copy; 2026 FirstCall Mechanical — Austin, Texas. All rights reserved.</span>
+        <span>&copy; 2026 FirstCall Mechanical — Austin. All rights reserved.</span>
         <span><a href="index.html" rel="noopener">FirstCall Group</a> &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></span>
       </div>
     </div>
@@ -1254,6 +1361,25 @@
   <script>
     (function () {
       "use strict";
+      function initIndustries() {
+        var hexes = document.querySelectorAll(".industry-hex");
+        if (!hexes.length) return;
+        var prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (prefersReduced || !("IntersectionObserver" in window)) {
+          hexes.forEach(function (h) { h.classList.add("is-visible"); });
+          return;
+        }
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var idx = Array.prototype.indexOf.call(hexes, entry.target);
+            setTimeout(function () { entry.target.classList.add("is-visible"); }, idx * 70);
+            obs.unobserve(entry.target);
+          });
+        }, { threshold: 0.25 });
+        hexes.forEach(function (h) { obs.observe(h); });
+      }
+
 
       function initMobileNav() {
         var toggle = document.querySelector("[data-menu-toggle]");
@@ -1383,6 +1509,7 @@
           initNavDropdown();
           initHeroVideo();
           initHeaderScroll();
+          initIndustries();
           initForm();
         });
       } else {
@@ -1390,6 +1517,7 @@
         initNavDropdown();
         initHeroVideo();
         initHeaderScroll();
+        initIndustries();
         initForm();
       }
     })();
