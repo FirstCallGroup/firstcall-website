@@ -394,7 +394,7 @@
           <ul class="site-footer__list">
             <li><span>3105 Bee Caves Rd, Suite 250</span></li>
             <li><span>Austin, TX 78746</span></li>
-            <li><a href="tel:+18447130220">844.713.0220</a></li>
+            <li><a href="tel:+18447130220">(844) 713-0220</a></li>
             <li><a href="mailto:info@firstcallmechanical.com">info@firstcallmechanical.com</a></li>
           </ul>
         </div>
@@ -451,9 +451,19 @@
       function initForm() {
         var form = document.querySelector(".contact-form");
         if (!form) return;
+        // Stopgap: open the visitor's mail client with the form contents pre-filled.
+        // TODO: replace with a real endpoint (Formspree / HubSpot / your CRM).
+        var INBOX = "info@firstcallmechanical.com";
         form.addEventListener("submit", function (e) {
           e.preventDefault();
-          alert("Thanks! Form submission is currently a placeholder — wire to Formspree / HubSpot / your CRM in production.");
+          var data = new FormData(form);
+          var lines = [];
+          data.forEach(function (v, k) { if (v) lines.push(k + ": " + v); });
+          var subject = "Acquisition inquiry from " + (data.get("name") || "website");
+          var body = lines.join("\n");
+          window.location.href = "mailto:" + INBOX +
+            "?subject=" + encodeURIComponent(subject) +
+            "&body=" + encodeURIComponent(body);
         });
       }
       if (document.readyState === "loading") {

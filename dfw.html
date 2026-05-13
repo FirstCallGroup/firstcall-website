@@ -908,10 +908,10 @@
         loop
         playsinline
         preload="auto"
-        poster="reference/columbus/photos/production/Chiller_1.avif"
+        poster="assets/columbus/photos/production/Chiller_1.avif"
         aria-hidden="true"
       >
-        <source src="reference/dfw/videos/dfw_hero.mp4" type="video/mp4" />
+        <source src="assets/dfw/videos/dfw_hero.mp4" type="video/mp4" />
       </video>
 
       <div class="container">
@@ -934,12 +934,12 @@
     <section class="photo-strip-section">
       <div class="container">
         <div class="photo-strip">
-          <div class="photo-strip__item"><img src="reference/columbus/photos/production/Chiller_1.avif" alt="Commercial chiller maintenance" loading="lazy" /></div>
-          <div class="photo-strip__item"><img src="reference/columbus/photos/production/Chiller_2.avif" alt="Industrial chiller plant" loading="lazy" /></div>
-          <div class="photo-strip__item"><img src="reference/columbus/photos/production/Cooling%20Tower.avif" alt="Commercial cooling tower" loading="lazy" /></div>
-          <div class="photo-strip__item"><img src="reference/columbus/photos/production/IMG_3025.jpg" alt="FirstCall DFW team at work" loading="lazy" /></div>
-          <div class="photo-strip__item"><img src="reference/columbus/photos/production/IMG_3030.jpg" alt="FirstCall DFW mechanical service" loading="lazy" /></div>
-          <div class="photo-strip__item"><img src="reference/columbus/photos/production/FC%20DFW%20Truck.jpeg" alt="FirstCall service truck on site" loading="lazy" /></div>
+          <div class="photo-strip__item"><img src="assets/columbus/photos/production/Chiller_1.avif" alt="Commercial chiller maintenance" loading="lazy" /></div>
+          <div class="photo-strip__item"><img src="assets/columbus/photos/production/Chiller_2.avif" alt="Industrial chiller plant" loading="lazy" /></div>
+          <div class="photo-strip__item"><img src="assets/columbus/photos/production/Cooling%20Tower.avif" alt="Commercial cooling tower" loading="lazy" /></div>
+          <div class="photo-strip__item"><img src="assets/columbus/photos/production/IMG_3025.jpg" alt="FirstCall DFW team at work" loading="lazy" /></div>
+          <div class="photo-strip__item"><img src="assets/columbus/photos/production/IMG_3030.jpg" alt="FirstCall DFW mechanical service" loading="lazy" /></div>
+          <div class="photo-strip__item"><img src="assets/columbus/photos/production/FC%20DFW%20Truck.jpeg" alt="FirstCall service truck on site" loading="lazy" /></div>
         </div>
       </div>
     </section>
@@ -1345,10 +1345,19 @@
       function initForm() {
         var form = document.querySelector(".service-form");
         if (!form) return;
+        // Stopgap: open the visitor's mail client with the form contents pre-filled.
+        // TODO: replace with a real endpoint (Formspree / HubSpot / dispatch inbox webhook).
+        var INBOX = "dispatch@firstcallmechanical.com";
         form.addEventListener("submit", function (e) {
           e.preventDefault();
-          // TODO: wire to Formspree, HubSpot, or your CRM of choice.
-          alert("Thanks! Form submission is currently a placeholder — wire to Formspree / HubSpot in production. See README for setup.");
+          var data = new FormData(form);
+          var lines = [];
+          data.forEach(function (v, k) { if (v) lines.push(k + ": " + v); });
+          var subject = "Service request from " + (data.get("name") || "website");
+          var body = lines.join("\n");
+          window.location.href = "mailto:" + INBOX +
+            "?subject=" + encodeURIComponent(subject) +
+            "&body=" + encodeURIComponent(body);
         });
       }
 

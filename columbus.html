@@ -24,7 +24,7 @@
     "name": "FirstCall Mechanical — Columbus",
     "image": "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=1200",
     "telephone": "+16142539001",
-    "email": "info@comfortrol.com",
+    "email": "dispatch@firstcallmechanical.com",
     "url": "https://firstcallmechanical.com/columbus",
     "address": {
       "@type": "PostalAddress",
@@ -908,10 +908,10 @@
         loop
         playsinline
         preload="auto"
-        poster="reference/columbus/photos/production/Chiller_1.avif"
+        poster="assets/columbus/photos/production/Chiller_1.avif"
         aria-hidden="true"
       >
-        <source src="reference/columbus/videos/columbus_downtown.mp4" type="video/mp4" />
+        <source src="assets/columbus/videos/columbus_downtown.mp4" type="video/mp4" />
       </video>
 
       <div class="container">
@@ -934,12 +934,12 @@
     <section class="photo-strip-section">
       <div class="container">
         <div class="photo-strip">
-          <div class="photo-strip__item"><img src="reference/columbus/photos/production/Chiller_1.avif" alt="Commercial chiller maintenance" loading="lazy" /></div>
-          <div class="photo-strip__item"><img src="reference/columbus/photos/production/Chiller_2.avif" alt="Industrial chiller plant" loading="lazy" /></div>
-          <div class="photo-strip__item"><img src="reference/columbus/photos/production/Cooling%20Tower.avif" alt="Commercial cooling tower" loading="lazy" /></div>
-          <div class="photo-strip__item"><img src="reference/columbus/photos/production/IMG_3025.jpg" alt="FirstCall Columbus team at work" loading="lazy" /></div>
-          <div class="photo-strip__item"><img src="reference/columbus/photos/production/IMG_3030.jpg" alt="FirstCall Columbus mechanical service" loading="lazy" /></div>
-          <div class="photo-strip__item"><img src="reference/columbus/photos/production/FC%20DFW%20Truck.jpeg" alt="FirstCall service truck on site" loading="lazy" /></div>
+          <div class="photo-strip__item"><img src="assets/columbus/photos/production/Chiller_1.avif" alt="Commercial chiller maintenance" loading="lazy" /></div>
+          <div class="photo-strip__item"><img src="assets/columbus/photos/production/Chiller_2.avif" alt="Industrial chiller plant" loading="lazy" /></div>
+          <div class="photo-strip__item"><img src="assets/columbus/photos/production/Cooling%20Tower.avif" alt="Commercial cooling tower" loading="lazy" /></div>
+          <div class="photo-strip__item"><img src="assets/columbus/photos/production/IMG_3025.jpg" alt="FirstCall Columbus team at work" loading="lazy" /></div>
+          <div class="photo-strip__item"><img src="assets/columbus/photos/production/IMG_3030.jpg" alt="FirstCall Columbus mechanical service" loading="lazy" /></div>
+          <div class="photo-strip__item"><img src="assets/columbus/photos/production/FC%20DFW%20Truck.jpeg" alt="FirstCall service truck on site" loading="lazy" /></div>
         </div>
       </div>
     </section>
@@ -1155,7 +1155,7 @@
             </div>
             <div class="contact-card__row">
               <div class="contact-card__label">Email</div>
-              <div class="contact-card__value"><a href="mailto:info@comfortrol.com">info@comfortrol.com</a></div>
+              <div class="contact-card__value"><a href="mailto:dispatch@firstcallmechanical.com">dispatch@firstcallmechanical.com</a></div>
             </div>
             <div class="contact-card__row">
               <div class="contact-card__label">Hours</div>
@@ -1213,7 +1213,7 @@
             <li><span>3155 Lamb Ave</span></li>
             <li><span>Columbus, OH 43219</span></li>
             <li><a href="tel:+16142539001">(614) 253-9001</a></li>
-            <li><a href="mailto:info@comfortrol.com">info@comfortrol.com</a></li>
+            <li><a href="mailto:dispatch@firstcallmechanical.com">dispatch@firstcallmechanical.com</a></li>
           </ul>
         </div>
         <div>
@@ -1345,10 +1345,19 @@
       function initForm() {
         var form = document.querySelector(".service-form");
         if (!form) return;
+        // Stopgap: open the visitor's mail client with the form contents pre-filled.
+        // TODO: replace with a real endpoint (Formspree / HubSpot / dispatch inbox webhook).
+        var INBOX = "dispatch@firstcallmechanical.com";
         form.addEventListener("submit", function (e) {
           e.preventDefault();
-          // TODO: wire to Formspree, HubSpot, or your CRM of choice.
-          alert("Thanks! Form submission is currently a placeholder — wire to Formspree / HubSpot in production. See README for setup.");
+          var data = new FormData(form);
+          var lines = [];
+          data.forEach(function (v, k) { if (v) lines.push(k + ": " + v); });
+          var subject = "Service request from " + (data.get("name") || "website");
+          var body = lines.join("\n");
+          window.location.href = "mailto:" + INBOX +
+            "?subject=" + encodeURIComponent(subject) +
+            "&body=" + encodeURIComponent(body);
         });
       }
 

@@ -288,7 +288,7 @@
                 <span class="contact-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
                 <div>
                   <div class="contact-card__label">Email</div>
-                  <div class="contact-card__value"><a href="mailto:info@comfortrol.com">info@comfortrol.com</a></div>
+                  <div class="contact-card__value"><a href="mailto:dispatch@firstcallmechanical.com">dispatch@firstcallmechanical.com</a></div>
                 </div>
               </div>
               <div class="contact-card__row">
@@ -332,7 +332,7 @@
             <li><span>3155 Lamb Ave</span></li>
             <li><span>Columbus, OH 43219</span></li>
             <li><a href="tel:+16142539001">(614) 253-9001</a></li>
-            <li><a href="mailto:info@comfortrol.com">info@comfortrol.com</a></li>
+            <li><a href="mailto:dispatch@firstcallmechanical.com">dispatch@firstcallmechanical.com</a></li>
           </ul>
         </div>
         <div>
@@ -378,9 +378,19 @@
       function initForm() {
         var form = document.querySelector(".contact-form");
         if (!form) return;
+        // Stopgap: open the visitor's mail client with the form contents pre-filled.
+        // TODO: replace with a real endpoint (Formspree / HubSpot / dispatch inbox webhook).
+        var INBOX = "dispatch@firstcallmechanical.com";
         form.addEventListener("submit", function (e) {
           e.preventDefault();
-          alert("Thanks! Form submission is currently a placeholder — wire to Formspree / HubSpot in production.");
+          var data = new FormData(form);
+          var lines = [];
+          data.forEach(function (v, k) { if (v) lines.push(k + ": " + v); });
+          var subject = "Columbus inquiry from " + (data.get("name") || "website");
+          var body = lines.join("\n");
+          window.location.href = "mailto:" + INBOX +
+            "?subject=" + encodeURIComponent(subject) +
+            "&body=" + encodeURIComponent(body);
         });
       }
       if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", function () { initMobileNav(); initNavDropdown(); initHeaderScroll(); initForm(); }); }
