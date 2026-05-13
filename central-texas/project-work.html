@@ -181,8 +181,19 @@
             <a class="site-nav__dropdown-link" href="project-work.html" aria-current="page">Project Work</a>
           </div>
         </div>
-        <a class="site-nav__link" href="contact.html">Contact</a>
-        <a class="site-nav__link" href="careers.html">Careers</a>
+        <div class="site-nav__dropdown-wrap" data-dropdown>
+          <button type="button" class="site-nav__link site-nav__dropdown-toggle"
+                  aria-haspopup="true" aria-expanded="false" data-dropdown-toggle>
+            Locations
+            <svg class="site-nav__caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="site-nav__dropdown" data-dropdown-menu>
+            <a class="site-nav__dropdown-link" href="../columbus.html">Columbus</a>
+            <a class="site-nav__dropdown-link" href="../dfw.html">Dallas-Fort Worth</a>
+            <a class="site-nav__dropdown-link" href="../central-texas.html" aria-current="page">Central Texas</a>
+          </div>
+        </div>        <a class="site-nav__link" href="careers.html">Careers</a>
+        <a class="site-nav__link" href="contact.html">Contact Us</a>
         <a class="site-nav__link" href="../index.html" rel="noopener">FirstCall Group</a>
       </nav>
       <div class="site-header__cta">
@@ -362,15 +373,35 @@
         nav.querySelectorAll("a").forEach(function (link) { link.addEventListener("click", function () { nav.classList.remove("is-open"); toggle.setAttribute("aria-expanded", "false"); document.body.style.overflow = ""; }); });
       }
       function initNavDropdown() {
-        var toggle = document.querySelector("[data-dropdown-toggle]");
-        var menu = document.querySelector("[data-dropdown-menu]");
-        if (!toggle || !menu) return;
-        function close() { menu.classList.remove("is-open"); toggle.setAttribute("aria-expanded", "false"); }
-        toggle.addEventListener("click", function (e) { e.preventDefault(); e.stopPropagation(); var open = menu.classList.toggle("is-open"); toggle.setAttribute("aria-expanded", open ? "true" : "false"); });
-        document.addEventListener("click", function (e) { if (!toggle.contains(e.target) && !menu.contains(e.target)) close(); });
-        document.addEventListener("keydown", function (e) { if (e.key === "Escape" && menu.classList.contains("is-open")) { close(); toggle.focus(); } });
-      }
-      function initHeaderScroll() {
+        var dropdowns = document.querySelectorAll("[data-dropdown]");
+        if (!dropdowns.length) return;
+        function closeAll() {
+          dropdowns.forEach(function (wrap) {
+            var menu = wrap.querySelector("[data-dropdown-menu]");
+            var toggle = wrap.querySelector("[data-dropdown-toggle]");
+            if (menu) menu.classList.remove("is-open");
+            if (toggle) toggle.setAttribute("aria-expanded", "false");
+          });
+        }
+        dropdowns.forEach(function (wrap) {
+          var toggle = wrap.querySelector("[data-dropdown-toggle]");
+          var menu = wrap.querySelector("[data-dropdown-menu]");
+          if (!toggle || !menu) return;
+          toggle.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var wasOpen = menu.classList.contains("is-open");
+            closeAll();
+            if (!wasOpen) { menu.classList.add("is-open"); toggle.setAttribute("aria-expanded", "true"); }
+          });
+        });
+        document.addEventListener("click", function (e) {
+          var inside = false;
+          dropdowns.forEach(function (w) { if (w.contains(e.target)) inside = true; });
+          if (!inside) closeAll();
+        });
+        document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeAll(); });
+      }      function initHeaderScroll() {
         var header = document.querySelector(".site-header"); if (!header) return; var ticking = false;
         function update() { if (window.scrollY > 8) header.classList.add("is-scrolled"); else header.classList.remove("is-scrolled"); ticking = false; }
         window.addEventListener("scroll", function () { if (!ticking) { window.requestAnimationFrame(update); ticking = true; } }, { passive: true });

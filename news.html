@@ -71,7 +71,7 @@
     .site-header.is-scrolled { box-shadow: 0 1px 0 rgba(0,0,0,0.4), var(--shadow-sm); background: rgba(15, 40, 20, 0.97); }
     .site-header__inner { width: 100%; max-width: var(--container-2xl); margin-inline: auto; padding-inline: var(--pad-x); display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); }
     .site-header__logo { display: inline-flex; align-items: center; text-decoration: none; }
-    .site-header__logo svg { height: 40px; width: auto; display: block; }
+    .site-header__logo svg { height: 56px; width: auto; display: block; }
     .site-nav { display: flex; align-items: center; gap: var(--space-6); }
     .site-nav__link { font-family: var(--font-body); font-size: var(--text-base); font-weight: var(--weight-medium); color: var(--color-text-on-dark); text-decoration: none; padding: var(--space-2) 0; position: relative; transition: color var(--duration-base) var(--ease-out); }
     .site-nav__link::after { content: ""; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: var(--color-accent-light); transition: width var(--duration-base) var(--ease-out); }
@@ -198,8 +198,8 @@
       color: var(--color-primary);
     }
     .news-item__cat--acquisition { background: rgba(0, 85, 140, 0.10); color: var(--color-accent); }
-    .news-item__cat--leadership { background: rgba(26, 65, 32, 0.10); color: var(--color-primary); }
-    .news-item__cat--award { background: rgba(184, 134, 26, 0.12); color: #8a6610; }
+    .news-item__cat--company { background: rgba(26, 65, 32, 0.10); color: var(--color-primary); }
+    .news-item__cat--expansion { background: rgba(184, 134, 26, 0.12); color: #8a6610; }
 
     .news-item__body h3 {
       font-family: var(--font-display);
@@ -271,10 +271,9 @@
       <div class="container">
         <div class="news-filters__inner">
           <button type="button" class="news-filter is-active" data-filter="all">All</button>
-          <button type="button" class="news-filter" data-filter="acquisition">Acquisitions</button>
-          <button type="button" class="news-filter" data-filter="leadership">Leadership</button>
-          <button type="button" class="news-filter" data-filter="award">Recognition</button>
-          <button type="button" class="news-filter" data-filter="company">Company News</button>
+          <button type="button" class="news-filter" data-filter="acquisition">Partnerships</button>
+          <button type="button" class="news-filter" data-filter="company">Leadership &amp; Board</button>
+          <button type="button" class="news-filter" data-filter="expansion">Expansion</button>
           <span class="news-filters__count" data-filter-count></span>
         </div>
       </div>
@@ -283,232 +282,9 @@
     <!-- NEWS LIST -->
     <section class="section">
       <div class="container">
-        <!-- TODO: Replace placeholder press releases with the actual FirstCall
-                  Group news log. Categories: acquisition, leadership, award, company. -->
         <div class="news-list" data-news-list>
-
-          <article class="news-item" data-cat="acquisition">
-            <div class="news-item__meta">
-              <div class="news-item__date">Feb 11, 2026</div>
-              <span class="news-item__cat news-item__cat--acquisition">Acquisition</span>
-            </div>
-            <div class="news-item__body">
-              <h3>FirstCall Group Welcomes Statewide as Newest Branch</h3>
-              <p>FirstCall Group, a leading commercial mechanical service organization, is pleased to announce the addition of Statewide, headquartered in South Amboy, New Jersey, expanding the network's reach in the New York/New Jersey metro.</p>
-            </div>
-          </article>
-
-          <article class="news-item" data-cat="acquisition">
-            <div class="news-item__meta">
-              <div class="news-item__date">Dec 18, 2025</div>
-              <span class="news-item__cat news-item__cat--acquisition">Acquisition</span>
-            </div>
-            <div class="news-item__body">
-              <h3>FirstCall Group Acquires Optimum Air Solutions</h3>
-              <p>FirstCall Group has acquired Optimum Air Solutions of Belle Chasse, Louisiana, expanding its Gulf Coast presence. Optimum's leadership and team remain in place, joining a growing national support platform.</p>
-            </div>
-          </article>
-
-          <article class="news-item" data-cat="leadership">
-            <div class="news-item__meta">
-              <div class="news-item__date">Nov 4, 2025</div>
-              <span class="news-item__cat news-item__cat--leadership">Leadership</span>
-            </div>
-            <div class="news-item__body">
-              <h3>Chris Patrick Joins FirstCall Group as Head of Acquisitions</h3>
-              <p>FirstCall Group announces that Chris Patrick has joined as Head of Acquisitions, where he will lead the company's acquisition strategy and onboarding of new partner branches across the United States.</p>
-            </div>
-          </article>
-
-          <article class="news-item" data-cat="acquisition">
-            <div class="news-item__meta">
-              <div class="news-item__date">Oct 1, 2025</div>
-              <span class="news-item__cat news-item__cat--acquisition">Acquisition</span>
-            </div>
-            <div class="news-item__body">
-              <h3>FirstCall Adds Kenyon &amp; Partners and KPI Engineering in Tampa</h3>
-              <p>FirstCall Group expands its Florida presence with the addition of two Tampa-based engineering firms — Kenyon &amp; Partners and KPI Engineering — strengthening the network's design-build and commissioning capabilities.</p>
-            </div>
-          </article>
-
-          <article class="news-item" data-cat="acquisition">
-            <div class="news-item__meta">
-              <div class="news-item__date">Aug 19, 2025</div>
-              <span class="news-item__cat news-item__cat--acquisition">Acquisition</span>
-            </div>
-            <div class="news-item__body">
-              <h3>FirstCall Group Acquires LC Anderson in Boston</h3>
-              <p>FirstCall Group is pleased to announce its first New England branch with the acquisition of LC Anderson, a commercial HVAC service company serving the greater Boston market.</p>
-            </div>
-          </article>
-
-          <article class="news-item" data-cat="award">
-            <div class="news-item__meta">
-              <div class="news-item__date">Jul 22, 2025</div>
-              <span class="news-item__cat news-item__cat--award">Recognition</span>
-            </div>
-            <div class="news-item__body">
-              <h3>FirstCall Group Recognized on Inc. 5000 List</h3>
-              <p>FirstCall Group has been named to the 2025 Inc. 5000 list of fastest-growing private companies in America, recognizing the network's expansion and operational excellence over the past three years.</p>
-            </div>
-          </article>
-
-          <article class="news-item" data-cat="acquisition">
-            <div class="news-item__meta">
-              <div class="news-item__date">Jun 10, 2025</div>
-              <span class="news-item__cat news-item__cat--acquisition">Acquisition</span>
-            </div>
-            <div class="news-item__body">
-              <h3>FirstCall Group Acquires Select Environmental</h3>
-              <p>FirstCall Group has acquired Select Environmental of West Babylon, New York, broadening the network's environmental and indoor air quality service capabilities on Long Island.</p>
-            </div>
-          </article>
-
-          <article class="news-item" data-cat="acquisition">
-            <div class="news-item__meta">
-              <div class="news-item__date">May 6, 2025</div>
-              <span class="news-item__cat news-item__cat--acquisition">Acquisition</span>
-            </div>
-            <div class="news-item__body">
-              <h3>FirstCall Group Welcomes KATS Solutions and ICACS to the Network</h3>
-              <p>FirstCall expands its New York footprint with the acquisition of two specialist firms — KATS Solutions in Wellsville and Industrial Cooling (ICACS) on Long Island — adding industrial cooling expertise to the network.</p>
-            </div>
-          </article>
-
-          <article class="news-item" data-cat="leadership">
-            <div class="news-item__meta">
-              <div class="news-item__date">Apr 1, 2025</div>
-              <span class="news-item__cat news-item__cat--leadership">Leadership</span>
-            </div>
-            <div class="news-item__body">
-              <h3>Matthew Hunt Named Group President</h3>
-              <p>FirstCall Group has promoted Matthew Hunt to Group President. Matthew has been instrumental in scaling the network's southern operations and bringing operational discipline across new partner branches.</p>
-            </div>
-          </article>
-
-          <article class="news-item" data-cat="acquisition">
-            <div class="news-item__meta">
-              <div class="news-item__date">Feb 14, 2025</div>
-              <span class="news-item__cat news-item__cat--acquisition">Acquisition</span>
-            </div>
-            <div class="news-item__body">
-              <h3>FirstCall Group Acquires Mecon in Florida</h3>
-              <p>FirstCall has acquired Mecon, a commercial mechanical service company based in Clearwater, Florida. The Mecon team joins FirstCall's growing Florida operations alongside the Tampa-based engineering firms.</p>
-            </div>
-          </article>
-
-          <article class="news-item" data-cat="acquisition">
-            <div class="news-item__meta">
-              <div class="news-item__date">Jan 21, 2025</div>
-              <span class="news-item__cat news-item__cat--acquisition">Acquisition</span>
-            </div>
-            <div class="news-item__body">
-              <h3>FirstCall Group Adds R&amp;W Mechanical in Asheville</h3>
-              <p>FirstCall Group announces the acquisition of R&amp;W Mechanical, a commercial mechanical service company in Asheville, North Carolina, strengthening the network's presence in the Carolinas.</p>
-            </div>
-          </article>
-
-          <article class="news-item" data-cat="acquisition">
-            <div class="news-item__meta">
-              <div class="news-item__date">Nov 12, 2024</div>
-              <span class="news-item__cat news-item__cat--acquisition">Acquisition</span>
-            </div>
-            <div class="news-item__body">
-              <h3>FirstCall Welcomes Starnes in Southwest Virginia</h3>
-              <p>FirstCall Group is pleased to announce the addition of Starnes, headquartered in Lebanon, Virginia, expanding the network's coverage in the southwest Virginia and Appalachian markets.</p>
-            </div>
-          </article>
-
-          <article class="news-item" data-cat="company">
-            <div class="news-item__meta">
-              <div class="news-item__date">Oct 3, 2024</div>
-              <span class="news-item__cat">Company News</span>
-            </div>
-            <div class="news-item__body">
-              <h3>FirstCall Launches Shared Services Platform</h3>
-              <p>FirstCall Group announces the launch of its centralized shared services platform — HR, finance, IT, marketing, and operations — supporting all partner branches with professional-grade back office capabilities.</p>
-            </div>
-          </article>
-
-          <article class="news-item" data-cat="acquisition">
-            <div class="news-item__meta">
-              <div class="news-item__date">Sep 9, 2024</div>
-              <span class="news-item__cat news-item__cat--acquisition">Acquisition</span>
-            </div>
-            <div class="news-item__body">
-              <h3>STR Mechanical Joins FirstCall Group</h3>
-              <p>FirstCall Group is excited to welcome STR Mechanical, a multi-location commercial mechanical service company serving North Carolina, South Carolina, and Virginia.</p>
-            </div>
-          </article>
-
-          <article class="news-item" data-cat="acquisition">
-            <div class="news-item__meta">
-              <div class="news-item__date">Jul 16, 2024</div>
-              <span class="news-item__cat news-item__cat--acquisition">Acquisition</span>
-            </div>
-            <div class="news-item__body">
-              <h3>FirstCall Group Acquires C2H in Atlanta</h3>
-              <p>FirstCall Group announces the acquisition of C2H, a full-service commercial mechanical company based in Lawrenceville, Georgia, marking the network's entry into the Southeast.</p>
-            </div>
-          </article>
-
-          <article class="news-item" data-cat="acquisition">
-            <div class="news-item__meta">
-              <div class="news-item__date">May 4, 2024</div>
-              <span class="news-item__cat news-item__cat--acquisition">Acquisition</span>
-            </div>
-            <div class="news-item__body">
-              <h3>Charlotte Temp Controls Joins the FirstCall Network</h3>
-              <p>FirstCall has acquired Charlotte Temp Controls, a building controls specialist serving the greater Charlotte area, strengthening the network's BAS/DDC capabilities.</p>
-            </div>
-          </article>
-
-          <article class="news-item" data-cat="leadership">
-            <div class="news-item__meta">
-              <div class="news-item__date">Mar 5, 2024</div>
-              <span class="news-item__cat news-item__cat--leadership">Leadership</span>
-            </div>
-            <div class="news-item__body">
-              <h3>Brian Kelly Named Chief Financial Officer</h3>
-              <p>FirstCall Group announces the appointment of Brian Kelly as Chief Financial Officer. Brian brings deep experience in commercial services finance and will lead FirstCall's financial strategy and operations.</p>
-            </div>
-          </article>
-
-          <article class="news-item" data-cat="company">
-            <div class="news-item__meta">
-              <div class="news-item__date">Jan 8, 2024</div>
-              <span class="news-item__cat">Company News</span>
-            </div>
-            <div class="news-item__body">
-              <h3>FirstCall Group Surpasses 20 Branches Nationwide</h3>
-              <p>With recent additions, FirstCall Group's network has grown to over 20 commercial mechanical service branches across 10+ states — and continues to expand through strategic partnerships.</p>
-            </div>
-          </article>
-
-          <article class="news-item" data-cat="acquisition">
-            <div class="news-item__meta">
-              <div class="news-item__date">Oct 17, 2023</div>
-              <span class="news-item__cat news-item__cat--acquisition">Acquisition</span>
-            </div>
-            <div class="news-item__body">
-              <h3>FirstCall Welcomes Comfortrol in Columbus</h3>
-              <p>FirstCall Group has acquired Comfortrol, a longstanding commercial HVAC and controls business in Columbus, Ohio, strengthening the network's Midwest operations.</p>
-            </div>
-          </article>
-
-          <article class="news-item" data-cat="company">
-            <div class="news-item__meta">
-              <div class="news-item__date">Mar 1, 2023</div>
-              <span class="news-item__cat">Company News</span>
-            </div>
-            <div class="news-item__body">
-              <h3>FirstCall Group Founded by Evan Eachus</h3>
-              <p>FirstCall Group launches with a mission to build a national network of leading regional commercial mechanical service companies — partnering with owners who built durable businesses and keeping local leadership in place.</p>
-            </div>
-          </article>
-
+          <!-- Populated from assets/js/news-data.js -->
         </div>
-
         <div class="news-empty" data-news-empty>No news items match this filter.</div>
       </div>
     </section>
@@ -532,8 +308,33 @@
     </div>
   </footer>
 
+  <script src="assets/js/news-data.js"></script>
   <script>
     (function () { "use strict";
+      function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+        });
+      }
+      function initNewsList() {
+        var list = document.querySelector("[data-news-list]");
+        if (!list || !window.NEWS_DATA) return;
+        var html = window.NEWS_DATA.map(function (n) {
+          return ''
+            + '<article class="news-item" data-cat="' + escapeHtml(n.category) + '">'
+              + '<div class="news-item__meta">'
+                + '<time class="news-item__date" datetime="' + escapeHtml(n.isoDate) + '">' + escapeHtml(n.date) + '</time>'
+                + '<span class="news-item__cat news-item__cat--' + escapeHtml(n.category) + '">' + escapeHtml(n.categoryLabel) + '</span>'
+              + '</div>'
+              + '<div class="news-item__body">'
+                + '<h3>' + escapeHtml(n.headline) + '</h3>'
+                + '<p>' + escapeHtml(n.summary) + '</p>'
+                + '<a class="news-item__link" href="news/article.html?id=' + encodeURIComponent(n.id) + '">Read more</a>'
+              + '</div>'
+            + '</article>';
+        }).join("");
+        list.innerHTML = html;
+      }
       function initMobileNav() {
         var toggle = document.querySelector("[data-menu-toggle]"); var nav = document.querySelector("[data-site-nav]");
         if (!toggle || !nav) return;
@@ -578,8 +379,8 @@
           });
         });
       }
-      if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", function () { initMobileNav(); initHeaderScroll(); initFilters(); }); }
-      else { initMobileNav(); initHeaderScroll(); initFilters(); }
+      if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", function () { initMobileNav(); initHeaderScroll(); initNewsList(); initFilters(); }); }
+      else { initMobileNav(); initHeaderScroll(); initNewsList(); initFilters(); }
     })();
   </script>
 </body>

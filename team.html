@@ -79,7 +79,7 @@
     .site-header.is-scrolled { box-shadow: 0 1px 0 rgba(0,0,0,0.4), var(--shadow-sm); background: rgba(15, 40, 20, 0.97); }
     .site-header__inner { width: 100%; max-width: var(--container-2xl); margin-inline: auto; padding-inline: var(--pad-x); display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); }
     .site-header__logo { display: inline-flex; align-items: center; text-decoration: none; }
-    .site-header__logo svg { height: 40px; width: auto; display: block; }
+    .site-header__logo svg { height: 56px; width: auto; display: block; }
     .site-nav { display: flex; align-items: center; gap: var(--space-6); }
     .site-nav__link { font-family: var(--font-body); font-size: var(--text-base); font-weight: var(--weight-medium); color: var(--color-text-on-dark); text-decoration: none; padding: var(--space-2) 0; position: relative; transition: color var(--duration-base) var(--ease-out); }
     .site-nav__link::after { content: ""; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: var(--color-accent-light); transition: width var(--duration-base) var(--ease-out); }
@@ -236,11 +236,13 @@
       aspect-ratio: 1 / 1;
       border-radius: var(--radius-lg);
       overflow: hidden;
-      background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+      background: #fff;
+      border: 1px solid var(--color-border);
       position: relative;
     }
     .bio-modal__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
     .bio-modal__photo[data-empty="true"] img { display: none; }
+    .bio-modal__photo[data-empty="true"] { background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark)); border-color: var(--color-accent-dark); }
     .bio-modal__photo-initials {
       position: absolute; inset: 0;
       display: none;
@@ -248,10 +250,27 @@
       font-family: var(--font-display);
       font-size: clamp(2.5rem, 6vw, 3.75rem);
       font-weight: var(--weight-bold);
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.85);
       letter-spacing: 0.04em;
     }
     .bio-modal__photo[data-empty="true"] .bio-modal__photo-initials { display: flex; }
+    .bio-modal__contacts {
+      display: flex; gap: var(--space-3);
+      margin-top: var(--space-3);
+      justify-content: center;
+    }
+    .bio-modal__contact {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px;
+      border-radius: var(--radius-pill);
+      background: var(--color-bg-soft);
+      color: var(--color-accent);
+      border: 1px solid var(--color-border);
+      transition: background var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+    }
+    .bio-modal__contact:hover { background: var(--color-accent); color: #fff; transform: translateY(-1px); border-color: var(--color-accent); }
+    .bio-modal__contact svg { width: 18px; height: 18px; }
+    .bio-modal__contact[hidden] { display: none; }
     .bio-modal__body { display: flex; flex-direction: column; }
     .bio-modal__name { font-family: var(--font-display); font-size: var(--text-3xl); font-weight: var(--weight-bold); letter-spacing: var(--tracking-tight); margin-bottom: var(--space-2); }
     .bio-modal__title { color: var(--color-accent); font-size: var(--text-base); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: var(--tracking-caps); margin-bottom: var(--space-5); }
@@ -346,8 +365,10 @@
           <button type="button" class="leader" data-bio-trigger
                   data-name="Evan Eachus"
                   data-title="Chief Executive Officer &amp; Founder"
-                  data-photo="reference/headshots/Evan.jpg"
-                  data-bio="Evan Eachus founded FirstCall Mechanical in 2022 and serves as the CEO. Evan has deep experience in the commercial and industrial sectors. He was previously a senior investor at Sycamore Partners, a $10 billion private equity firm. While there, Evan served on the board of directors of Staples, Inc., the leading office supplies distributor and retailer. Evan is based in Austin, TX.">
+                  data-photo="assets/headshots/Evan.jpg"
+                  data-bio="Evan Eachus founded FirstCall Mechanical in 2022 and serves as the CEO. Evan has deep experience in the commercial and industrial sectors. He was previously a senior investor at Sycamore Partners, a $10 billion private equity firm. While there, Evan served on the board of directors of Staples, Inc., the leading office supplies distributor and retailer. Evan is based in Austin, TX."
+                  data-email=""
+                  data-linkedin="">
             <div class="leader__photo">
               <img class="leader__img leader__img--bw" src="assets/headshots/evan_BW.jpg" alt="" aria-hidden="true" loading="lazy" />
               <img class="leader__img leader__img--color" src="assets/headshots/Evan.jpg" alt="Evan Eachus, Chief Executive Officer and Founder" loading="lazy" />
@@ -362,7 +383,9 @@
                   data-name="Jeff Holland"
                   data-title="Chief Operating Officer"
                   data-initials="JH"
-                  data-bio="Bio coming soon.">
+                  data-bio="Bio coming soon."
+                  data-email=""
+                  data-linkedin="">
             <div class="leader__photo leader__photo--placeholder" aria-hidden="true">
               <span>JH</span>
             </div>
@@ -375,8 +398,10 @@
           <button type="button" class="leader" data-bio-trigger
                   data-name="Brian Kelly"
                   data-title="Chief Financial Officer"
-                  data-photo="reference/headshots/Brian.jpg"
-                  data-bio="Brian Kelly joined FirstCall in 2023 and serves as the Chief Financial Officer. Brian has over 25 years of corporate finance experience, including over 10 years as CFO of private equity portfolio companies. Brian has extensive experience in high-growth companies across numerous industries, leading back-office operations through periods of rapid expansion and transformation. Before joining FirstCall, Brian served as CFO of United PF Management, a leading Planet Fitness franchisee group. Prior to that, Brian served as CFO of Kendra Scott Design, a high-growth consumer-retail company. Brian is based in Austin, TX.">
+                  data-photo="assets/headshots/Brian.jpg"
+                  data-bio="Brian Kelly joined FirstCall in 2023 and serves as the Chief Financial Officer. Brian has over 25 years of corporate finance experience, including over 10 years as CFO of private equity portfolio companies. Brian has extensive experience in high-growth companies across numerous industries, leading back-office operations through periods of rapid expansion and transformation. Before joining FirstCall, Brian served as CFO of United PF Management, a leading Planet Fitness franchisee group. Prior to that, Brian served as CFO of Kendra Scott Design, a high-growth consumer-retail company. Brian is based in Austin, TX."
+                  data-email=""
+                  data-linkedin="">
             <div class="leader__photo">
               <img class="leader__img leader__img--bw" src="assets/headshots/brian_BW.jpg" alt="" aria-hidden="true" loading="lazy" />
               <img class="leader__img leader__img--color" src="assets/headshots/Brian.jpg" alt="Brian Kelly, Chief Financial Officer" loading="lazy" />
@@ -390,8 +415,10 @@
           <button type="button" class="leader" data-bio-trigger
                   data-name="Kay Stroman"
                   data-title="Chief Human Resources Officer"
-                  data-photo="reference/headshots/Kay.jpg"
-                  data-bio="Kay Stroman joined FirstCall in 2024 and serves as our Chief Human Resources Officer. Kay has over 35 years of experience in human resources, spanning key HR disciplines at all stages of an organization&#8217;s growth. Prior to joining FirstCall, Kay served as Interim Chief People Officer of Austin based technology consulting firm, Headspring, until its acquisition by Accenture. Previously, Kay was on the founding executive team of Silvercar, Inc, a fast-growing rental car company acquired by Audi in 2017. Kay is based in Austin, TX.">
+                  data-photo="assets/headshots/Kay.jpg"
+                  data-bio="Kay Stroman joined FirstCall in 2024 and serves as our Chief Human Resources Officer. Kay has over 35 years of experience in human resources, spanning key HR disciplines at all stages of an organization&#8217;s growth. Prior to joining FirstCall, Kay served as Interim Chief People Officer of Austin based technology consulting firm, Headspring, until its acquisition by Accenture. Previously, Kay was on the founding executive team of Silvercar, Inc, a fast-growing rental car company acquired by Audi in 2017. Kay is based in Austin, TX."
+                  data-email=""
+                  data-linkedin="">
             <div class="leader__photo">
               <img class="leader__img leader__img--bw" src="assets/headshots/kay_BW.jpg" alt="" aria-hidden="true" loading="lazy" />
               <img class="leader__img leader__img--color" src="assets/headshots/Kay.jpg" alt="Kay Stroman, Chief Human Resources Officer" loading="lazy" />
@@ -405,8 +432,10 @@
           <button type="button" class="leader" data-bio-trigger
                   data-name="Matthew Hunt"
                   data-title="Chief Commercial Officer"
-                  data-photo="reference/headshots/Matthew_hunt.png"
-                  data-bio="Matthew Hunt joined FirstCall Mechanical in 2024 and serves as Chief Commercial Officer, overseeing operations for Georgia, Florida, and Texas. Matthew brings 20+ years of experience in commercial HVAC and electrical contracting. Prior to FirstCall, he was President and Founder of C2H Air and Electric, which partnered with FirstCall in 2024. Matthew is a licensed Professional Engineer and holds a BS in Mechanical Engineering from the Georgia Institute of Technology. Matthew is based in Atlanta, GA.">
+                  data-photo="assets/headshots/Matthew_hunt.jpg"
+                  data-bio="Matthew Hunt joined FirstCall Mechanical in 2024 and serves as Chief Commercial Officer, overseeing operations for Georgia, Florida, and Texas. Matthew brings 20+ years of experience in commercial HVAC and electrical contracting. Prior to FirstCall, he was President and Founder of C2H Air and Electric, which partnered with FirstCall in 2024. Matthew is a licensed Professional Engineer and holds a BS in Mechanical Engineering from the Georgia Institute of Technology. Matthew is based in Atlanta, GA."
+                  data-email=""
+                  data-linkedin="">
             <div class="leader__photo">
               <img class="leader__img leader__img--bw leader__img--filtered" src="assets/headshots/Matthew_hunt.jpg" alt="" aria-hidden="true" loading="lazy" />
               <img class="leader__img leader__img--color" src="assets/headshots/Matthew_hunt.jpg" alt="Matthew Hunt, Chief Commercial Officer" loading="lazy" />
@@ -420,8 +449,10 @@
           <button type="button" class="leader" data-bio-trigger
                   data-name="Chris Landreth"
                   data-title="Senior VP of M&amp;A, Integration"
-                  data-photo="reference/headshots/Chris_Landreth.png"
-                  data-bio="Chris Landreth joined FirstCall Mechanical in 2022 and serves as Senior VP of M&amp;A, Integration, overseeing operations for Ohio, New York, Virginia, and the Carolinas. Chris brings over 20+ years of experience in the commercial HVAC industry, previously serving as President and Co-Founder of STR Mechanical, FirstCall&#8217;s first partnership in 2022. Chris holds a BS from University of North Carolina &mdash; Charlotte. Chris is based in Charlotte, NC.">
+                  data-photo="assets/headshots/Chris_Landreth.jpg"
+                  data-bio="Chris Landreth joined FirstCall Mechanical in 2022 and serves as Senior VP of M&amp;A, Integration, overseeing operations for Ohio, New York, Virginia, and the Carolinas. Chris brings over 20+ years of experience in the commercial HVAC industry, previously serving as President and Co-Founder of STR Mechanical, FirstCall&#8217;s first partnership in 2022. Chris holds a BS from University of North Carolina &mdash; Charlotte. Chris is based in Charlotte, NC."
+                  data-email=""
+                  data-linkedin="">
             <div class="leader__photo">
               <img class="leader__img leader__img--bw leader__img--filtered" src="assets/headshots/Chris_Landreth.jpg" alt="" aria-hidden="true" loading="lazy" />
               <img class="leader__img leader__img--color" src="assets/headshots/Chris_Landreth.jpg" alt="Chris Landreth, Senior VP of M&amp;A, Integration" loading="lazy" />
@@ -435,8 +466,10 @@
           <button type="button" class="leader" data-bio-trigger
                   data-name="Chris Patrick"
                   data-title="Head of Acquisitions"
-                  data-photo="reference/headshots/Chris_Patrick.png"
-                  data-bio="Chris Patrick joined FirstCall in 2023 as the Head of Acquisitions. Chris leads FirstCall&#8217;s M&amp;A strategy, identifying and executing acquisitions in the commercial and industrial services sector. Prior to FirstCall, Chris led M&amp;A at a platform in the home services sector. Chris&#8217;s previous experience was in investing, M&amp;A consulting, and accounting. Chris is based in Austin, TX.">
+                  data-photo="assets/headshots/Chris_Patrick.jpg"
+                  data-bio="Chris Patrick joined FirstCall in 2023 as the Head of Acquisitions. Chris leads FirstCall&#8217;s M&amp;A strategy, identifying and executing acquisitions in the commercial and industrial services sector. Prior to FirstCall, Chris led M&amp;A at a platform in the home services sector. Chris&#8217;s previous experience was in investing, M&amp;A consulting, and accounting. Chris is based in Austin, TX."
+                  data-email=""
+                  data-linkedin="">
             <div class="leader__photo">
               <img class="leader__img leader__img--bw leader__img--filtered" src="assets/headshots/Chris_Patrick.jpg" alt="" aria-hidden="true" loading="lazy" />
               <img class="leader__img leader__img--color" src="assets/headshots/Chris_Patrick.jpg" alt="Chris Patrick, Head of Acquisitions" loading="lazy" />
@@ -455,9 +488,19 @@
       <div class="bio-modal__backdrop" data-bio-close></div>
       <div class="bio-modal__panel">
         <button type="button" class="bio-modal__close" data-bio-close aria-label="Close bio">&times;</button>
-        <div class="bio-modal__photo" data-bio-photo>
-          <img data-bio-img src="" alt="" />
-          <span class="bio-modal__photo-initials" data-bio-initials aria-hidden="true"></span>
+        <div>
+          <div class="bio-modal__photo" data-bio-photo>
+            <img data-bio-img src="" alt="" />
+            <span class="bio-modal__photo-initials" data-bio-initials aria-hidden="true"></span>
+          </div>
+          <div class="bio-modal__contacts">
+            <a class="bio-modal__contact" data-bio-email hidden aria-label="Email" href="#">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+            <a class="bio-modal__contact" data-bio-linkedin hidden aria-label="LinkedIn profile" href="#" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+            </a>
+          </div>
         </div>
         <div class="bio-modal__body">
           <h2 class="bio-modal__name" id="bio-modal-name" data-bio-name></h2>
@@ -520,6 +563,8 @@
         var nameEl = modal.querySelector("[data-bio-name]");
         var titleEl = modal.querySelector("[data-bio-title]");
         var textEl = modal.querySelector("[data-bio-text]");
+        var emailEl = modal.querySelector("[data-bio-email]");
+        var linkedinEl = modal.querySelector("[data-bio-linkedin]");
         var lastTrigger = null;
         function open(trigger) {
           lastTrigger = trigger;
@@ -528,6 +573,8 @@
           var photo = trigger.getAttribute("data-photo") || "";
           var inits = trigger.getAttribute("data-initials") || "";
           var bio = trigger.getAttribute("data-bio") || "";
+          var email = trigger.getAttribute("data-email") || "";
+          var linkedin = trigger.getAttribute("data-linkedin") || "";
           nameEl.textContent = name;
           titleEl.innerHTML = title;
           textEl.innerHTML = "";
@@ -548,6 +595,14 @@
             img.setAttribute("src", "");
             img.setAttribute("alt", "");
             initials.textContent = inits;
+          }
+          if (emailEl) {
+            if (email) { emailEl.setAttribute("href", "mailto:" + email); emailEl.removeAttribute("hidden"); }
+            else { emailEl.setAttribute("hidden", ""); }
+          }
+          if (linkedinEl) {
+            if (linkedin) { linkedinEl.setAttribute("href", linkedin); linkedinEl.removeAttribute("hidden"); }
+            else { linkedinEl.setAttribute("hidden", ""); }
           }
           modal.classList.add("is-open");
           modal.setAttribute("aria-hidden", "false");

@@ -25,6 +25,8 @@ desktop.ini
 # But allow videos that the site actually uses
 !shared/img/videos/
 !shared/img/videos/**
+!assets/**/videos/
+!assets/**/videos/**
 
 # Node (if you add it later)
 node_modules/

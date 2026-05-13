@@ -241,7 +241,7 @@
       gap: var(--space-6);
     }
     .site-header__logo { display: inline-flex; align-items: center; text-decoration: none; }
-    .site-header__logo svg { height: 40px; width: auto; display: block; }
+    .site-header__logo svg { height: 56px; width: auto; display: block; }
 
     .site-nav { display: flex; align-items: center; gap: var(--space-6); }
     .site-nav__link {
@@ -889,7 +889,7 @@
 
       <div class="container">
         <div class="hero__inner">
-          <span class="hero__eyebrow">FirstCall · Coast-to-Coast Commercial Mechanical</span>
+          <span class="hero__eyebrow">FirstCall · Multi-Region Commercial Mechanical</span>
           <h1 class="hero__title">Durable partnerships, built across the country.</h1>
           <p class="hero__lede">
             FirstCall is a multi-region commercial mechanical service platform —
@@ -1340,12 +1340,14 @@
           maxBounds: L.latLngBounds([[15, -140], [55, -55]]),
           maxBoundsViscosity: 1.0,
           minZoom: 3,
+          zoomSnap: 1,
+          zoomDelta: 1,
+          fadeAnimation: false,
         });
         map.attributionControl.setPrefix('<a href="https://leafletjs.com" rel="noopener">Leaflet</a>');
-        L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+        L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png", {
           subdomains: "abcd",
           maxZoom: 19,
-          detectRetina: true,
           noWrap: true,
           bounds: [[-85, -180], [85, 180]],
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions" rel="noopener">CARTO</a>',
@@ -1386,8 +1388,9 @@
         });
         console.log("[fc-map] rendered " + rendered + " branches, skipped " + skipped);
         map.once("click", function () { map.scrollWheelZoom.enable(); });
-        map.fitBounds(US_BOUNDS, { padding: [10, 10] });
-        setTimeout(function () { map.invalidateSize(); map.fitBounds(US_BOUNDS, { padding: [10, 10] }); }, 100);
+        // Integer-zoom setView avoids fractional-zoom tile scaling that causes blur.
+        map.setView([35.5, -84], 5);
+        setTimeout(function () { map.invalidateSize(); map.setView([35.5, -84], 5); }, 100);
       }
 
       if (document.readyState === "loading") {
