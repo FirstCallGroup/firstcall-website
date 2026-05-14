@@ -752,7 +752,9 @@
     .site-nav__caret { width: 12px; height: 12px; transition: transform var(--duration-base) var(--ease-out); }
     .site-nav__dropdown-toggle[aria-expanded="true"] .site-nav__caret { transform: rotate(180deg); }
     .site-nav__dropdown {
-      position: absolute; top: calc(100% + 6px); left: -8px;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: -8px;
       min-width: 240px;
       background: rgba(15, 40, 20, 0.97);
       backdrop-filter: saturate(180%) blur(10px);
@@ -761,11 +763,10 @@
       border-radius: var(--radius-md);
       padding: var(--space-2);
       box-shadow: var(--shadow-lg);
-      opacity: 0; pointer-events: none; transform: translateY(-4px);
-      transition: opacity var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
-      z-index: 1;
+      display: none;
+      z-index: 1000;
     }
-    .site-nav__dropdown.is-open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .site-nav__dropdown.is-open { display: block; }
     .site-nav__dropdown-link {
       display: block; padding: var(--space-3); color: var(--color-text-on-dark);
       border-radius: var(--radius-sm); font-size: var(--text-base);
@@ -783,13 +784,12 @@
         font-size: var(--text-lg);
       }
       .site-nav__dropdown {
-        position: static; opacity: 1; pointer-events: auto; transform: none;
+        position: static;
         background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none;
         border: none; border-radius: 0; box-shadow: none; padding: 0; min-width: 0;
-        max-height: 0; overflow: hidden;
-        transition: max-height var(--duration-slow) var(--ease-out);
+        display: none;
       }
-      .site-nav__dropdown.is-open { max-height: 400px; }
+      .site-nav__dropdown.is-open { display: block; }
       .site-nav__dropdown-link {
         padding-block: var(--space-3); padding-left: var(--space-5);
         border-bottom: 1px solid rgba(74, 125, 82, 0.25);
@@ -940,14 +940,14 @@
             <a class="site-nav__dropdown-link" href="/central-texas">Austin, TX</a>
           </div>
         </div>
-        <a class="site-nav__link" href="/locations">All Network Branches</a>
-        <a class="site-nav__link" href="/careers">Careers</a>
-        <a class="site-nav__link" href="/contact">Contact</a>
+        <a class="site-nav__link" href="/mechanical/locations">All Network Branches</a>
+        <a class="site-nav__link" href="/mechanical/careers">Careers</a>
+        <a class="site-nav__link" href="/mechanical/contact">Contact</a>
         <a class="site-nav__link" href="/" rel="noopener">FirstCall Group</a>
       </nav>
 
       <div class="site-header__cta">
-        <a class="btn btn--primary btn--sm hide-mobile" href="/contact">Get in Touch</a>
+        <a class="btn btn--primary btn--sm hide-mobile" href="/mechanical/contact">Get in Touch</a>
         <button class="menu-toggle" data-menu-toggle aria-label="Open menu" aria-expanded="false">
           <span class="menu-toggle__bars" aria-hidden="true"></span>
         </button>
@@ -1057,7 +1057,7 @@
 
           <article class="loc-card" data-state="OH" data-loc="firstcall mechanical columbus oh ohio 3155 lamb avenue, columbus, oh 43219">
             <span class="loc-card__location">Columbus, OH</span>
-            <h3 class="loc-card__brand"><a class="loc-card__link" href="columbus.html" rel="noopener">FirstCall Mechanical — Columbus</a></h3>
+            <h3 class="loc-card__brand"><a class="loc-card__link" href="/columbus" rel="noopener">FirstCall Mechanical — Columbus</a></h3>
             <p class="loc-card__addr">3155 Lamb Avenue, Columbus, OH 43219</p>
             <span class="loc-card__cta">Visit firstcallmechanical.com/columbus</span>
           </article>          <article class="loc-card" data-state="OH" data-loc="cls facility services mentor oh ohio 8061 tyler boulevard, mentor, oh 44060">
@@ -1109,12 +1109,12 @@
 
           <article class="loc-card" data-state="TX" data-loc="firstcall mechanical — central texas austin tx texas 10421 old manchaca road, suite 410, austin, tx 78748">
             <span class="loc-card__location">Austin, TX</span>
-            <h3 class="loc-card__brand"><a class="loc-card__link" href="central-texas.html" rel="noopener">FirstCall Mechanical — Austin</a></h3>
+            <h3 class="loc-card__brand"><a class="loc-card__link" href="/central-texas" rel="noopener">FirstCall Mechanical — Austin</a></h3>
             <p class="loc-card__addr">10421 Old Manchaca Road, Suite 410, Austin, TX 78748</p>
             <span class="loc-card__cta">Visit firstcallmechanical.com/central-texas</span>
           </article>          <article class="loc-card" data-state="TX" data-loc="firstcall mechanical — dfw dallas fort worth carrollton tx texas 1750 briercroft court, suite 128, carrollton, tx 75006">
             <span class="loc-card__location">Dallas-Fort Worth, TX</span>
-            <h3 class="loc-card__brand"><a class="loc-card__link" href="dfw.html" rel="noopener">FirstCall Mechanical — DFW</a></h3>
+            <h3 class="loc-card__brand"><a class="loc-card__link" href="/dfw" rel="noopener">FirstCall Mechanical — DFW</a></h3>
             <p class="loc-card__addr">1750 Briercroft Court, Suite 128, Carrollton, TX 75006</p>
             <span class="loc-card__cta">Visit firstcallmechanical.com/dfw</span>
           </article>
@@ -1328,7 +1328,7 @@
         <div>
           <div class="site-footer__heading">FirstCall Network</div>
           <ul class="site-footer__list">
-            <li><a href="/locations">All Network Branches</a></li>
+            <li><a href="/mechanical/locations">All Network Branches</a></li>
             <li><a href="/" rel="noopener">FirstCall Group</a></li>
           </ul>
         </div>
@@ -1336,8 +1336,8 @@
           <div class="site-footer__heading">Connect</div>
           <ul class="site-footer__list">
             <li><a href="https://www.linkedin.com/company/firstcall-mechanical/" rel="noopener">LinkedIn</a></li>
-            <li><a href="/careers">Careers</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><a href="/mechanical/careers">Careers</a></li>
+            <li><a href="/mechanical/contact">Contact</a></li>
           </ul>
         </div>
       </div>

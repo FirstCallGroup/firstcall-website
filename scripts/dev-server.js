@@ -57,9 +57,26 @@ http
       fs.createReadStream(fp).pipe(res);
     };
 
+    const tryHtmlSibling = () => {
+      // For extensionless paths, prefer <path>.html if it exists.
+      // This handles the common case where /columbus.html is the page
+      // and /columbus/ is a subdirectory of nested pages — Cloudflare
+      // Pages serves /columbus from /columbus.html in that case.
+      if (path.extname(filePath)) return false;
+      const htmlPath = filePath + ".html";
+      try {
+        const st = fs.statSync(htmlPath);
+        if (st.isFile()) { serve(htmlPath); return true; }
+      } catch (_) {}
+      return false;
+    };
+
     fs.stat(filePath, (err, stat) => {
       if (!err && stat.isFile()) return serve(filePath);
+      // For a directory: prefer <dir>.html if it exists (mirrors Cloudflare Pages),
+      // otherwise fall back to <dir>/index.html.
       if (!err && stat.isDirectory()) {
+        if (tryHtmlSibling()) return;
         const idx = path.join(filePath, "index.html");
         return fs.stat(idx, (e2, s2) => {
           if (!e2 && s2.isFile()) return serve(idx);
@@ -67,15 +84,8 @@ http
           return res.end("not found: " + pathname);
         });
       }
-      // Try appending .html for extensionless requests (e.g. /columbus -> /columbus.html)
-      if (!path.extname(filePath)) {
-        const htmlPath = filePath + ".html";
-        return fs.stat(htmlPath, (e2, s2) => {
-          if (!e2 && s2.isFile()) return serve(htmlPath);
-          res.writeHead(404, { "content-type": "text/plain" });
-          return res.end("not found: " + pathname);
-        });
-      }
+      // Path doesn't exist as file or dir — try <path>.html.
+      if (tryHtmlSibling()) return;
       res.writeHead(404, { "content-type": "text/plain" });
       return res.end("not found: " + pathname);
     });

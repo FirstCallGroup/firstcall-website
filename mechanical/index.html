@@ -849,12 +849,10 @@
       border-radius: var(--radius-md);
       padding: var(--space-2);
       box-shadow: var(--shadow-lg);
-      opacity: 0; pointer-events: none;
-      transform: translateY(-4px);
-      transition: opacity var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
-      z-index: 1;
+      display: none;
+      z-index: 1000;
     }
-    .site-nav__dropdown.is-open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .site-nav__dropdown.is-open { display: block; }
     .site-nav__dropdown-link {
       display: block;
       padding: var(--space-3);
@@ -878,13 +876,11 @@
       }
       .site-nav__dropdown {
         position: static;
-        opacity: 1; pointer-events: auto; transform: none;
         background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none;
         border: none; border-radius: 0; box-shadow: none; padding: 0; min-width: 0;
-        max-height: 0; overflow: hidden;
-        transition: max-height var(--duration-slow) var(--ease-out);
+        display: none;
       }
-      .site-nav__dropdown.is-open { max-height: 400px; }
+      .site-nav__dropdown.is-open { display: block; }
       .site-nav__dropdown-link {
         padding-block: var(--space-3);
         padding-left: var(--space-5);
@@ -1035,14 +1031,14 @@
             <a class="site-nav__dropdown-link" href="/central-texas">Austin, TX</a>
           </div>
         </div>
-        <a class="site-nav__link" href="/locations">All Network Branches</a>
-        <a class="site-nav__link" href="/careers">Careers</a>
-        <a class="site-nav__link" href="/contact">Contact</a>
+        <a class="site-nav__link" href="/mechanical/locations">All Network Branches</a>
+        <a class="site-nav__link" href="/mechanical/careers">Careers</a>
+        <a class="site-nav__link" href="/mechanical/contact">Contact</a>
         <a class="site-nav__link" href="/" rel="noopener">FirstCall Group</a>
       </nav>
 
       <div class="site-header__cta">
-        <a class="btn btn--primary btn--sm hide-mobile" href="/contact">Get in Touch</a>
+        <a class="btn btn--primary btn--sm hide-mobile" href="/mechanical/contact">Get in Touch</a>
         <button class="menu-toggle" data-menu-toggle aria-label="Open menu" aria-expanded="false">
           <span class="menu-toggle__bars" aria-hidden="true"></span>
         </button>
@@ -1071,7 +1067,7 @@
           </p>
           <div class="hero__cta">
             <a class="btn btn--primary btn--lg" href="#locations">Find a branch</a>
-            <a class="btn btn--outline btn--lg" href="/contact">Get in Touch</a>
+            <a class="btn btn--outline btn--lg" href="/mechanical/contact">Get in Touch</a>
           </div>
         </div>
       </div>
@@ -1258,7 +1254,7 @@
           <!-- Branch data is now in assets/js/locations-data.js as window.FC_LOCATIONS -->
         </div>
         <div style="text-align:center; margin-top:var(--space-6)">
-          <a href="/locations" class="btn btn--primary">View All Locations</a>
+          <a href="/mechanical/locations" class="btn btn--primary">View All Locations</a>
         </div>
       </div>
     </section>
@@ -1284,7 +1280,7 @@
         <div>
           <div class="site-footer__heading">FirstCall Network</div>
           <ul class="site-footer__list">
-            <li><a href="/locations">All Network Branches</a></li>
+            <li><a href="/mechanical/locations">All Network Branches</a></li>
             <li><a href="/" rel="noopener">FirstCall Group</a></li>
           </ul>
         </div>
@@ -1292,8 +1288,8 @@
           <div class="site-footer__heading">Connect</div>
           <ul class="site-footer__list">
             <li><a href="https://www.linkedin.com/company/firstcall-mechanical/" rel="noopener">LinkedIn</a></li>
-            <li><a href="/careers">Careers</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><a href="/mechanical/careers">Careers</a></li>
+            <li><a href="/mechanical/contact">Contact</a></li>
           </ul>
         </div>
       </div>
