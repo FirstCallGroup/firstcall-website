@@ -67,10 +67,11 @@ const branches = [
   { brand: "LC Anderson",                 city: "Boston",       state: "MA", addr: "15 Soldiers Field Place, Boston, MA 02135",     url: "https://www.lc-anderson.com/",                              phone: null,             lat: 42.3601, lng: -71.0589 },
 
   // Louisiana
-  { brand: "Optimum Air Solutions",       city: "Belle Chasse", state: "LA", addr: "127 Keating Drive, Belle Chasse, LA 70037",     url: null,                                                        phone: null,             lat: 29.8552, lng: -89.9906 },
+  { brand: "Optimum Air Solutions",       city: "Belle Chasse", state: "LA", addr: "127 Keating Drive, Belle Chasse, LA 70037",     url: "https://optimumairsolutions.com/",                          phone: null,             lat: 29.8552, lng: -89.9906 },
 
   // New Jersey
-  { brand: "Statewide",                   city: "South Amboy",  state: "NJ", addr: "6200 Main Street, South Amboy, NJ 08879",       url: null,                                                        phone: null,             lat: 40.4862, lng: -74.2782 },
+  { brand: "Automated Building Solutions (ABS)", city: "South Amboy", state: "NJ", addr: "PO Box 3186, South Amboy, NJ 08879",     url: "https://absautomation.com/",                                phone: null,             lat: 40.4862, lng: -74.2782 },
+  { brand: "Statewide",                   city: "South Amboy",  state: "NJ", addr: "6200 Main Street, South Amboy, NJ 08879",       url: "https://www.statewideconditioninginc.com/",                 phone: null,             lat: 40.4862, lng: -74.2782 },
 ];
 
 const STATE_NAMES = {

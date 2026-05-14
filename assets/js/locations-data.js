@@ -224,7 +224,7 @@ window.FC_LOCATIONS = [
     "city": "Belle Chasse",
     "state": "LA",
     "addr": "127 Keating Drive, Belle Chasse, LA 70037",
-    "url": null,
+    "url": "https://optimumairsolutions.com/",
     "phone": null,
     "lat": 29.8552,
     "lng": -89.9906
@@ -234,7 +234,17 @@ window.FC_LOCATIONS = [
     "city": "South Amboy",
     "state": "NJ",
     "addr": "6200 Main Street, South Amboy, NJ 08879",
-    "url": null,
+    "url": "https://www.statewideconditioninginc.com/",
+    "phone": null,
+    "lat": 40.4862,
+    "lng": -74.2782
+  },
+  {
+    "brand": "Automated Building Solutions (ABS)",
+    "city": "South Amboy",
+    "state": "NJ",
+    "addr": "PO Box 3186, South Amboy, NJ 08879",
+    "url": "https://absautomation.com/",
     "phone": null,
     "lat": 40.4862,
     "lng": -74.2782
