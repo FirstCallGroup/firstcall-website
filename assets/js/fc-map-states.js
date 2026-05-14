@@ -1,14 +1,17 @@
 /* FirstCall map helper — paints served states + keeps city labels readable
  * above the shading. Loaded by index.html / locations.html alongside Leaflet.
  *
- * Approach:
- *   tilePane  (z=200)  → Voyager base tiles (NO LABELS)
- *   overlayPane (z=400) → states GeoJSON (served = green fill)
+ * Stacking order:
+ *   tilePane     (z=200) → Voyager base tiles (NO LABELS)
+ *   overlayPane  (z=400) → states GeoJSON (green fill on served states)
+ *                          + branch pins (L.circleMarker — same pane, but we
+ *                          call bringToFront() so they paint above polygons)
  *   fcLabelsPane (z=450) → Voyager labels-only tiles (non-interactive)
- *   markerPane (z=600) → branch pins (untouched)
  *
- * This keeps city/state names visible on top of shaded states without putting
- * any grid or pattern overlay on the map itself.
+ * State polygons stay in overlayPane (the only place Leaflet reliably paints
+ * SVG vectors), and we explicitly raise each L.CircleMarker above them after
+ * the (async) GeoJSON fetch resolves. Labels render on top of the shading so
+ * city/state text stays readable.
  */
 (function () {
   "use strict";
@@ -75,12 +78,12 @@
   function addBaseAndStates(map, branches, opts) {
     opts = opts || {};
 
-    // Labels pane sits above overlayPane (where GeoJSON renders).
+    // Labels pane sits above overlayPane so city labels read above shading.
     if (!map.getPane("fcLabelsPane")) {
       map.createPane("fcLabelsPane");
-      var p = map.getPane("fcLabelsPane");
-      p.style.zIndex = 450;
-      p.style.pointerEvents = "none";
+      var lp = map.getPane("fcLabelsPane");
+      lp.style.zIndex = 450;
+      lp.style.pointerEvents = "none";
     }
 
     L.tileLayer(BASE_TILES, {
@@ -104,6 +107,14 @@
             return stateStyle(!!served[feature.properties && feature.properties.name]);
           }
         }).addTo(map);
+        // The geojson loads after the pin loop, so pins ended up under the
+        // polygons in the SVG. Re-raise every circleMarker so they paint on
+        // top of the shading.
+        map.eachLayer(function (layer) {
+          if (layer instanceof L.CircleMarker && typeof layer.bringToFront === "function") {
+            layer.bringToFront();
+          }
+        });
       })
       .catch(function (err) {
         console.warn("[fc-map] states overlay failed:", err && err.message);
@@ -111,7 +122,6 @@
 
     L.tileLayer(LABEL_TILES, {
       subdomains: "abcd",
-      maxZoom: 19,
       noWrap: true,
       bounds: [[-85, -180], [85, 180]],
       pane: "fcLabelsPane",
