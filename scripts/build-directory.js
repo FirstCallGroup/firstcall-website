@@ -32,7 +32,6 @@ const branches = [
   { brand: "Timco",                     city: "Buford",         state: "GA", addr: "5309 Palmero Court, Suite 200, Buford, GA 30518",      url: "https://timcoair.com/",                                 phone: null,             lat: 34.1209, lng: -83.9889 },
 
   // Ohio
-  { brand: "Capital City",              city: "Grove City",     state: "OH", addr: "5929 Haughn Road, Grove City, OH 43123",               url: "https://firstcallmechanical.com/",                      phone: null,             lat: 39.8814, lng: -83.0930 },
   { brand: "CLS Facility Services",     city: "Mentor",         state: "OH", addr: "8061 Tyler Boulevard, Mentor, OH 44060",               url: "https://clsfacilityservices.com/",                      phone: null,             lat: 41.6661, lng: -81.3396 },
   { brand: "Comfortrol",                city: "Columbus",       state: "OH", addr: "3155 Lamb Avenue, Columbus, OH 43219",                 url: "https://www.comfortrol.com/",                           phone: null,             lat: 39.9842, lng: -82.9381 },
 
