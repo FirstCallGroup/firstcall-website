@@ -670,22 +670,8 @@
         update();
       }
       function initForm() {
-        var form = document.querySelector(".contact-form");
-        if (!form) return;
-        // Stopgap: open the visitor's mail client with the form contents pre-filled.
-        // TODO: replace with a real endpoint (Formspree / HubSpot / your CRM).
-        var INBOX = "info@firstcallgroup.com";
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
-          var data = new FormData(form);
-          var lines = [];
-          data.forEach(function (v, k) { if (v) lines.push(k + ": " + v); });
-          var subject = (data.get("subject") || "Inquiry from FirstCall Group site");
-          var body = lines.join("\n");
-          window.location.href = "mailto:" + INBOX +
-            "?subject=" + encodeURIComponent(subject) +
-            "&body=" + encodeURIComponent(body);
-        });
+        // Submissions handled by /assets/js/form-handler.js -> /api/contact (Resend).
+        // Intentional no-op kept so older initForm() call sites don't break.
       }
       if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", function () { initMobileNav();
