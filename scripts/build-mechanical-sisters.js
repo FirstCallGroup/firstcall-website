@@ -275,6 +275,13 @@ function buildOne(sourceFile, destFile, meta) {
     .replace(/href="\/dfw"(?=[^>]*FirstCall Mechanical — DFW)/g,           'href="https://firstcallmechanical.com/dfw"')
     .replace(/href="\/central-texas"(?=[^>]*FirstCall Mechanical — Austin)/g, 'href="https://firstcallmechanical.com/central-texas"');
 
+  // ---- contact.html specific: swap the form id so the FCM contact form
+  //      routes to its FCM recipients instead of the FCG ones. ----
+  html = html.replace(
+    'name="_form" value="fcg-contact"',
+    'name="_form" value="fcm-contact"'
+  );
+
   fs.mkdirSync(path.dirname(destPath), { recursive: true });
   fs.writeFileSync(destPath, html, "utf8");
   console.log(

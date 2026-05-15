@@ -441,7 +441,9 @@
           <h2>Tell us about your business.</h2>
           <p class="lead">Whether you're looking to sell your business or exploring potential partnerships, we invite you to connect with us soon.</p>
         </div>
-        <form class="contact-form" action="#" method="post" novalidate>
+        <form class="contact-form" action="/api/contact" method="POST" data-form-handler novalidate>
+            <input type="hidden" name="_form" value="fcg-acquisitions" />
+            <input type="text" name="_honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none" />
           <div class="form-grid">
             <div class="form-field">
               <label class="form-label" for="f-first">First name <span class="required">*</span></label>
@@ -482,6 +484,7 @@
             </div>
           </div>
           <div class="form-actions">
+            <div data-form-error role="alert" hidden style="margin-top:var(--space-4);padding:var(--space-3) var(--space-4);background:#FEF2F2;border:1px solid #FCA5A5;color:#7F1D1D;border-radius:8px;font-size:0.875rem"></div>
             <button type="submit" class="btn btn--primary btn--lg">Send Message</button>
             <span class="form-help">We typically respond within one business day.</span>
           </div>
@@ -588,5 +591,6 @@
       } else { initMobileNav(); initHeaderScroll(); initForm(); }
     })();
   </script>
+  <script src="/assets/js/form-handler.js" defer></script>
 </body>
 </html>
