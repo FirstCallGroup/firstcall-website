@@ -1421,23 +1421,30 @@
       }
 
       function initIndustries() {
-        var hexes = document.querySelectorAll(".industry-hex");
+        var svg = document.querySelector(".industries-honeycomb");
+        if (!svg) return;
+        var hexes = svg.querySelectorAll(".industry-hex");
         if (!hexes.length) return;
+        function reveal() {
+          hexes.forEach(function (h, idx) {
+            setTimeout(function () { h.classList.add("is-visible"); }, idx * 70);
+          });
+        }
         var prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         if (prefersReduced || !("IntersectionObserver" in window)) {
           hexes.forEach(function (h) { h.classList.add("is-visible"); });
           return;
         }
+        // Observe the parent <svg>, not the inner <g> elements: WebKit mobile
+        // does not fire IntersectionObserver reliably for SVG <g> children.
         var obs = new IntersectionObserver(function (entries) {
           entries.forEach(function (entry) {
             if (!entry.isIntersecting) return;
-            // Stagger reveal by hex order in the SVG
-            var idx = Array.prototype.indexOf.call(hexes, entry.target);
-            setTimeout(function () { entry.target.classList.add("is-visible"); }, idx * 70);
+            reveal();
             obs.unobserve(entry.target);
           });
-        }, { threshold: 0.25 });
-        hexes.forEach(function (h) { obs.observe(h); });
+        }, { threshold: 0.15 });
+        obs.observe(svg);
       }
 
       function initStats() {
