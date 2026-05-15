@@ -42,8 +42,8 @@ const branches = [
   { brand: "STR Mechanical — Raleigh",  city: "Raleigh",        state: "NC", addr: "551 C Pylon Drive, Suite C, Raleigh, NC 27606",        url: "https://strmechanical.com/",                            phone: null,             lat: 35.7926, lng: -78.7036 },
 
   // Texas
-  { brand: "FirstCall Mechanical — DFW",    city: "Carrollton", state: "TX", addr: "1750 Briercroft Court, Suite 128, Carrollton, TX 75006", url: "https://firstcallmechanical.com/",                    phone: "(469) 669-0978", lat: 32.9537, lng: -96.8903 },
-  { brand: "FirstCall Mechanical — Austin", city: "Austin",     state: "TX", addr: "10421 Old Manchaca Road, Suite 410, Austin, TX 78748",   url: "https://firstcallmechanical.com/",                    phone: null,             lat: 30.1763, lng: -97.8362 },
+  { brand: "FirstCall Mechanical — DFW",    city: "Carrollton", state: "TX", addr: "1750 Briercroft Court, Suite 128, Carrollton, TX 75006", url: "https://firstcallmechanical.com/dfw",                 phone: "(469) 669-0978", lat: 32.9537, lng: -96.8903 },
+  { brand: "FirstCall Mechanical — Austin", city: "Austin",     state: "TX", addr: "10421 Old Manchaca Road, Suite 410, Austin, TX 78748",   url: "https://firstcallmechanical.com/central-texas",       phone: null,             lat: 30.1763, lng: -97.8362 },
 
   // New York
   { brand: "ICACS (Industrial Cooling)", city: "Freeport",      state: "NY", addr: "83 Hampton Road, Freeport, NY 11520",                   url: "https://www.industrialcoolinginc.com/welcome.php",   phone: null,             lat: 40.6576, lng: -73.5832 },

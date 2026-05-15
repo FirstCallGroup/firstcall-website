@@ -44,7 +44,7 @@ window.FC_LOCATIONS = [
     "city": "Columbus",
     "state": "OH",
     "addr": "3155 Lamb Avenue, Columbus, OH 43219",
-    "url": "columbus.html",
+    "url": "https://firstcallmechanical.com/columbus",
     "phone": null,
     "lat": 39.9842,
     "lng": -82.9381
@@ -104,7 +104,7 @@ window.FC_LOCATIONS = [
     "city": "Austin",
     "state": "TX",
     "addr": "10421 Old Manchaca Road, Suite 410, Austin, TX 78748",
-    "url": "central-texas.html",
+    "url": "https://firstcallmechanical.com/central-texas",
     "phone": null,
     "lat": 30.1763,
     "lng": -97.8362
@@ -114,7 +114,7 @@ window.FC_LOCATIONS = [
     "city": "Dallas-Fort Worth",
     "state": "TX",
     "addr": "1750 Briercroft Court, Suite 128, Carrollton, TX 75006",
-    "url": "dfw.html",
+    "url": "https://firstcallmechanical.com/dfw",
     "phone": "(469) 669-0978",
     "lat": 32.9537,
     "lng": -96.8903
