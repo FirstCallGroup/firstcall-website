@@ -37,7 +37,7 @@ Files: `dfw.html`, `dfw/planned-maintenance.html`, `dfw/hvac-modernization.html`
 
 Files: `central-texas.html`, `central-texas/planned-maintenance.html`, `central-texas/hvac-modernization.html`, `central-texas/project-work.html`, `central-texas/contact.html`, `central-texas/careers.html`. Address and lat/lng are real; phone is a fallback.
 
-- [ ] **Direct branch phone** — currently shows the FCG corporate line `(844) 713-0220` as a fallback (FCG HQ is in Austin so routing is sensible). Replace with a direct Austin branch dispatch line as soon as one exists. Update both the displayed `(844) 713-0220` and the `tel:+18447130220` href everywhere on the site.
+- [ ] **Direct branch phone** — currently shows the FCG corporate line `(844) 715-0220` as a fallback (FCG HQ is in Austin so routing is sensible). Replace with a direct Austin branch dispatch line as soon as one exists. Update both the displayed `(844) 715-0220` and the `tel:+18447150220` href everywhere on the site.
 - [ ] **Branch email** — currently `dispatch@firstcallmechanical.com` (placeholder). Replace with the Austin-specific inbox.
 - [ ] **Hero video** — `<source src="reference/central-texas/videos/austin_hero.mp4">` is a placeholder. Drop a real Austin clip at that path.
 - [ ] **Hero poster image** — currently the Columbus chiller AVIF. Swap to an Austin-specific still or shop photo.
