@@ -89,10 +89,10 @@ const FORM_ROUTING = {
   "fcg-contact":          ["chris@firstcallgroup.com",          "Adam.Hostetter@firstcallgroup.com"],
   "fcg-acquisitions":     ["chris@firstcallgroup.com",          "Adam.Hostetter@firstcallgroup.com"],
   "fcm-contact":          ["info@firstcallgroup.com",           "Adam.Hostetter@firstcallgroup.com"],
-  "fcm-columbus-service": ["serviceoh@firstcallmechanical.com", "Adam.Hostetter@firstcallgroup.com", "spriest@firstcallmechanical.com"],
+  "fcm-columbus-service": ["ohioservice@firstcallmechanical.com", "Adam.Hostetter@firstcallgroup.com", "spriest@firstcallmechanical.com"],
   "fcm-dfw-service":      ["dispatch@firstcallmechanical.com",  "Adam.Hostetter@firstcallgroup.com", "scott.smith@firstcallmechanical.com"],
   "fcm-atx-service":      ["dispatch@firstcallmechanical.com",  "Adam.Hostetter@firstcallgroup.com", "scott.smith@firstcallmechanical.com"],
-  "fcm-columbus-contact": ["serviceoh@firstcallmechanical.com", "Adam.Hostetter@firstcallgroup.com", "spriest@firstcallmechanical.com"],
+  "fcm-columbus-contact": ["ohioservice@firstcallmechanical.com", "Adam.Hostetter@firstcallgroup.com", "spriest@firstcallmechanical.com"],
   "fcm-dfw-contact":      ["dispatch@firstcallmechanical.com",  "Adam.Hostetter@firstcallgroup.com", "scott.smith@firstcallmechanical.com"],
   "fcm-atx-contact":      ["dispatch@firstcallmechanical.com",  "Adam.Hostetter@firstcallgroup.com", "scott.smith@firstcallmechanical.com"],
 };
