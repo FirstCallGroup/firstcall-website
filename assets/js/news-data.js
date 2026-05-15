@@ -116,21 +116,6 @@ window.NEWS_DATA = [
     ]
   },
   {
-    id: "2024-10-14-corrie-prunuske-coo",
-    date: "October 14, 2024",
-    isoDate: "2024-10-14",
-    category: "company",
-    categoryLabel: "Leadership",
-    headline: "Corrie Prunuske Joins as COO",
-    summary: "Corrie Prunuske joins FirstCall as Chief Operating Officer, bringing over 30 years of operating leadership in commercial and industrial services.",
-    body: [
-      "We are excited to welcome Corrie Prunuske as our Chief Operating Officer.",
-      "Corrie has over 30 years of operating leadership in the commercial and industrial services industry.",
-      "Before joining FirstCall, Corrie served as the President of the Commercial and Industrial Division of CoolSys, a national provider of refrigeration, HVAC, and engineering solutions. Prior to CoolSys, Corrie held multiple leadership roles at Johnson Controls across a successful 28-year tenure. Corrie is a people-driven leader who works closely with our regional and central teams to drive the best outcomes for our customers and employees.",
-      "Corrie is based in Milwaukee, WI."
-    ]
-  },
-  {
     id: "2024-10-03-comfortrol",
     date: "October 3, 2024",
     isoDate: "2024-10-03",
