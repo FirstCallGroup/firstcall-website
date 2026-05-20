@@ -153,17 +153,79 @@ const FORM_LABELS = {
 // zone for firstcallgroup.com).
 const FROM_EMAIL = "FirstCall <noreply@firstcallgroup.com>";
 
+// =============================================================================
+// Anti-spam (five layers, cheapest first; any match → silent ok so bots
+// can't tell the submission was rejected):
+//   1. Origin allowlist  — reject POSTs not from FCG/FCM hostnames
+//   2. Honeypot          — hidden _honeypot input filled = bot
+//   3. Min-submit-time   — JS writes _ts on page load; reject if < 3 s
+//   4. Cloudflare Turnstile — siteverify cf-turnstile-response token
+//                            (conditional: skipped when TURNSTILE_SECRET_KEY
+//                            is not set on the Pages project, so the worker
+//                            keeps working before the widget is configured)
+//   5. Non-Latin script  — reject submissions whose user-supplied text
+//                          contains Cyrillic/CJK/Arabic/etc. (we operate in
+//                          the US in English + Spanish only). Latin Extended
+//                          (ñ, á, é) passes through.
+// =============================================================================
+
+const ALLOWED_ORIGINS = new Set([
+  "https://firstcallgroup.com",
+  "https://www.firstcallgroup.com",
+  "https://firstcallmechanical.com",
+  "https://www.firstcallmechanical.com",
+  "https://firstcall-website.pages.dev",
+]);
+
+const MIN_SUBMIT_MS = 3000;
+
 async function handleContactForm(request, env) {
   try {
+    // Layer 1 — Origin allowlist.
+    const origin = request.headers.get("origin") || "";
+    if (!ALLOWED_ORIGINS.has(origin)) {
+      console.warn("Origin rejected:", origin);
+      return silentOk();
+    }
+
     // Parse body — accept JSON or form-encoded.
     const ct = request.headers.get("content-type") || "";
     const data = ct.includes("application/json")
       ? await request.json()
       : Object.fromEntries((await request.formData()).entries());
 
-    // Honeypot: bots fill hidden fields. Pretend success, don't email.
+    // Layer 2 — Honeypot.
     if (data._honeypot) {
-      return jsonResp({ ok: true });
+      console.warn("Honeypot triggered");
+      return silentOk();
+    }
+
+    // Layer 3 — Min-submit-time. _ts is set by form-handler.js on DOMContentLoaded.
+    const ts = parseInt(data._ts, 10);
+    if (!Number.isFinite(ts) || Date.now() - ts < MIN_SUBMIT_MS) {
+      console.warn("Time check failed: _ts=", data._ts, "elapsed=", Date.now() - ts);
+      return silentOk();
+    }
+
+    // Layer 4 — Cloudflare Turnstile (conditional). If TURNSTILE_SECRET_KEY
+    // isn't set, skip — the other 4 layers still protect the form. When the
+    // secret IS set, the token becomes required.
+    if (env.TURNSTILE_SECRET_KEY) {
+      const turnstileToken = data["cf-turnstile-response"] || "";
+      const turnstileOk = await verifyTurnstile(turnstileToken, request, env);
+      if (!turnstileOk) {
+        console.warn("Turnstile verify failed");
+        return silentOk();
+      }
+    }
+
+    // Layer 5 — Non-Latin script reject. English + Spanish only.
+    const userText = [data.name, data.company, data.address, data.message]
+      .filter(s => typeof s === "string")
+      .join(" ");
+    if (isLikelyForeignScript(userText)) {
+      console.warn("Non-Latin script rejected");
+      return silentOk();
     }
 
     const formId = String(data._form || "").trim();
@@ -207,6 +269,41 @@ async function handleContactForm(request, env) {
   }
 }
 
+async function verifyTurnstile(token, request, env) {
+  if (!token || !env.TURNSTILE_SECRET_KEY) return false;
+  const body = new URLSearchParams();
+  body.append("secret", env.TURNSTILE_SECRET_KEY);
+  body.append("response", token);
+  const ip = request.headers.get("cf-connecting-ip");
+  if (ip) body.append("remoteip", ip);
+  try {
+    const resp = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      body,
+    });
+    const json = await resp.json();
+    return !!json.success;
+  } catch (e) {
+    console.error("Turnstile siteverify error:", e);
+    return false;
+  }
+}
+
+function silentOk() {
+  return jsonResp({ ok: true });
+}
+
+// True if `text` contains more than a few non-Latin characters (Cyrillic /
+// CJK / Arabic / Devanagari / Thai / Hangul / Hebrew). Allows Latin Extended
+// (accents, ñ, á, é, ü, etc.) so English and Spanish pass through cleanly.
+function isLikelyForeignScript(text) {
+  if (!text || typeof text !== "string") return false;
+  const nonLatin = text.match(
+    /[Ѐ-ӿԀ-ԯ֐-׿؀-ۿ܀-ݏऀ-ॿ฀-๿　-鿿가-힯]/g
+  );
+  return !!nonLatin && nonLatin.length > 3;
+}
+
 function jsonResp(body, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
@@ -222,7 +319,7 @@ function buildSubject(formId, data) {
 
 function renderEmailHTML(formId, data) {
   const rows = Object.entries(data)
-    .filter(([k]) => !k.startsWith("_"))
+    .filter(([k]) => !k.startsWith("_") && k !== "cf-turnstile-response")
     .map(([k, v]) => `
       <tr>
         <td style="padding:6px 16px 6px 0; vertical-align:top; color:#5a6371; font-weight:600; white-space:nowrap">${esc(prettyLabel(k))}</td>
@@ -242,7 +339,7 @@ function renderEmailText(formId, data) {
   const label = FORM_LABELS[formId] || formId;
   const lines = [`New form submission`, label, `(${formId})`, ""];
   for (const [k, v] of Object.entries(data)) {
-    if (k.startsWith("_")) continue;
+    if (k.startsWith("_") || k === "cf-turnstile-response") continue;
     lines.push(`${prettyLabel(k)}: ${v}`);
   }
   return lines.join("\n");

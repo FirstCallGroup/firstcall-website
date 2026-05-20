@@ -13,6 +13,13 @@
   document.addEventListener("DOMContentLoaded", function () {
     var forms = document.querySelectorAll("form[data-form-handler]");
     forms.forEach(function (form) {
+      // Stamp the page-load time into the hidden _ts field. The worker's
+      // min-submit-time check rejects submissions where (now - _ts) < 3 s.
+      // Bots that POST directly to /api/contact never run this, so _ts stays
+      // empty and the worker silently drops them.
+      var tsField = form.querySelector('input[name="_ts"]');
+      if (tsField) tsField.value = String(Date.now());
+
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         submit(form);
