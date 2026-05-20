@@ -31,17 +31,23 @@ export default {
     // firstcallmechanical.com
     // =========================================================================
     if (host === "firstcallmechanical.com") {
+      // Map firstcallmechanical.com URLs → the actual file paths in /mechanical/.
+      // Use the canonical (no-.html) form Pages serves, otherwise Pages 301s
+      // /mechanical/foo.html → /mechanical/foo and the redirect leaks through
+      // to the browser (the URL bar ends up showing /mechanical/...).
       const rewrites = {
-        "/":           "/mechanical/index.html",
-        "/locations":  "/mechanical/locations.html",
-        "/careers":    "/mechanical/careers.html",
-        "/contact":    "/mechanical/contact.html",
+        "/":           "/mechanical/",
+        "/locations":  "/mechanical/locations",
+        "/careers":    "/mechanical/careers",
+        "/contact":    "/mechanical/contact",
       };
       const stripped = path.length > 1 && path.endsWith("/") ? path.slice(0, -1) : path;
       const target = rewrites[stripped];
       if (target) {
         const rewritten = new URL(target, url.origin);
-        return env.ASSETS.fetch(new Request(rewritten, request));
+        // Belt-and-suspenders: if Pages still returns a redirect for the asset,
+        // follow it server-side so the browser stays on the user-typed URL.
+        return fetchAssetFollowingRedirects(env, request, rewritten);
       }
 
       if (path === "/index.html") {
@@ -78,6 +84,25 @@ export default {
     return env.ASSETS.fetch(request);
   },
 };
+
+// Resolve any redirects returned by env.ASSETS.fetch() server-side so the
+// browser keeps the user-typed URL. Pages auto-canonicalizes things like
+// /foo/index.html → /foo/ and would otherwise leak that 301 to the client.
+// Caps at 3 hops to avoid pathological loops.
+async function fetchAssetFollowingRedirects(env, originalRequest, targetUrl) {
+  let response = await env.ASSETS.fetch(new Request(targetUrl, originalRequest));
+  let hops = 0;
+  while (response.status >= 300 && response.status < 400 && hops < 3) {
+    const location = response.headers.get("Location");
+    if (!location) break;
+    const nextUrl = new URL(location, targetUrl);
+    // Only follow same-origin redirects — anything cross-origin should pass through.
+    if (nextUrl.origin !== targetUrl.origin) break;
+    response = await env.ASSETS.fetch(new Request(nextUrl, originalRequest));
+    hops += 1;
+  }
+  return response;
+}
 
 // =============================================================================
 // Form-submission handler
