@@ -51,3 +51,20 @@ Files: `central-texas.html`, `central-texas/planned-maintenance.html`, `central-
 
 - [ ] **`columbus_downtown.mp4` lives at `reference/columbus/videos/`.** Once DFW and Austin videos exist, move them to `reference/dfw/videos/` and `reference/central-texas/videos/` respectively to match the placeholder paths the sites expect.
 - [ ] **`scripts/build-directory.js` and `scripts/inline-map.js`** — these source files still contain a `Capital City` entry from the pre-divest data. If the directory ever gets rebuilt from source, Capital City will reappear. Strip it.
+
+## Anti-spam — Cloudflare Turnstile (FCG + FCM contact forms)
+
+All 9 forms on `firstcallgroup.com` and `firstcallmechanical.com` are wired to Resend via `_worker.js` (`fcg-contact`, `fcg-acquisitions`, `fcm-contact`, and the 6 branch service/contact forms) but are honeypot-only. Mirror the Starnes implementation (Starnes repo, commit `b70d9f8` — "Add anti-spam layers to contact form: Turnstile + time + origin") when spam warrants. Four layers in `_worker.js`, all silent-ok on rejection so bots can't learn:
+
+1. **Origin allowlist** — reject POSTs whose `Origin` isn't a known FCG / FCM hostname (apex + www for both)
+2. **Honeypot** — already in place
+3. **Min-submit-time** (3 s) — JS writes `Date.now()` into a hidden `_ts` field; worker rejects fast submissions
+4. **Cloudflare Turnstile** — verify the widget token via `challenges.cloudflare.com/turnstile/v0/siteverify`
+
+Setup (~30 min — more pages to wire than the single-site projects):
+1. Cloudflare dash → Turnstile → Add widget named `FirstCall Mechanical + Group` with hostnames `firstcallgroup.com`, `www.firstcallgroup.com`, `firstcallmechanical.com`, `www.firstcallmechanical.com`, and the Pages preview. One widget covers both because they share the Pages project (this is the one valid exception to per-site widgets).
+2. Add `TURNSTILE_SECRET_KEY` as a Pages secret (Production) on the shared FCG/FCM Pages project.
+3. Copy the 4-layer pattern from Starnes `_worker.js` and adapt the origin allowlist to FCG + FCM hostnames.
+4. Add the Turnstile widget div, `_ts` hidden input, and Turnstile script tag to **all 9 form pages**: `contact.html`, `acquisitions.html`, `columbus.html`, `dfw.html`, `central-texas.html`, plus the branch contact pages under `columbus/contact.html`, `dfw/contact.html`, `central-texas/contact.html`, and `mechanical/contact.html`. Audit `scripts/wire-forms.js` to see if it can stamp these in automatically.
+5. Add the `_ts` setter on DOMContentLoaded in `assets/js/form-handler.js`.
+6. Push — Cloudflare redeploys with the secret available.
