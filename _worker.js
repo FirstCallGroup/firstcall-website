@@ -48,6 +48,17 @@ export default {
         return Response.redirect("https://firstcallmechanical.com/" + url.search, 301);
       }
 
+      // Any /mechanical/* path on firstcallmechanical.com — collapse it to the
+      // root-level equivalent so the visible URL never shows the /mechanical/
+      // prefix. /mechanical/foo → /foo, /mechanical/ → /
+      if (path === "/mechanical" || path === "/mechanical/") {
+        return Response.redirect("https://firstcallmechanical.com/" + url.search, 301);
+      }
+      if (path.startsWith("/mechanical/")) {
+        const stripped = path.substring("/mechanical".length);
+        return Response.redirect(`https://firstcallmechanical.com${stripped}${url.search}`, 301);
+      }
+
       if (/^\/(team|news|acquisitions)(\/.*)?$/.test(path)) {
         return Response.redirect(`https://firstcallgroup.com${path}${url.search}`, 301);
       }

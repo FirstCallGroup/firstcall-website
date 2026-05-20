@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Careers — FirstCall Mechanical Columbus</title>
-  <meta name="description" content="Join the FirstCall Mechanical Columbus team — HVAC technicians, controls techs, project managers, and apprentices. Competitive pay, benefits, and a career path." />
-  <link rel="canonical" href="https://firstcallmechanical.com/columbus/careers" />
+  <title>Project Support — FirstCall Mechanical Columbus</title>
+  <meta name="description" content="Mechanical project support from FirstCall Columbus — design-build, retrofit, and equipment-upgrade projects for central Ohio commercial facilities." />
+  <link rel="canonical" href="https://firstcallmechanical.com/columbus/project-support" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -58,6 +58,8 @@
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-3) var(--space-6); font-family: var(--font-body); font-size: var(--text-base); font-weight: var(--weight-semibold); line-height: 1; border: 2px solid transparent; border-radius: var(--radius-md); cursor: pointer; text-decoration: none; transition: background var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out); white-space: nowrap; }
     .btn--primary { background: var(--color-accent); color: #fff; border-color: var(--color-accent); box-shadow: var(--shadow-sm); }
     .btn--primary:hover { background: var(--color-accent-dark); border-color: var(--color-accent-dark); color: #fff; }
+    .btn--outline { background: transparent; color: var(--color-primary); border-color: var(--color-primary); }
+    .btn--outline:hover { background: var(--color-primary); color: #fff; }
     .btn--sm { padding: var(--space-2) var(--space-4); font-size: var(--text-sm); }
     .btn--lg { padding: var(--space-4) var(--space-7); font-size: var(--text-lg); }
 
@@ -82,6 +84,7 @@
     .site-nav__dropdown.is-open { opacity: 1; pointer-events: auto; transform: translateY(0); }
     .site-nav__dropdown-link { display: block; padding: var(--space-3); color: var(--color-text-on-dark); border-radius: var(--radius-sm); font-size: var(--text-base); font-weight: var(--weight-medium); text-decoration: none; transition: background var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out); }
     .site-nav__dropdown-link:hover, .site-nav__dropdown-link:focus-visible { background: rgba(91,163,214,.15); color: var(--color-accent-light); }
+    .site-nav__dropdown-link[aria-current="page"] { background: rgba(91,163,214,.15); color: var(--color-accent-light); }
 
     .site-header__cta { display: flex; align-items: center; gap: var(--space-3); }
     .menu-toggle { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border-radius: var(--radius-md); }
@@ -106,39 +109,30 @@
       .site-nav__dropdown-link { padding-block: var(--space-3); padding-left: var(--space-5); border-bottom: 1px solid rgba(74,125,82,.25); }
     }
 
-    .page-hero { padding-bottom: var(--space-9); padding-top: calc(var(--header-height) + var(--space-9)); margin-top: calc(var(--header-height) * -1); background: var(--color-primary-dark); color: #fff; text-align: center; }
+    .page-hero { position: relative; padding-bottom: var(--space-9); padding-top: calc(var(--header-height) + var(--space-9)); margin-top: calc(var(--header-height) * -1); background: var(--color-primary-dark); color: #fff; text-align: center; }
     @media (max-width: 767px) { .page-hero { padding-bottom: var(--space-7); padding-top: calc(var(--header-height) + var(--space-6)); } }
     .page-hero__inner { max-width: 760px; margin-inline: auto; }
     .page-hero__eyebrow { display: inline-block; font-size: var(--text-sm); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--color-accent-light); margin-bottom: var(--space-4); }
     .page-hero__title { font-size: clamp(2.25rem, 5vw, 4rem); color: #fff; margin-bottom: var(--space-5); }
     .page-hero__lede { font-size: var(--text-xl); line-height: var(--leading-relaxed); color: rgba(255,255,255,.92); max-width: 56ch; margin-inline: auto; }
 
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+    @media (max-width: 1023px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 639px) { .feature-grid { grid-template-columns: 1fr; } }
+    .feature { background: var(--color-bg-card); padding: var(--space-6); border-radius: var(--radius-lg); border: 1px solid var(--color-border); box-shadow: var(--shadow-sm); transition: transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out); }
+    .feature:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .feature__icon { width: 44px; height: 44px; border-radius: var(--radius-md); background: rgba(0,85,140,.12); color: var(--color-accent); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4); }
+    .feature__icon svg { width: 22px; height: 22px; }
+    .feature h3 { font-size: var(--text-xl); margin-bottom: var(--space-2); }
+    .feature p { color: var(--color-text-muted); line-height: var(--leading-relaxed); font-size: var(--text-sm); }
+
     .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: center; }
     @media (max-width: 1023px) { .info-grid { grid-template-columns: 1fr; gap: var(--space-6); } }
     .info-grid h2 { margin-bottom: var(--space-4); max-width: 18ch; }
     .info-grid p { color: var(--color-text-muted); margin-bottom: var(--space-4); max-width: 56ch; }
-
-    /* Benefits hex grid */
-    .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-7); }
-    @media (max-width: 1023px) { .benefits-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 639px) { .benefits-grid { grid-template-columns: 1fr; max-width: 400px; margin-inline: auto; } }
-    .benefit { text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--space-4); }
-    .benefit__hex { width: 96px; height: 110px; position: relative; display: flex; align-items: center; justify-content: center; color: #fff; }
-    .benefit__hex::before { content: ""; position: absolute; inset: 0; background: var(--color-primary); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); transition: background var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out); }
-    .benefit:hover .benefit__hex::before { background: var(--color-primary-mid); transform: scale(1.05); }
-    .benefit__hex svg { position: relative; width: 38px; height: 38px; }
-    .benefit h3 { font-size: var(--text-xl); }
-    .benefit p { color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-relaxed); max-width: 32ch; }
-
-    /* Open roles list */
-    .roles-list { display: flex; flex-direction: column; gap: var(--space-4); max-width: 880px; margin-inline: auto; }
-    .role { background: var(--color-bg-card); padding: var(--space-6); border-radius: var(--radius-lg); border: 1px solid var(--color-border); display: grid; grid-template-columns: 1fr auto; gap: var(--space-5); align-items: center; transition: box-shadow var(--duration-base) var(--ease-out); }
-    .role:hover { box-shadow: var(--shadow-md); }
-    @media (max-width: 639px) { .role { grid-template-columns: 1fr; } }
-    .role h3 { font-size: var(--text-xl); margin-bottom: var(--space-2); }
-    .role__meta { font-size: var(--text-sm); color: var(--color-text-muted); display: flex; gap: var(--space-4); flex-wrap: wrap; }
-    .role__meta span::before { content: "•"; margin-right: var(--space-2); color: var(--color-border); }
-    .role__meta span:first-child::before { display: none; }
+    .info-grid ul { list-style: none; padding: 0; }
+    .info-grid li { padding-left: var(--space-5); position: relative; margin-bottom: var(--space-3); color: var(--color-text); }
+    .info-grid li::before { content: ""; position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-accent); }
 
     .cta-band { background: var(--color-bg-dark); color: var(--color-text-on-dark); padding-block: var(--space-9); text-align: center; }
     .cta-band__inner { max-width: 700px; margin-inline: auto; }
@@ -276,6 +270,43 @@
   }
   </script>
   <!-- fc:org-schema:end -->
+  <!-- fc:service-schema:start -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Project Support — FirstCall Columbus",
+    "description": "Design-build, retrofit, mechanical equipment changeouts, and capital project support for commercial facilities — engineered installs by the same crew that services the equipment after.",
+    "serviceType": "HVAC Modernization",
+    "category": "Commercial Mechanical Service",
+    "url": "https://firstcallmechanical.com/columbus/hvac-modernization",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "FirstCall Mechanical — Columbus",
+      "url": "https://firstcallmechanical.com/columbus",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "FirstCall Group",
+        "url": "https://firstcallgroup.com"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Columbus",
+        "addressRegion": "OH",
+        "addressCountry": "US"
+      }
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Columbus, Ohio"
+    },
+    "audience": {
+      "@type": "BusinessAudience",
+      "audienceType": "Commercial property owners, facility managers, general contractors, and building operators"
+    }
+  }
+  </script>
+  <!-- fc:service-schema:end -->
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
@@ -297,7 +328,7 @@
             <a class="site-nav__dropdown-link" href="building-controls.html">Building Controls</a>
             <a class="site-nav__dropdown-link" href="planned-maintenance.html">Planned Maintenance</a>
             <a class="site-nav__dropdown-link" href="emergency.html">Emergency Services</a>
-            <a class="site-nav__dropdown-link" href="project-support.html">Project Support</a>
+            <a class="site-nav__dropdown-link" href="project-support.html" aria-current="page">Project Support</a>
           </div>
         </div>
         <div class="site-nav__dropdown-wrap" data-dropdown>
@@ -311,7 +342,7 @@
             <a class="site-nav__dropdown-link" href="../dfw.html">Dallas-Fort Worth</a>
             <a class="site-nav__dropdown-link" href="../central-texas.html">Austin</a>
           </div>
-        </div>        <a class="site-nav__link" href="careers.html" aria-current="page">Careers</a>
+        </div>        <a class="site-nav__link" href="careers.html">Careers</a>
         <a class="site-nav__link" href="contact.html">Contact Us</a>
         <a class="site-nav__link" href="https://firstcallgroup.com/" rel="noopener">FirstCall Group</a>
       </nav>
@@ -322,120 +353,91 @@
     </div>
   </header>
 
-  <main id="main">
+    <main id="main">
     <section class="page-hero">
       <div class="container">
         <div class="page-hero__inner">
-          <span class="page-hero__eyebrow">Careers</span>
-          <h1 class="page-hero__title">Build a career in mechanical service.</h1>
-          <p class="page-hero__lede">We hire technicians, controls techs, project managers, and apprentices who want a long career — not just a job. Competitive pay, real benefits, and the backing of a national platform.</p>
+          <span class="page-hero__eyebrow">Service</span>
+          <h1 class="page-hero__title">Project Support</h1>
+          <p class="page-hero__lede">Design-build, retrofit, and equipment-upgrade projects delivered by tradespeople who know the install — and the service after.</p>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <div class="info-grid">
-          <div>
-            <span class="eyebrow">Why FirstCall Columbus</span>
-            <h2>Local team, national resources.</h2>
-            <p>You'll work alongside experienced technicians on commercial buildings across central Ohio — chillers, rooftops, boilers, controls, and capital project work. The variety is real, the equipment is interesting, and the work matters.</p>
-            <p>FirstCall Mechanical's Columbus branch is part of FirstCall Group — a national platform of regional mechanical service companies. That means the back-office support of a large organization, with the day-to-day feel of a tight local crew.</p>
-          </div>
-          <div>
-            <ul style="list-style: none; padding: 0;">
-              <li style="padding-left: var(--space-5); position: relative; margin-bottom: var(--space-3); color: var(--color-text);">
-                <span style="position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-accent); display: block;"></span>
-                Top-of-market pay with structured raises
-              </li>
-              <li style="padding-left: var(--space-5); position: relative; margin-bottom: var(--space-3); color: var(--color-text);">
-                <span style="position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-accent); display: block;"></span>
-                Take-home service vehicle for field technicians
-              </li>
-              <li style="padding-left: var(--space-5); position: relative; margin-bottom: var(--space-3); color: var(--color-text);">
-                <span style="position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-accent); display: block;"></span>
-                Tool reimbursement and continuing-education support
-              </li>
-              <li style="padding-left: var(--space-5); position: relative; margin-bottom: var(--space-3); color: var(--color-text);">
-                <span style="position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-accent); display: block;"></span>
-                Clear apprentice-to-journeyman career path
-              </li>
-              <li style="padding-left: var(--space-5); position: relative; margin-bottom: var(--space-3); color: var(--color-text);">
-                <span style="position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-accent); display: block;"></span>
-                Local dispatch with company-owned shop in Columbus
-              </li>
-              <li style="padding-left: var(--space-5); position: relative; margin-bottom: var(--space-3); color: var(--color-text);">
-                <span style="position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-accent); display: block;"></span>
-                Backed by a national platform — better benefits, more stability
-              </li>
-            </ul>
-          </div>
+        <div style="max-width: 720px; margin-inline: auto; text-align: center; margin-bottom: var(--space-7);">
+          <span class="eyebrow">Project types</span>
+          <h2>From a single change-out to a central plant overhaul.</h2>
+          <p class="lead" style="margin-inline: auto; margin-top: var(--space-3);">Most of our project work isn't ground-up new construction — it's the harder kind. Replacements in occupied buildings. Retrofits with tight cutover windows. Upgrades that have to coordinate with operations.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M3 12h18M3 17h18"/><path d="M8 4l-5 3 5 3M16 14l5 3-5 3"/></svg></span>
+            <h3>Equipment change-outs</h3>
+            <p>RTU, chiller, boiler, AHU, and pump replacements — load review, right-sizing, crane work, controls integration, commissioning, and as-built docs.</p>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v6h-6"/></svg></span>
+            <h3>System retrofits</h3>
+            <p>Pneumatic-to-DDC controls, BAS upgrades, hydronic re-piping, refrigerant phase-down conversions — staged for minimum disruption.</p>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M9 21V13h6v8"/></svg></span>
+            <h3>Design-build</h3>
+            <p>We bring engineering, fabrication, and field crews under one roof so the design accounts for what the install crew can actually deliver — and what facilities can actually maintain.</p>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M5 20V10M9 20V4M13 20V8M17 20V12M21 20V6"/></svg></span>
+            <h3>Capital planning support</h3>
+            <p>Multi-year capital roadmaps with condition-based prioritization. We tell you which units to replace this year and which can wait — based on actual service history, not a depreciation schedule.</p>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+            <h3>Utility rebates &amp; incentives</h3>
+            <p>AEP Ohio, Columbia Gas, and federal incentive paperwork — we file it. You don't chase the rebate; we do.</p>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <h3>Commissioning &amp; documentation</h3>
+            <p>Functional performance tests, sequence verification, training for facilities staff, and a clean as-built handover that future-you will thank past-you for.</p>
+          </article>
         </div>
       </div>
     </section>
 
     <section class="section section--soft">
       <div class="container">
-        <div style="text-align: center; margin-bottom: var(--space-7); max-width: 720px; margin-inline: auto;">
-          <span class="eyebrow">Benefits</span>
-          <h2>Built for our team and their families.</h2>
-          <p class="lead" style="margin-inline: auto; margin-top: var(--space-3);">A benefit package designed to support our team for the long haul.</p>
-        </div>
-        <div class="benefits-grid">
-          <article class="benefit">
-            <div class="benefit__hex" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </div>
-            <h3>Robust Healthcare</h3>
-            <p>Comprehensive medical, dental, and vision benefits that are majority-company funded.</p>
-          </article>
-          <article class="benefit">
-            <div class="benefit__hex" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <h3>Family Time</h3>
-            <p>Up to 6 weeks of paid time off, in addition to generous holiday and paid parental leave.</p>
-          </article>
-          <article class="benefit">
-            <div class="benefit__hex" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-            </div>
-            <h3>Career Advancement</h3>
-            <p>FirstCall Academy, structured training, and pathways for continuing education.</p>
-          </article>
-          <article class="benefit">
-            <div class="benefit__hex" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            </div>
-            <h3>Retirement Planning</h3>
-            <p>401(k) program with 5% company match — vested fast.</p>
-          </article>
-          <article class="benefit">
-            <div class="benefit__hex" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
-            </div>
-            <h3>Performance Bonuses</h3>
-            <p>Generous rewards tied to top-down and bottom-up performance metrics.</p>
-          </article>
-          <article class="benefit">
-            <div class="benefit__hex" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-            </div>
-            <h3>Veterans Holiday</h3>
-            <p>Veterans Day off for all veterans on the FirstCall team.</p>
-          </article>
+        <div class="info-grid">
+          <div>
+            <span class="eyebrow">How we work</span>
+            <h2>Engineered, not just installed.</h2>
+            <p>We don't drop in like-for-like replacements without verifying the new equipment is the right size. Buildings change. Loads change. Equipment selections that were right ten years ago are often oversized today — and oversized equipment costs you in efficiency, comfort, and reliability.</p>
+            <p>Every project starts with a load review and a discussion about what's actually running through the building today.</p>
+          </div>
+          <div>
+            <ul>
+              <li>Load review and right-sizing before any equipment selection</li>
+              <li>Multiple manufacturer options with side-by-side comparisons</li>
+              <li>Coordination with your operations team on cutover windows</li>
+              <li>Crane lifts, rigging, and structural coordination as needed</li>
+              <li>Controls integration with existing BAS</li>
+              <li>Commissioning and as-built documentation at handover</li>
+              <li>Utility rebate paperwork — we handle it</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="cta-band">
       <div class="container cta-band__inner">
-        <span class="eyebrow" style="color: var(--color-accent-light)">Open positions</span>
-        <h2>See what we're hiring for.</h2>
-        <p>Browse all current openings and apply directly through our applicant portal.</p>
+        <span class="eyebrow" style="color: var(--color-accent-light)">Project on the horizon?</span>
+        <h2>Get a proposal.</h2>
+        <p>Send us a scope, an RFP, or just a wishlist — we'll come look at the site and come back with a real number. Quotes typically within two weeks.</p>
         <div class="cta-band__row">
-          <a class="btn btn--primary btn--lg" href="https://www.paycomonline.net/v4/ats/web.php/portal/BD2EFC24BA2CF50724C3B3300274CC48/career-page" target="_blank" rel="noopener noreferrer">View Open Positions</a>
-          <a class="btn btn--lg" href="contact.html" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.4)">Get in Touch</a>
+          <a class="btn btn--primary btn--lg" href="contact.html">Request a Quote</a>
+          <a class="btn btn--lg" href="tel:+16143370111" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.4)">Call (614) 337-0111</a>
         </div>
       </div>
     </section>

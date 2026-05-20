@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Careers — FirstCall Mechanical Columbus</title>
-  <meta name="description" content="Join the FirstCall Mechanical Columbus team — HVAC technicians, controls techs, project managers, and apprentices. Competitive pay, benefits, and a career path." />
-  <link rel="canonical" href="https://firstcallmechanical.com/columbus/careers" />
+  <title>Emergency Services — FirstCall Mechanical Columbus</title>
+  <meta name="description" content="24/7 commercial HVAC and refrigeration emergency response from FirstCall Columbus — staffed dispatch, same number as office: (614) 337-0111." />
+  <link rel="canonical" href="https://firstcallmechanical.com/columbus/emergency" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -58,6 +58,8 @@
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-3) var(--space-6); font-family: var(--font-body); font-size: var(--text-base); font-weight: var(--weight-semibold); line-height: 1; border: 2px solid transparent; border-radius: var(--radius-md); cursor: pointer; text-decoration: none; transition: background var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out); white-space: nowrap; }
     .btn--primary { background: var(--color-accent); color: #fff; border-color: var(--color-accent); box-shadow: var(--shadow-sm); }
     .btn--primary:hover { background: var(--color-accent-dark); border-color: var(--color-accent-dark); color: #fff; }
+    .btn--outline { background: transparent; color: var(--color-primary); border-color: var(--color-primary); }
+    .btn--outline:hover { background: var(--color-primary); color: #fff; }
     .btn--sm { padding: var(--space-2) var(--space-4); font-size: var(--text-sm); }
     .btn--lg { padding: var(--space-4) var(--space-7); font-size: var(--text-lg); }
 
@@ -82,6 +84,7 @@
     .site-nav__dropdown.is-open { opacity: 1; pointer-events: auto; transform: translateY(0); }
     .site-nav__dropdown-link { display: block; padding: var(--space-3); color: var(--color-text-on-dark); border-radius: var(--radius-sm); font-size: var(--text-base); font-weight: var(--weight-medium); text-decoration: none; transition: background var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out); }
     .site-nav__dropdown-link:hover, .site-nav__dropdown-link:focus-visible { background: rgba(91,163,214,.15); color: var(--color-accent-light); }
+    .site-nav__dropdown-link[aria-current="page"] { background: rgba(91,163,214,.15); color: var(--color-accent-light); }
 
     .site-header__cta { display: flex; align-items: center; gap: var(--space-3); }
     .menu-toggle { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border-radius: var(--radius-md); }
@@ -106,39 +109,30 @@
       .site-nav__dropdown-link { padding-block: var(--space-3); padding-left: var(--space-5); border-bottom: 1px solid rgba(74,125,82,.25); }
     }
 
-    .page-hero { padding-bottom: var(--space-9); padding-top: calc(var(--header-height) + var(--space-9)); margin-top: calc(var(--header-height) * -1); background: var(--color-primary-dark); color: #fff; text-align: center; }
+    .page-hero { position: relative; padding-bottom: var(--space-9); padding-top: calc(var(--header-height) + var(--space-9)); margin-top: calc(var(--header-height) * -1); background: var(--color-primary-dark); color: #fff; text-align: center; }
     @media (max-width: 767px) { .page-hero { padding-bottom: var(--space-7); padding-top: calc(var(--header-height) + var(--space-6)); } }
     .page-hero__inner { max-width: 760px; margin-inline: auto; }
     .page-hero__eyebrow { display: inline-block; font-size: var(--text-sm); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--color-accent-light); margin-bottom: var(--space-4); }
     .page-hero__title { font-size: clamp(2.25rem, 5vw, 4rem); color: #fff; margin-bottom: var(--space-5); }
     .page-hero__lede { font-size: var(--text-xl); line-height: var(--leading-relaxed); color: rgba(255,255,255,.92); max-width: 56ch; margin-inline: auto; }
 
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+    @media (max-width: 1023px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 639px) { .feature-grid { grid-template-columns: 1fr; } }
+    .feature { background: var(--color-bg-card); padding: var(--space-6); border-radius: var(--radius-lg); border: 1px solid var(--color-border); box-shadow: var(--shadow-sm); transition: transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out); }
+    .feature:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .feature__icon { width: 44px; height: 44px; border-radius: var(--radius-md); background: rgba(0,85,140,.12); color: var(--color-accent); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4); }
+    .feature__icon svg { width: 22px; height: 22px; }
+    .feature h3 { font-size: var(--text-xl); margin-bottom: var(--space-2); }
+    .feature p { color: var(--color-text-muted); line-height: var(--leading-relaxed); font-size: var(--text-sm); }
+
     .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: center; }
     @media (max-width: 1023px) { .info-grid { grid-template-columns: 1fr; gap: var(--space-6); } }
     .info-grid h2 { margin-bottom: var(--space-4); max-width: 18ch; }
     .info-grid p { color: var(--color-text-muted); margin-bottom: var(--space-4); max-width: 56ch; }
-
-    /* Benefits hex grid */
-    .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-7); }
-    @media (max-width: 1023px) { .benefits-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 639px) { .benefits-grid { grid-template-columns: 1fr; max-width: 400px; margin-inline: auto; } }
-    .benefit { text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--space-4); }
-    .benefit__hex { width: 96px; height: 110px; position: relative; display: flex; align-items: center; justify-content: center; color: #fff; }
-    .benefit__hex::before { content: ""; position: absolute; inset: 0; background: var(--color-primary); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); transition: background var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out); }
-    .benefit:hover .benefit__hex::before { background: var(--color-primary-mid); transform: scale(1.05); }
-    .benefit__hex svg { position: relative; width: 38px; height: 38px; }
-    .benefit h3 { font-size: var(--text-xl); }
-    .benefit p { color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-relaxed); max-width: 32ch; }
-
-    /* Open roles list */
-    .roles-list { display: flex; flex-direction: column; gap: var(--space-4); max-width: 880px; margin-inline: auto; }
-    .role { background: var(--color-bg-card); padding: var(--space-6); border-radius: var(--radius-lg); border: 1px solid var(--color-border); display: grid; grid-template-columns: 1fr auto; gap: var(--space-5); align-items: center; transition: box-shadow var(--duration-base) var(--ease-out); }
-    .role:hover { box-shadow: var(--shadow-md); }
-    @media (max-width: 639px) { .role { grid-template-columns: 1fr; } }
-    .role h3 { font-size: var(--text-xl); margin-bottom: var(--space-2); }
-    .role__meta { font-size: var(--text-sm); color: var(--color-text-muted); display: flex; gap: var(--space-4); flex-wrap: wrap; }
-    .role__meta span::before { content: "•"; margin-right: var(--space-2); color: var(--color-border); }
-    .role__meta span:first-child::before { display: none; }
+    .info-grid ul { list-style: none; padding: 0; }
+    .info-grid li { padding-left: var(--space-5); position: relative; margin-bottom: var(--space-3); color: var(--color-text); }
+    .info-grid li::before { content: ""; position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-accent); }
 
     .cta-band { background: var(--color-bg-dark); color: var(--color-text-on-dark); padding-block: var(--space-9); text-align: center; }
     .cta-band__inner { max-width: 700px; margin-inline: auto; }
@@ -276,6 +270,43 @@
   }
   </script>
   <!-- fc:org-schema:end -->
+  <!-- fc:service-schema:start -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "24/7 Emergency Service — FirstCall Columbus",
+    "description": "Round-the-clock commercial HVAC, refrigeration, and building controls emergency response across central Ohio — staffed dispatch and on-call technician roster.",
+    "serviceType": "HVAC Modernization",
+    "category": "Commercial Mechanical Service",
+    "url": "https://firstcallmechanical.com/columbus/hvac-modernization",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "FirstCall Mechanical — Columbus",
+      "url": "https://firstcallmechanical.com/columbus",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "FirstCall Group",
+        "url": "https://firstcallgroup.com"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Columbus",
+        "addressRegion": "OH",
+        "addressCountry": "US"
+      }
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Columbus, Ohio"
+    },
+    "audience": {
+      "@type": "BusinessAudience",
+      "audienceType": "Commercial property owners, facility managers, general contractors, and building operators"
+    }
+  }
+  </script>
+  <!-- fc:service-schema:end -->
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
@@ -296,7 +327,7 @@
             <a class="site-nav__dropdown-link" href="commercial-refrigeration.html">Commercial Refrigeration</a>
             <a class="site-nav__dropdown-link" href="building-controls.html">Building Controls</a>
             <a class="site-nav__dropdown-link" href="planned-maintenance.html">Planned Maintenance</a>
-            <a class="site-nav__dropdown-link" href="emergency.html">Emergency Services</a>
+            <a class="site-nav__dropdown-link" href="emergency.html" aria-current="page">Emergency Services</a>
             <a class="site-nav__dropdown-link" href="project-support.html">Project Support</a>
           </div>
         </div>
@@ -311,7 +342,7 @@
             <a class="site-nav__dropdown-link" href="../dfw.html">Dallas-Fort Worth</a>
             <a class="site-nav__dropdown-link" href="../central-texas.html">Austin</a>
           </div>
-        </div>        <a class="site-nav__link" href="careers.html" aria-current="page">Careers</a>
+        </div>        <a class="site-nav__link" href="careers.html">Careers</a>
         <a class="site-nav__link" href="contact.html">Contact Us</a>
         <a class="site-nav__link" href="https://firstcallgroup.com/" rel="noopener">FirstCall Group</a>
       </nav>
@@ -322,120 +353,89 @@
     </div>
   </header>
 
-  <main id="main">
+    <main id="main">
     <section class="page-hero">
       <div class="container">
         <div class="page-hero__inner">
-          <span class="page-hero__eyebrow">Careers</span>
-          <h1 class="page-hero__title">Build a career in mechanical service.</h1>
-          <p class="page-hero__lede">We hire technicians, controls techs, project managers, and apprentices who want a long career — not just a job. Competitive pay, real benefits, and the backing of a national platform.</p>
+          <span class="page-hero__eyebrow">Service</span>
+          <h1 class="page-hero__title">Emergency Services</h1>
+          <p class="page-hero__lede">Around-the-clock response for commercial HVAC, refrigeration, and controls emergencies across central Ohio. Same line as the office: <a href="tel:+16143370111" style="color: inherit; text-decoration: underline; font-weight: 600">(614) 337-0111</a>.</p>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <div class="info-grid">
-          <div>
-            <span class="eyebrow">Why FirstCall Columbus</span>
-            <h2>Local team, national resources.</h2>
-            <p>You'll work alongside experienced technicians on commercial buildings across central Ohio — chillers, rooftops, boilers, controls, and capital project work. The variety is real, the equipment is interesting, and the work matters.</p>
-            <p>FirstCall Mechanical's Columbus branch is part of FirstCall Group — a national platform of regional mechanical service companies. That means the back-office support of a large organization, with the day-to-day feel of a tight local crew.</p>
-          </div>
-          <div>
-            <ul style="list-style: none; padding: 0;">
-              <li style="padding-left: var(--space-5); position: relative; margin-bottom: var(--space-3); color: var(--color-text);">
-                <span style="position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-accent); display: block;"></span>
-                Top-of-market pay with structured raises
-              </li>
-              <li style="padding-left: var(--space-5); position: relative; margin-bottom: var(--space-3); color: var(--color-text);">
-                <span style="position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-accent); display: block;"></span>
-                Take-home service vehicle for field technicians
-              </li>
-              <li style="padding-left: var(--space-5); position: relative; margin-bottom: var(--space-3); color: var(--color-text);">
-                <span style="position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-accent); display: block;"></span>
-                Tool reimbursement and continuing-education support
-              </li>
-              <li style="padding-left: var(--space-5); position: relative; margin-bottom: var(--space-3); color: var(--color-text);">
-                <span style="position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-accent); display: block;"></span>
-                Clear apprentice-to-journeyman career path
-              </li>
-              <li style="padding-left: var(--space-5); position: relative; margin-bottom: var(--space-3); color: var(--color-text);">
-                <span style="position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-accent); display: block;"></span>
-                Local dispatch with company-owned shop in Columbus
-              </li>
-              <li style="padding-left: var(--space-5); position: relative; margin-bottom: var(--space-3); color: var(--color-text);">
-                <span style="position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-accent); display: block;"></span>
-                Backed by a national platform — better benefits, more stability
-              </li>
-            </ul>
-          </div>
+        <div style="max-width: 720px; margin-inline: auto; text-align: center; margin-bottom: var(--space-7);">
+          <span class="eyebrow">When you need us</span>
+          <h2>Staffed dispatch, on-call techs, parts on the truck.</h2>
+          <p class="lead" style="margin-inline: auto; margin-top: var(--space-3);">Most building emergencies don't wait for business hours. When yours doesn't, our dispatch line is staffed by a human who knows which tech to route the call to.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <h3>One number, 24/7</h3>
+            <p><strong>(614) 337-0111</strong> reaches a real person any hour. No phone tree, no robocall, no leaving a voicemail and hoping.</p>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01"/></svg></span>
+            <h3>Staffed dispatch</h3>
+            <p>Dispatch decides which on-call tech to send based on the equipment, the building, and who's closest. Not just first-name-on-the-roster.</p>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>
+            <h3>Parts on the truck</h3>
+            <p>Common failure parts ride with the techs — condenser fan motors, contactors, capacitors, defrost timers, expansion valves. One trip whenever it's a common failure.</p>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 8.5 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 9 8.5 12 2"/></svg></span>
+            <h3>PM customers go first</h3>
+            <p>If you're on a planned maintenance contract with us, you skip the queue. The contract is the priority list.</p>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M5 12h14M9 7v.01M9 16v.01"/></svg></span>
+            <h3>Refrigeration priority</h3>
+            <p>Walk-ins, refrigerated cases, and ice machines get dispatched ahead of comfort-cooling calls. Spoilage clocks don't wait.</p>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg></span>
+            <h3>Documented every time</h3>
+            <p>Every emergency call gets a service ticket with the diagnosis, the parts used, and any follow-up recommended — so the next person who looks at the unit has context.</p>
+          </article>
         </div>
       </div>
     </section>
 
     <section class="section section--soft">
       <div class="container">
-        <div style="text-align: center; margin-bottom: var(--space-7); max-width: 720px; margin-inline: auto;">
-          <span class="eyebrow">Benefits</span>
-          <h2>Built for our team and their families.</h2>
-          <p class="lead" style="margin-inline: auto; margin-top: var(--space-3);">A benefit package designed to support our team for the long haul.</p>
-        </div>
-        <div class="benefits-grid">
-          <article class="benefit">
-            <div class="benefit__hex" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </div>
-            <h3>Robust Healthcare</h3>
-            <p>Comprehensive medical, dental, and vision benefits that are majority-company funded.</p>
-          </article>
-          <article class="benefit">
-            <div class="benefit__hex" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <h3>Family Time</h3>
-            <p>Up to 6 weeks of paid time off, in addition to generous holiday and paid parental leave.</p>
-          </article>
-          <article class="benefit">
-            <div class="benefit__hex" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-            </div>
-            <h3>Career Advancement</h3>
-            <p>FirstCall Academy, structured training, and pathways for continuing education.</p>
-          </article>
-          <article class="benefit">
-            <div class="benefit__hex" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            </div>
-            <h3>Retirement Planning</h3>
-            <p>401(k) program with 5% company match — vested fast.</p>
-          </article>
-          <article class="benefit">
-            <div class="benefit__hex" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
-            </div>
-            <h3>Performance Bonuses</h3>
-            <p>Generous rewards tied to top-down and bottom-up performance metrics.</p>
-          </article>
-          <article class="benefit">
-            <div class="benefit__hex" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-            </div>
-            <h3>Veterans Holiday</h3>
-            <p>Veterans Day off for all veterans on the FirstCall team.</p>
-          </article>
+        <div class="info-grid">
+          <div>
+            <span class="eyebrow">How emergency works</span>
+            <h2>Same number you call during the day.</h2>
+            <p>After 4:30 p.m. weekdays and on weekends, the office line forwards to staffed dispatch. The person who answers can see your service history, knows which tech worked on the unit last, and can pull up the building.</p>
+            <p>If you've got an existing PM contract, dispatch flags you as priority and routes the call to the tech closest to your site. If you're not on a contract yet, you still get a tech — just behind the contract customers if it's a busy night.</p>
+          </div>
+          <div>
+            <ul>
+              <li>Same phone number as office hours: (614) 337-0111</li>
+              <li>Human-answered dispatch, not an automated phone tree</li>
+              <li>Priority routing for PM contract customers</li>
+              <li>Refrigeration emergencies bumped above comfort cooling</li>
+              <li>Service ticket and follow-up notes for every after-hours call</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="cta-band">
       <div class="container cta-band__inner">
-        <span class="eyebrow" style="color: var(--color-accent-light)">Open positions</span>
-        <h2>See what we're hiring for.</h2>
-        <p>Browse all current openings and apply directly through our applicant portal.</p>
+        <span class="eyebrow" style="color: var(--color-accent-light)">Emergency right now?</span>
+        <h2>Call (614) 337-0111.</h2>
+        <p>Same line as office hours. If it's after 4:30 p.m. or the weekend, it's the on-call rotation. They'll triage and dispatch.</p>
         <div class="cta-band__row">
-          <a class="btn btn--primary btn--lg" href="https://www.paycomonline.net/v4/ats/web.php/portal/BD2EFC24BA2CF50724C3B3300274CC48/career-page" target="_blank" rel="noopener noreferrer">View Open Positions</a>
-          <a class="btn btn--lg" href="contact.html" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.4)">Get in Touch</a>
+          <a class="btn btn--primary btn--lg" href="contact.html">Request a Quote</a>
+          <a class="btn btn--lg" href="tel:+16143370111" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.4)">Call (614) 337-0111</a>
         </div>
       </div>
     </section>
