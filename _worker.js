@@ -85,14 +85,19 @@ export default {
   },
 };
 
-// Resolve any redirects returned by env.ASSETS.fetch() server-side so the
-// browser keeps the user-typed URL. Pages auto-canonicalizes things like
-// /foo/index.html → /foo/ and would otherwise leak that 301 to the client.
-// Caps at 3 hops to avoid pathological loops.
+// Serve a static asset under a different URL while keeping the user-typed URL
+// in the browser bar. Pages auto-canonicalizes things like /foo/index.html →
+// /foo/ → /foo with 301s; if we passed those redirects through, the browser
+// would follow them and the URL bar would change.
+//
+// Strategy: follow Pages' redirect chain server-side (capped at 5 hops, same
+// origin only), then ALWAYS wrap the final body in a fresh 200 response. This
+// means even if the last hop is still a 3xx, the browser only ever sees a 200
+// and never navigates.
 async function fetchAssetFollowingRedirects(env, originalRequest, targetUrl) {
   let response = await env.ASSETS.fetch(new Request(targetUrl, originalRequest));
   let hops = 0;
-  while (response.status >= 300 && response.status < 400 && hops < 3) {
+  while (response.status >= 300 && response.status < 400 && hops < 5) {
     const location = response.headers.get("Location");
     if (!location) break;
     const nextUrl = new URL(location, targetUrl);
@@ -101,7 +106,16 @@ async function fetchAssetFollowingRedirects(env, originalRequest, targetUrl) {
     response = await env.ASSETS.fetch(new Request(nextUrl, originalRequest));
     hops += 1;
   }
-  return response;
+  // Always wrap the final response body in a fresh 200. Even if Pages couldn't
+  // be coaxed into giving us a 200, this guarantees the browser sees no
+  // redirect and stays on the user-typed URL.
+  const body = await response.arrayBuffer();
+  const headers = new Headers();
+  const ct = response.headers.get("content-type") || "text/html; charset=utf-8";
+  headers.set("content-type", ct);
+  const cc = response.headers.get("cache-control");
+  if (cc) headers.set("cache-control", cc);
+  return new Response(body, { status: 200, headers });
 }
 
 // =============================================================================
