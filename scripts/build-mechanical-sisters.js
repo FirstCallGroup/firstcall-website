@@ -68,7 +68,7 @@ const FCM_FOOTER_LOGO_SVG =
 const FCM_NAV_BLOCK =
   '<a class="site-header__logo" href="https://firstcallmechanical.com/" aria-label="FirstCall Mechanical — home">\n        ' +
   FCM_HEADER_LOGO_SVG +
-  '\n      </a>\n\n      <nav class="site-nav" data-site-nav aria-label="Primary">\n        <div class="site-nav__dropdown-wrap" data-dropdown>\n          <button type="button" class="site-nav__link site-nav__dropdown-toggle"\n                  aria-haspopup="true" aria-expanded="false" data-dropdown-toggle>\n            FirstCall Branches\n            <svg class="site-nav__caret" viewBox="0 0 12 12" aria-hidden="true">\n              <path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>\n            </svg>\n          </button>\n          <div class="site-nav__dropdown" data-dropdown-menu>\n            <a class="site-nav__dropdown-link" href="https://firstcallmechanical.com/columbus">Columbus, OH</a>\n            <a class="site-nav__dropdown-link" href="https://firstcallmechanical.com/dfw">Dallas-Fort Worth, TX</a>\n            <a class="site-nav__dropdown-link" href="https://firstcallmechanical.com/central-texas">Austin, TX</a>\n          </div>\n        </div>\n        <a class="site-nav__link" href="/mechanical/locations">All Network Branches</a>\n        <a class="site-nav__link" href="/mechanical/careers">Careers</a>\n        <a class="site-nav__link" href="/mechanical/contact">Contact</a>\n        <a class="site-nav__link" href="https://firstcallgroup.com/" rel="noopener">FirstCall Group</a>\n      </nav>\n\n      <div class="site-header__cta">\n        <a class="btn btn--primary btn--sm hide-mobile" href="__CTA_HREF__">__CTA_LABEL__</a>';
+  '\n      </a>\n\n      <nav class="site-nav" data-site-nav aria-label="Primary">\n        <div class="site-nav__dropdown-wrap" data-dropdown>\n          <button type="button" class="site-nav__link site-nav__dropdown-toggle"\n                  aria-haspopup="true" aria-expanded="false" data-dropdown-toggle>\n            FirstCall Branches\n            <svg class="site-nav__caret" viewBox="0 0 12 12" aria-hidden="true">\n              <path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>\n            </svg>\n          </button>\n          <div class="site-nav__dropdown" data-dropdown-menu>\n            <a class="site-nav__dropdown-link" href="https://firstcallmechanical.com/columbus">Columbus, OH</a>\n            <a class="site-nav__dropdown-link" href="https://firstcallmechanical.com/dfw">Dallas-Fort Worth, TX</a>\n            <a class="site-nav__dropdown-link" href="https://firstcallmechanical.com/central-texas">Austin, TX</a>\n          </div>\n        </div>\n        <a class="site-nav__link" href="/locations">All Network Branches</a>\n        <a class="site-nav__link" href="/careers">Careers</a>\n        <a class="site-nav__link" href="/contact">Contact</a>\n        <a class="site-nav__link" href="https://firstcallgroup.com/" rel="noopener">FirstCall Group</a>\n      </nav>\n\n      <div class="site-header__cta">\n        <a class="btn btn--primary btn--sm hide-mobile" href="__CTA_HREF__">__CTA_LABEL__</a>';
 
 const DROPDOWN_CSS = `
     /* ===== Nav dropdown (Branches) — injected by build-mechanical-sisters.js ===== */
@@ -157,7 +157,7 @@ const FCM_FOOTER_COLUMNS = `<div>
         <div>
           <div class="site-footer__heading">FirstCall Network</div>
           <ul class="site-footer__list">
-            <li><a href="/mechanical/locations">All Network Branches</a></li>
+            <li><a href="/locations">All Network Branches</a></li>
             <li><a href="https://firstcallgroup.com/" rel="noopener">FirstCall Group</a></li>
           </ul>
         </div>
@@ -165,8 +165,8 @@ const FCM_FOOTER_COLUMNS = `<div>
           <div class="site-footer__heading">Connect</div>
           <ul class="site-footer__list">
             <li><a href="https://www.linkedin.com/company/firstcall-mechanical/" rel="noopener">LinkedIn</a></li>
-            <li><a href="/mechanical/careers">Careers</a></li>
-            <li><a href="/mechanical/contact">Contact</a></li>
+            <li><a href="/careers">Careers</a></li>
+            <li><a href="/contact">Contact</a></li>
           </ul>
         </div>`;
 
@@ -256,11 +256,11 @@ function buildOne(sourceFile, destFile, meta) {
   //      external/branch hosts kept as absolute, root pages kept at /. ----
   const linkMap = {
     'href="acquisitions.html"': 'href="/acquisitions"',
-    'href="locations.html"':    'href="/mechanical/locations"',
+    'href="locations.html"':    'href="/locations"',
     'href="team.html"':         'href="/team"',
     'href="news.html"':         'href="/news"',
-    'href="careers.html"':      'href="/mechanical/careers"',
-    'href="contact.html"':      'href="/mechanical/contact"',
+    'href="careers.html"':      'href="/careers"',
+    'href="contact.html"':      'href="/contact"',
     'href="index.html"':        'href="/"',
   };
   for (const [from, to] of Object.entries(linkMap)) {
