@@ -69,6 +69,11 @@ export default {
         return Response.redirect(`https://firstcallmechanical.com${path}${url.search}`, 301);
       }
 
+      // The Insights blog is FCM content (root /insights*); keep it on the FCM domain.
+      if (/^\/insights(\/.*)?$/.test(path)) {
+        return Response.redirect(`https://firstcallmechanical.com${path}${url.search}`, 301);
+      }
+
       if (path === "/mechanical" || path === "/mechanical/") {
         return Response.redirect("https://firstcallmechanical.com/" + url.search, 301);
       }
