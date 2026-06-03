@@ -123,7 +123,7 @@ const newest = posts[0].date;
 const smEntries = [smUrl(data.SITE + "/insights", newest, "weekly", "0.8")]
   .concat(posts.map(p => smUrl(`${data.SITE}/insights/${p.slug}`, p.date, "monthly", "0.7")))
   .join("\n");
-const smPath = path.join(ROOT, "sitemap.xml");
+const smPath = path.join(ROOT, "sitemap-mechanical.xml");
 let sm = fs.readFileSync(smPath, "utf8");
 const smBlock = "  <!-- FirstCall Mechanical — Insights (blog) -->\n" + smEntries + "\n</urlset>";
 sm = sm.replace(/  <!-- FirstCall Mechanical[^\n]*Insights[^\n]*-->\n[\s\S]*?\n<\/urlset>/, () => smBlock);
