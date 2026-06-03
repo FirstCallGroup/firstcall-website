@@ -49,31 +49,7 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://firstcallmechanical.com/dfw</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://firstcallmechanical.com/central-texas</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://firstcallmechanical.com/columbus/hvac-modernization</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://firstcallmechanical.com/columbus/planned-maintenance</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://firstcallmechanical.com/columbus/project-work</loc>
+    <loc>https://firstcallmechanical.com/columbus/building-controls</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -85,25 +61,49 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://firstcallmechanical.com/columbus/commercial-hvac</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://firstcallmechanical.com/columbus/commercial-refrigeration</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://firstcallmechanical.com/columbus/contact</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://firstcallmechanical.com/dfw/hvac-modernization</loc>
+    <loc>https://firstcallmechanical.com/columbus/emergency</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://firstcallmechanical.com/dfw/planned-maintenance</loc>
+    <loc>https://firstcallmechanical.com/columbus/planned-maintenance</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://firstcallmechanical.com/dfw/project-work</loc>
+    <loc>https://firstcallmechanical.com/columbus/project-support</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://firstcallmechanical.com/dfw</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://firstcallmechanical.com/dfw/building-controls</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -121,19 +121,43 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://firstcallmechanical.com/central-texas/hvac-modernization</loc>
+    <loc>https://firstcallmechanical.com/dfw/emergency</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://firstcallmechanical.com/central-texas/planned-maintenance</loc>
+    <loc>https://firstcallmechanical.com/dfw/hvac</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://firstcallmechanical.com/central-texas/project-work</loc>
+    <loc>https://firstcallmechanical.com/dfw/planned-maintenance</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://firstcallmechanical.com/dfw/plumbing</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://firstcallmechanical.com/dfw/project-support</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://firstcallmechanical.com/central-texas</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://firstcallmechanical.com/central-texas/building-controls</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -146,6 +170,30 @@
   </url>
   <url>
     <loc>https://firstcallmechanical.com/central-texas/contact</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://firstcallmechanical.com/central-texas/emergency</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://firstcallmechanical.com/central-texas/hvac</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://firstcallmechanical.com/central-texas/planned-maintenance</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://firstcallmechanical.com/central-texas/project-support</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
