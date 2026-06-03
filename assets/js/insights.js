@@ -67,11 +67,28 @@
   }
 
   function initFilters() {
-    var filters = document.querySelectorAll(".insights-filter");
-    var cards = document.querySelectorAll(".insight-card");
+    var filters = Array.prototype.slice.call(document.querySelectorAll(".insights-filter"));
+    var cards = Array.prototype.slice.call(document.querySelectorAll(".insight-card"));
     var count = document.querySelector("[data-filter-count]");
     var empty = document.querySelector("[data-insights-empty]");
     if (!filters.length || !cards.length) return;
+
+    // Branch-scoped view: /insights#columbus (or #central-texas) drops categories
+    // that branch doesn't serve — e.g. Columbus & Austin never surface plumbing.
+    // Same canonical /insights URL; this is a client-side view filter only.
+    var BRANCH_HIDE = { columbus: ["plumbing"], "central-texas": ["plumbing"] };
+    var hide = BRANCH_HIDE[(location.hash || "").replace(/^#/, "").toLowerCase()] || [];
+    if (hide.length) {
+      cards = cards.filter(function (card) {
+        if (hide.indexOf(card.getAttribute("data-cat")) !== -1) { if (card.parentNode) card.parentNode.removeChild(card); return false; }
+        return true;
+      });
+      filters = filters.filter(function (btn) {
+        if (hide.indexOf(btn.getAttribute("data-filter")) !== -1) { if (btn.parentNode) btn.parentNode.removeChild(btn); return false; }
+        return true;
+      });
+      if (!cards.length) return;
+    }
     var total = cards.length;
 
     function setCount(visible, active) {
