@@ -13,6 +13,20 @@
  */
 window.NEWS_DATA = [
   {
+    id: "2026-06-05-comfort-indoor-solutions",
+    date: "June 5, 2026",
+    isoDate: "2026-06-05",
+    category: "acquisition",
+    categoryLabel: "Partnership",
+    headline: "FirstCall Partners with CIS to Expand into Illinois",
+    summary: "FirstCall has partnered with Comfort Indoor Solutions (CIS), a commercial HVAC services company based in the Chicago metro area, extending FirstCall's platform into Illinois.",
+    body: [
+      "FirstCall Group (\"FirstCall\"), a leading commercial services company, has partnered with Comfort Indoor Solutions (\"CIS\"), a commercial HVAC services company based in the Chicago metro area.",
+      "Founded by Ira Katz, Comfort Indoor Solutions provides HVAC service, maintenance, and installation to commercial clients across the greater Chicagoland area. Phil Scarimbolo, co-owner, will continue to oversee day-to-day operations and spearhead FirstCall's growth in the Chicago region.",
+      "Evan Eachus, CEO of FirstCall, said, “We're excited to welcome the Comfort Indoor Solutions team to FirstCall. CIS has built a strong reputation for honest, reliable service in the Chicago market. We believe the FirstCall partnership will accelerate the company's growth in the region and provide fantastic career opportunities for the team.”"
+    ]
+  },
+  {
     id: "2025-11-17-optimum-air-solutions",
     date: "November 17, 2025",
     isoDate: "2025-11-17",

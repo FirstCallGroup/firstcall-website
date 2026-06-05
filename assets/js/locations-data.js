@@ -248,5 +248,15 @@ window.FC_LOCATIONS = [
     "phone": null,
     "lat": 40.4862,
     "lng": -74.2782
+  },
+  {
+    "brand": "Comfort Indoor Solutions (CIS)",
+    "city": "Bensenville",
+    "state": "IL",
+    "addr": "730 Birginal Dr, Bensenville, IL 60106",
+    "url": "https://www.cis-hvac.com/",
+    "phone": null,
+    "lat": 41.9647,
+    "lng": -87.9486
   }
 ];
