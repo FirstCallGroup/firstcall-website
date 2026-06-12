@@ -171,6 +171,13 @@
     .fc-motion input[type="range"] { width: 110px; accent-color: var(--color-accent); }
     .fc-motion-x { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--color-text-light); width: 34px; }
 
+    /* equipment quick-select */
+    .fc-picker { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 0 0 16px; }
+    .fc-picker-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--color-text-light); margin-right: 4px; }
+    .fc-picker-btn { appearance: none; border: 1px solid var(--color-border-strong); background: var(--color-bg-card); color: var(--color-text-muted); font-family: var(--font-body); font-size: 12.5px; font-weight: 600; padding: 7px 13px; border-radius: 999px; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+    .fc-picker-btn:hover { border-color: var(--color-accent); color: var(--color-text); }
+    .fc-picker-btn.is-on { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+
     /* stage */
     .fc-stage { position: relative; background: var(--fc-stage); border: 1px solid var(--color-border); border-radius: 14px; padding: 10px 14px 4px; overflow-x: auto; }
     .fc-stage svg { min-width: 760px; }

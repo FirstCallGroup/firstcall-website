@@ -34,6 +34,26 @@ function FcInfoCard({ id, onClose }) {
   );
 }
 
+/* Equipment quick-select — one button per component, since some SVG hit
+   targets (VAV boxes especially) are small or partly occluded. Hover
+   spotlights the component in the diagram; click opens its info card. */
+function FcPicker({ selected, cardId, onHover, onSelect }) {
+  return (
+    <div className="fc-picker" role="group" aria-label="Equipment quick select">
+      <span className="fc-picker-label">{DATA.copy.picker.label}</span>
+      {Object.keys(DATA.components).map((id) => (
+        <button key={id} className={'fc-picker-btn' + (cardId === id ? ' is-on' : '')}
+          aria-pressed={selected === id}
+          onMouseEnter={() => onHover(id)} onMouseLeave={() => onHover(null)}
+          onFocus={() => onHover(id)} onBlur={() => onHover(null)}
+          onClick={() => onSelect(id)}>
+          {DATA.components[id].name}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 function FcLegend({ T }) {
   return (
     <div className="fc-legend" aria-label="Legend">
@@ -172,6 +192,8 @@ function App() {
               <span className="fc-motion-x">{Number(speed).toFixed(1)}×</span>
             </div>
           </div>
+
+          <FcPicker selected={selected} cardId={cardId} onHover={setActive} onSelect={(id) => setSelected(id)}></FcPicker>
 
           <div className="fc-stage">
             <SystemDiagram uid="main" theme={theme} mode={mode} speed={speed} paused={paused}

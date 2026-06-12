@@ -9,6 +9,22 @@
     if (!c) return null;
     return /* @__PURE__ */ React.createElement("div", { className: "fc-card", role: "dialog", "aria-label": c.name }, /* @__PURE__ */ React.createElement("button", { className: "fc-card-x", onClick: onClose, "aria-label": "Close" }, "×"), /* @__PURE__ */ React.createElement("div", { className: "fc-card-zone" }, c.zone), /* @__PURE__ */ React.createElement("div", { className: "fc-card-name" }, c.name), /* @__PURE__ */ React.createElement("div", { className: "fc-card-blurb" }, c.blurb), /* @__PURE__ */ React.createElement("div", { className: "fc-card-rule" }), /* @__PURE__ */ React.createElement("div", { className: "fc-card-covered" }, "Covered by"), /* @__PURE__ */ React.createElement("div", { className: "fc-card-chips" }, c.services.map((s) => /* @__PURE__ */ React.createElement(FcChip, { key: s }, DATA.services[s].name))));
   }
+  function FcPicker({ selected, cardId, onHover, onSelect }) {
+    return /* @__PURE__ */ React.createElement("div", { className: "fc-picker", role: "group", "aria-label": "Equipment quick select" }, /* @__PURE__ */ React.createElement("span", { className: "fc-picker-label" }, DATA.copy.picker.label), Object.keys(DATA.components).map((id) => /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        key: id,
+        className: "fc-picker-btn" + (cardId === id ? " is-on" : ""),
+        "aria-pressed": selected === id,
+        onMouseEnter: () => onHover(id),
+        onMouseLeave: () => onHover(null),
+        onFocus: () => onHover(id),
+        onBlur: () => onHover(null),
+        onClick: () => onSelect(id)
+      },
+      DATA.components[id].name
+    )));
+  }
   function FcLegend({ T }) {
     return /* @__PURE__ */ React.createElement("div", { className: "fc-legend", "aria-label": "Legend" }, DATA.copy.legend.map((i) => /* @__PURE__ */ React.createElement("span", { key: i.loop, className: "fc-legend-item" }, /* @__PURE__ */ React.createElement("span", { className: "fc-legend-swatch", style: { background: T[i.loop] } }), i.label)));
   }
@@ -87,7 +103,7 @@
         "aria-label": "Animation speed",
         onChange: (e) => setSpeed(+e.target.value)
       }
-    ), /* @__PURE__ */ React.createElement("span", { className: "fc-motion-x" }, Number(speed).toFixed(1), "×"))), /* @__PURE__ */ React.createElement("div", { className: "fc-stage" }, /* @__PURE__ */ React.createElement(
+    ), /* @__PURE__ */ React.createElement("span", { className: "fc-motion-x" }, Number(speed).toFixed(1), "×"))), /* @__PURE__ */ React.createElement(FcPicker, { selected, cardId, onHover: setActive, onSelect: (id) => setSelected(id) }), /* @__PURE__ */ React.createElement("div", { className: "fc-stage" }, /* @__PURE__ */ React.createElement(
       SystemDiagram,
       {
         uid: "main",

@@ -124,6 +124,7 @@ window.FC_COOLING = {
       ['failure', 'Failure scenario'],
       ['optimized', 'Optimized']
     ],
+    picker: { label: 'Equipment' },
     legend: [
       { loop: 'chw',       label: 'Chilled water · supply' },
       { loop: 'chwReturn', label: 'Chilled water · return' },

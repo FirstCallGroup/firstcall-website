@@ -150,6 +150,17 @@ function Comp({ id, children, on, onHover, onSelect, label, focusable = true }) 
   );
 }
 
+// Invisible enlarged hit area around a VAV box. The visible box is mostly
+// painted over by the slab above it (painter's algorithm), so only a sliver
+// is natively clickable. These transparent pads render in a TOP layer (after
+// all floor geometry) so the whole VAV neighborhood is a click target.
+// Hexagonal silhouette of a padded box volume; transparent fill receives
+// pointer events.
+function VavHit({ z }) {
+  return <polygon points={isoPoly([[906, 132, z + 24], [946, 132, z + 24], [946, 132, z - 2], [946, 170, z - 2], [906, 170, z - 2], [906, 170, z + 24]])}
+    fill="transparent" stroke="none"></polygon>;
+}
+
 const FC_TARGETS = {
   normal: { chw: 1, cw: 1, refrig: 1, air: 1, signal: 1, alarm: 0 },
   failure: { chw: 0.05, cw: 0.12, refrig: 0.02, air: 0.3, signal: 1.7, alarm: 1 },
@@ -398,6 +409,11 @@ function SystemDiagram(props) {
                   data-kind="ping" data-size={isAlarm ? 3.4 : 2.6} data-gapx={isAlarm ? 0.7 : 2.4}></path>;
               })}
             </g>
+          </Comp>
+
+          {/* top-layer invisible hit pads for the occluded VAV boxes */}
+          <Comp id="vav" focusable={false} on={on('vav')} onHover={onHover} onSelect={onSelect} label="VAV boxes">
+            {[165, 237, 309].map((z) => <VavHit key={z} z={z}></VavHit>)}
           </Comp>
 
           {/* particles */}

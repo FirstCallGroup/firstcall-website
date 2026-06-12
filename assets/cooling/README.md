@@ -52,6 +52,12 @@ npx esbuild assets/cooling/src/app.jsx       --outfile=assets/cooling/app.js    
   drop-shadow is invisible on the light stage).
 - IBM Plex Mono is hot-linked from Google Fonts (site-wide convention)
   rather than self-hosted.
+- Added an **equipment quick-select** row above the stage (one pill button
+  per component; hover spotlights, click opens the info card) — some SVG
+  hit targets are small/occluded. Names come from `data.js`.
+- Each VAV box gets an invisible enlarged hit polygon (`VavHit` in
+  `src/diagram.jsx`) — the visible box is tiny and sits behind the slab
+  above it.
 
 ## Demo-vs-real decisions (handoff §12)
 

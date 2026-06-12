@@ -189,7 +189,9 @@ function EqSlab({ z }) {
 }
 
 function EqFloorTint({ z, color, op }) {
-  return <polygon points={isoPoly([[684, 34, z + 8.5], [1016, 34, z + 8.5], [1016, 186, z + 8.5], [684, 186, z + 8.5]])} fill={color} opacity={op} style={{ transition: 'opacity 1.2s, fill 1.2s' }}></polygon>;
+  // decorative wash over the whole floor plane — must not intercept clicks
+  // meant for the equipment beneath it (VAV boxes especially)
+  return <polygon points={isoPoly([[684, 34, z + 8.5], [1016, 34, z + 8.5], [1016, 186, z + 8.5], [684, 186, z + 8.5]])} fill={color} opacity={op} pointerEvents="none" style={{ transition: 'opacity 1.2s, fill 1.2s' }}></polygon>;
 }
 
 function EqVAV({ z }) {

@@ -46,7 +46,7 @@
     return /* @__PURE__ */ React.createElement(IsoBox, { x: 684, y: 34, z, w: 332, d: 152, h: 8, fill: T.slab, frontFill: T.slabSide, sideFill: shade(T.slabSide, -0.18), stroke: "rgba(0,0,0,0.25)" });
   }
   function EqFloorTint({ z, color, op }) {
-    return /* @__PURE__ */ React.createElement("polygon", { points: isoPoly([[684, 34, z + 8.5], [1016, 34, z + 8.5], [1016, 186, z + 8.5], [684, 186, z + 8.5]]), fill: color, opacity: op, style: { transition: "opacity 1.2s, fill 1.2s" } });
+    return /* @__PURE__ */ React.createElement("polygon", { points: isoPoly([[684, 34, z + 8.5], [1016, 34, z + 8.5], [1016, 186, z + 8.5], [684, 186, z + 8.5]]), fill: color, opacity: op, pointerEvents: "none", style: { transition: "opacity 1.2s, fill 1.2s" } });
   }
   function EqVAV({ z }) {
     const { theme: T } = React.useContext(IsoCtx);
