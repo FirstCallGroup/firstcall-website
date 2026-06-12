@@ -66,6 +66,10 @@
     .btn--primary { background: var(--color-accent); color: #fff; border-color: var(--color-accent); box-shadow: var(--shadow-sm); }
     .btn--primary:hover { background: var(--color-accent-dark); border-color: var(--color-accent-dark); color: #fff; box-shadow: var(--shadow-md); }
     .btn--sm { padding: var(--space-2) var(--space-4); font-size: var(--text-sm); }
+    .btn--lg { padding: var(--space-4) var(--space-7); font-size: var(--text-lg); }
+    .btn--outline-on-dark { background: transparent; color: #fff; border-color: rgba(255,255,255,0.4); }
+    .btn--outline-on-dark:hover { background: rgba(255,255,255,0.1); border-color: #fff; color: #fff; }
+    .eyebrow { display: inline-block; font-family: var(--font-body); font-size: var(--text-sm); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--color-accent); margin-bottom: var(--space-3); }
 
     .site-header { position: sticky; top: 0; z-index: var(--z-header); background: rgba(15, 40, 20, 0.92); backdrop-filter: saturate(180%) blur(10px); -webkit-backdrop-filter: saturate(180%) blur(10px); border-bottom: 1px solid rgba(74, 125, 82, 0.35); height: var(--header-height); display: flex; align-items: center; transition: box-shadow var(--duration-base) var(--ease-out), background var(--duration-base) var(--ease-out); }
     .site-header.is-scrolled { box-shadow: 0 1px 0 rgba(0,0,0,0.4), var(--shadow-sm); background: rgba(15, 40, 20, 0.97); }
@@ -214,7 +218,7 @@
     }
     .stage::-webkit-scrollbar { height: 8px; }
     .stage::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 999px; }
-    .scene-inner { width: 100%; }
+    .scene-inner { width: min(92%, 1160px); margin: 0 auto; }
     .scene-svg { display: block; width: 100%; height: auto; }
     .scroll-hint {
       display: none;
@@ -457,6 +461,18 @@
     }
 
     .explorer-noscript { max-width: 640px; margin: 0 auto; padding: var(--space-8) var(--pad-x); text-align: center; color: var(--color-text-muted); }
+
+    /* ===== CTA band (site-standard dark-green section) ===== */
+    .cta-band { background: var(--color-bg-dark); color: var(--color-text-on-dark); padding-block: var(--space-9); position: relative; overflow: hidden; text-align: center; }
+    .cta-band::before { content: ""; position: absolute; inset: 0; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 96'><polygon points='28,4 52,18 52,46 28,60 4,46 4,18' fill='none' stroke='%235BA3D6' stroke-width='1' opacity='0.10'/><polygon points='0,52 24,66 24,94 0,108 -24,94 -24,66' fill='none' stroke='%235BA3D6' stroke-width='1' opacity='0.10'/><polygon points='56,52 80,66 80,94 56,108 32,94 32,66' fill='none' stroke='%235BA3D6' stroke-width='1' opacity='0.10'/></svg>"); background-size: 56px 96px; pointer-events: none; }
+    .cta-band__inner { position: relative; max-width: 700px; margin-inline: auto; }
+    .cta-band h2 { color: #fff; margin-bottom: var(--space-4); font-size: clamp(1.875rem, 3.5vw, var(--text-5xl)); }
+    .cta-band p { color: rgba(255,255,255,0.85); margin-bottom: var(--space-6); font-size: var(--text-lg); line-height: var(--leading-relaxed); }
+    .cta-band__actions { display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap; }
+    .cta-band__proof { margin-top: var(--space-7); display: flex; gap: var(--space-3) var(--space-6); justify-content: center; flex-wrap: wrap; font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: rgba(242, 239, 227, 0.66); }
+    .cta-band__proof b { color: var(--color-accent-light); font-weight: 600; }
+    .cta-band__proof a { color: rgba(242, 239, 227, 0.85); text-decoration: none; }
+    .cta-band__proof a:hover { color: var(--color-accent-light); }
   </style>
   <!-- fc:org-schema:start -->
   <script type="application/ld+json">
@@ -609,6 +625,24 @@
         </div>
       </noscript>
     </div>
+
+    <!-- CTA — site-standard dark-green band -->
+    <section class="cta-band" id="talk">
+      <div class="container cta-band__inner">
+        <span class="eyebrow" style="color: var(--color-accent-light)">One Network, Every Facility</span>
+        <h2>Nine industries. One call.</h2>
+        <p>Whether you manage a single building or a portfolio across states, the nearest FirstCall branch brings the trades, the bench depth, and the response times to keep it running.</p>
+        <div class="cta-band__actions">
+          <a class="btn btn--primary btn--lg" href="contact.html">Talk to FirstCall</a>
+          <a class="btn btn--outline-on-dark btn--lg" href="locations.html">Find Your Branch</a>
+        </div>
+        <div class="cta-band__proof">
+          <span><b data-fc-count="branches">26</b> branches nationwide</span>
+          <span><b data-fc-count="states">12</b> states served</span>
+          <span>24/7 dispatch — <a href="tel:+18447150220">(844) 715-0220</a></span>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer" role="contentinfo">
@@ -632,6 +666,7 @@
   <!-- Capability Explorer runtime — pre-compiled, no in-browser Babel.
        Order matters: locations data → React → content data → icons → scene → app. -->
   <script src="assets/js/locations-data.js"></script>
+  <script src="assets/js/fc-counts.js"></script>
   <script src="assets/industries/vendor/react.production.min.js"></script>
   <script src="assets/industries/vendor/react-dom.production.min.js"></script>
   <script src="assets/industries/data.js"></script>

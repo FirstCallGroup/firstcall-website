@@ -91,7 +91,7 @@ function Panel({ building, onClose, onCTA }) {
             <button className="btn-cta" onClick={() => onCTA(b)}>
               <Icons.phone /> Get in Touch
             </button>
-            <div className="dispatch-line">24/7 dispatch — <a href="tel:8447150220">844.715.0220</a></div>
+            <div className="dispatch-line">24/7 dispatch — <a href="tel:+18447150220">(844) 715-0220</a></div>
           </div>
         </div>
       )}
@@ -180,7 +180,7 @@ function ContactModal({ open, context, onClose }) {
           <div className="modal-success">
             <div className="success-ic"><Icons.check /></div>
             <h2 className="modal-title" style={{ marginBottom: 8 }}>Request received.</h2>
-            <p className="modal-sub" style={{ marginBottom: 22 }}>Thanks — the nearest FirstCall branch will be in touch shortly. For urgent issues, our 24/7 dispatch line is always staffed: <a href="tel:8447150220" style={{ color: "var(--blue)", textDecoration: "none", fontWeight: 600 }}>844.715.0220</a>.</p>
+            <p className="modal-sub" style={{ marginBottom: 22 }}>Thanks — the nearest FirstCall branch will be in touch shortly. For urgent issues, our 24/7 dispatch line is always staffed: <a href="tel:+18447150220" style={{ color: "var(--blue)", textDecoration: "none", fontWeight: 600 }}>(844) 715-0220</a>.</p>
             <button className="btn-cta" style={{ maxWidth: 200, margin: "0 auto" }} onClick={onClose}>Done</button>
           </div>
         )}

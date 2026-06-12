@@ -541,8 +541,8 @@
     dataCenter: { lx: 72, ly: 330, anchor: "start", cx: 300, cy: 336 },
     school: { lx: 72, ly: 480, anchor: "start", cx: 300, cy: 486 },
     university: { lx: 72, ly: 640, anchor: "start", cx: 300, cy: 646 },
-    multifamily: { lx: 1690, ly: 1060, anchor: "start", cx: 1662, cy: 1054 },
-    industrial: { lx: 2208, ly: 984, anchor: "end", cx: 2040, cy: 990 }
+    multifamily: { lx: 2208, ly: 984, anchor: "end", cx: 2040, cy: 990 },
+    industrial: { lx: 1690, ly: 1060, anchor: "start", cx: 1662, cy: 1054 }
   };
   function Callouts({ spotlight, onOpen, onHover }) {
     const data = window.FCG.BUILDINGS.reduce((m, b) => (m[b.id] = b, m), {});
