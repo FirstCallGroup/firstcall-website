@@ -131,4 +131,8 @@
 
   window.FC_MAP = window.FC_MAP || {};
   window.FC_MAP.addBaseAndStates = addBaseAndStates;
+  // Shared with non-Leaflet consumers (one-pager.html) so served-state
+  // shading stays in sync with the homepage map.
+  window.FC_MAP.STATE_NAMES = STATE_NAMES;
+  window.FC_MAP.COVERAGE_STATES = COVERAGE_STATES;
 })();
