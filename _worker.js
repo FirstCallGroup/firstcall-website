@@ -74,6 +74,12 @@ export default {
         return Response.redirect(`https://firstcallmechanical.com${path}${url.search}`, 301);
       }
 
+      // Critical Infrastructure is FCM content (root /critical-infrastructure*);
+      // keep it on the FCM domain.
+      if (/^\/critical-infrastructure(\/.*)?$/.test(path)) {
+        return Response.redirect(`https://firstcallmechanical.com${path}${url.search}`, 301);
+      }
+
       if (path === "/mechanical" || path === "/mechanical/") {
         return Response.redirect("https://firstcallmechanical.com/" + url.search, 301);
       }
