@@ -426,7 +426,7 @@ function ctaBand(heading, body) {
 const HUB_PILLAR_COPY = {
   "performance-contracting": "Fund deep facility upgrades from the energy and operational savings they create — with engineered scopes and measured, verified results.",
   "data-centers": "Precision cooling, chilled-water plants, and redundancy maintenance for facilities where uptime is non-negotiable.",
-  "life-sciences-healthcare": "Cleanrooms, critical-environment HVAC, and compliant systems for hospitals, labs, and pharmaceutical manufacturing.",
+  "life-sciences-healthcare": "Operating and procedure rooms, cleanrooms, critical-environment HVAC, and compliant systems for hospitals, labs, and pharmaceutical manufacturing.",
   "turbines-rotating-equipment": "Inspection, overhaul, and field service for steam and gas turbines, generators, and the compressors that keep a plant running.",
 };
 
@@ -695,6 +695,29 @@ ${check("Planned + emergency coverage", "Disciplined maintenance plus 24/7 respo
 
     <section class="section section--tinted">
       <div class="container">
+        <div class="split">
+          <div>
+            <div class="section-head" style="margin-bottom:var(--space-5);">
+              <span class="eyebrow">Operating &amp; procedure rooms</span>
+              <h2>The rooms where the air is part of the procedure.</h2>
+            </div>
+            <div class="prose">
+              <p>Operating rooms and procedure rooms run to tight, code-defined targets: positive pressure to the corridor, the air changes per hour their classification calls for, and temperature and humidity held inside a narrow band. When any of those drift, cases get delayed, sterility is questioned, and the room can be pulled from service — lost revenue on some of the most valuable square footage in the building.</p>
+              <p>FirstCall keeps these rooms in spec and ready for use. We test and balance airflow and pressure relationships, service the terminal HEPA filtration, hold temperature and humidity through reheat and humidification, and record every reading so the room is defensible to infection control and your accrediting surveyors. Work is scheduled around your case calendar and performed under infection-control protocols — with 24/7 response when a room goes down unexpectedly.</p>
+            </div>
+          </div>
+          <ul class="checks">
+${check("Air changes verified", "Supply, exhaust, and ACH balanced and certified to the room's classification.")}
+${check("Pressure to the corridor", "Positive pressure relationships confirmed so the clean space stays clean.")}
+${check("Temp &amp; humidity in band", "Reheat and humidification tuned to hold the surgical and procedure range.")}
+${check("HEPA serviced &amp; recorded", "Terminal filtration changed, checked, and documented for recertification.")}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
         <div class="section-head section-head--center">
           <span class="eyebrow">Capabilities</span>
           <h2>Systems we keep in spec.</h2>
@@ -827,7 +850,7 @@ const PAGES = [
   { out: "data-centers.html", active: "data-centers", body: dataCentersBody,
     meta: { slug: "data-centers", crumb: "Data Centers", title: "Data Center Mechanical &amp; Cooling Services — FirstCall Mechanical", desc: "Precision cooling, chilled-water plants, controls, and redundancy maintenance for data centers — concurrent maintainability, MOP discipline, and 24/7 emergency response from FirstCall." } },
   { out: "life-sciences-healthcare.html", active: "life-sciences-healthcare", body: lifeSciencesBody,
-    meta: { slug: "life-sciences-healthcare", crumb: "Life Sciences & Healthcare", title: "Life Sciences & Healthcare Mechanical Services — FirstCall Mechanical", desc: "Critical-environment HVAC, cleanrooms, lab exhaust, and GMP utilities for hospitals, laboratories, and pharmaceutical manufacturing — serviced to the compliance standard they demand by FirstCall." } },
+    meta: { slug: "life-sciences-healthcare", crumb: "Life Sciences & Healthcare", title: "Life Sciences & Healthcare Mechanical Services — FirstCall Mechanical", desc: "Operating and procedure rooms, critical-environment HVAC, cleanrooms, lab exhaust, and GMP utilities for hospitals, laboratories, and pharmaceutical manufacturing — serviced to the compliance standard they demand by FirstCall." } },
   { out: "turbines-rotating-equipment.html", active: "turbines-rotating-equipment", body: turbinesBody,
     meta: { slug: "turbines-rotating-equipment", crumb: "Turbines & Rotating Equipment", title: "Turbines & Rotating Equipment Service — FirstCall Mechanical", desc: "OEM-grade inspection, overhaul, and field service for steam and gas turbines, generators, and compressors — root-cause diagnosis from FirstCall's KATS Solutions rotating-equipment team." } },
 ];
