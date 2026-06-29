@@ -844,15 +844,15 @@ function page(meta, active, body) { return head(meta) + header(active) + body + 
 
 const PAGES = [
   { out: "index.html", active: "hub", body: hubBody,
-    meta: { slug: "", crumb: "Critical Infrastructure", title: "Critical Infrastructure — FirstCall Mechanical", desc: "Mechanical, controls, and rotating-equipment expertise for facilities that can't go down — data centers, hospitals and labs, energy assets, and performance-contracted upgrades, delivered by FirstCall." } },
+    meta: { slug: "", crumb: "Critical Infrastructure", title: "Critical Infrastructure — FirstCall Mechanical", desc: "Mechanical, controls, and rotating-equipment service for facilities that can't go down — data centers, hospitals and labs, energy assets, and efficiency upgrades." } },
   { out: "performance-contracting.html", active: "performance-contracting", body: performanceBody,
-    meta: { slug: "performance-contracting", crumb: "Performance Contracting", title: "Performance Contracting — FirstCall Mechanical", desc: "Fund deep mechanical, controls, and efficiency upgrades from the energy and operational savings they create — engineered scopes, measured and verified results, self-performed by FirstCall." } },
+    meta: { slug: "performance-contracting", crumb: "Performance Contracting", title: "Performance Contracting — FirstCall Mechanical", desc: "Fund mechanical and efficiency upgrades from the energy savings they create — engineered scopes with measured, verified results, self-performed by FirstCall." } },
   { out: "data-centers.html", active: "data-centers", body: dataCentersBody,
-    meta: { slug: "data-centers", crumb: "Data Centers", title: "Data Center Mechanical &amp; Cooling Services — FirstCall Mechanical", desc: "Precision cooling, chilled-water plants, controls, and redundancy maintenance for data centers — concurrent maintainability, MOP discipline, and 24/7 emergency response from FirstCall." } },
+    meta: { slug: "data-centers", crumb: "Data Centers", title: "Data Center Mechanical &amp; Cooling Services — FirstCall Mechanical", desc: "Precision cooling, chilled-water plants, and redundancy maintenance for data centers — concurrent maintainability, MOP discipline, and 24/7 emergency response." } },
   { out: "life-sciences-healthcare.html", active: "life-sciences-healthcare", body: lifeSciencesBody,
-    meta: { slug: "life-sciences-healthcare", crumb: "Life Sciences & Healthcare", title: "Life Sciences & Healthcare Mechanical Services — FirstCall Mechanical", desc: "Operating and procedure rooms, critical-environment HVAC, cleanrooms, lab exhaust, and GMP utilities for hospitals, laboratories, and pharmaceutical manufacturing — serviced to the compliance standard they demand by FirstCall." } },
+    meta: { slug: "life-sciences-healthcare", crumb: "Life Sciences & Healthcare", title: "Life Sciences & Healthcare Mechanical Services — FirstCall Mechanical", desc: "Operating and procedure rooms, cleanrooms, critical-environment HVAC, and GMP utilities for hospitals, labs, and pharma — serviced to compliance by FirstCall." } },
   { out: "turbines-rotating-equipment.html", active: "turbines-rotating-equipment", body: turbinesBody,
-    meta: { slug: "turbines-rotating-equipment", crumb: "Turbines & Rotating Equipment", title: "Turbines & Rotating Equipment Service — FirstCall Mechanical", desc: "OEM-grade inspection, overhaul, and field service for steam and gas turbines, generators, and compressors — root-cause diagnosis from FirstCall's KATS Solutions rotating-equipment team." } },
+    meta: { slug: "turbines-rotating-equipment", crumb: "Turbines & Rotating Equipment", title: "Turbines & Rotating Equipment Service — FirstCall Mechanical", desc: "OEM-grade inspection, overhaul, and field service for steam and gas turbines, generators, and compressors — from FirstCall's KATS Solutions rotating-equipment team." } },
 ];
 
 function buildPages() {
