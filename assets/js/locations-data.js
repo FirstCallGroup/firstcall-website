@@ -123,11 +123,11 @@ window.FC_LOCATIONS = [
     "brand": "ICACS (Industrial Cooling)",
     "city": "Freeport",
     "state": "NY",
-    "addr": "83 Hampton Road, Freeport, NY 11520",
+    "addr": "83 Hampton Place, Freeport, NY 11520",
     "url": "https://www.industrialcoolinginc.com/welcome.php",
     "phone": null,
-    "lat": 40.6576,
-    "lng": -73.5832
+    "lat": 40.6382,
+    "lng": -73.5967
   },
   {
     "brand": "KATS Solutions",
@@ -183,11 +183,11 @@ window.FC_LOCATIONS = [
     "brand": "STR Mechanical — Chesapeake",
     "city": "Chesapeake",
     "state": "VA",
-    "addr": "825 Green Briar Circle, Suite A, Chesapeake, VA 23320",
+    "addr": "825 Greenbrier Circle, Suite A, Chesapeake, VA 23320",
     "url": "https://strmechanical.com/",
     "phone": null,
-    "lat": 36.7682,
-    "lng": -76.2875
+    "lat": 36.7894,
+    "lng": -76.231
   },
   {
     "brand": "Starnes",

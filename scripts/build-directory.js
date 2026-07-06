@@ -46,7 +46,7 @@ const branches = [
   { brand: "FirstCall Mechanical — Austin", city: "Austin",     state: "TX", addr: "10421 Old Manchaca Road, Suite 410, Austin, TX 78748",   url: "https://firstcallmechanical.com/central-texas",       phone: null,             lat: 30.1763, lng: -97.8362 },
 
   // New York
-  { brand: "ICACS (Industrial Cooling)", city: "Freeport",      state: "NY", addr: "83 Hampton Road, Freeport, NY 11520",                   url: "https://www.industrialcoolinginc.com/welcome.php",   phone: null,             lat: 40.6576, lng: -73.5832 },
+  { brand: "ICACS (Industrial Cooling)", city: "Freeport",      state: "NY", addr: "83 Hampton Place, Freeport, NY 11520",                  url: "https://www.industrialcoolinginc.com/welcome.php",   phone: null,             lat: 40.6382, lng: -73.5967 },
   { brand: "KATS Solutions",             city: "Wellsville",    state: "NY", addr: "37 Coats Street, Wellsville, NY 14895",                 url: "https://kats.pro/",                                   phone: null,             lat: 42.1223, lng: -77.9483 },
   { brand: "Select Environmental",       city: "West Babylon",  state: "NY", addr: "210 Dale Street, West Babylon, NY 11704",               url: "https://www.selectenv.com/",                          phone: null,             lat: 40.7104, lng: -73.3565 },
 
@@ -57,7 +57,7 @@ const branches = [
 
   // Virginia
   { brand: "Starnes",                              city: "Lebanon",    state: "VA", addr: "4082 US Highway 19, Lebanon, VA 24266",            url: "https://starnesinc.com/",        phone: null,             lat: 36.9077, lng: -82.0793 },
-  { brand: "STR Mechanical — Chesapeake",  city: "Chesapeake", state: "VA", addr: "825 Green Briar Circle, Suite A, Chesapeake, VA 23320", url: "https://strmechanical.com/", phone: null,             lat: 36.7682, lng: -76.2875 },
+  { brand: "STR Mechanical — Chesapeake",  city: "Chesapeake", state: "VA", addr: "825 Greenbrier Circle, Suite A, Chesapeake, VA 23320",  url: "https://strmechanical.com/", phone: null,             lat: 36.7894, lng: -76.2310 },
 
   // South Carolina
   { brand: "STR Mechanical — Greenville", city: "Liberty",      state: "SC", addr: "550 Blackbottom Road, Liberty, SC 29657",       url: "https://strmechanical.com/",                                phone: null,             lat: 34.7873, lng: -82.6943 },
