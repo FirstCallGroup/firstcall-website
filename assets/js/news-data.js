@@ -1,6 +1,9 @@
 /* FirstCall Group press-release data.
  * Single source of truth for /news and /news/article.html.
  * Adding a new release: prepend a new object to the array.
+ * Scheduled publishing: news.html and news/article.html hide any entry whose
+ * isoDate is in the future (midnight US Central), so future-dated entries can
+ * be staged here and go live automatically on their date.
  * Fields:
  *   id            URL slug (used as ?id= in article.html)
  *   date          Human-readable date for display
@@ -13,23 +16,37 @@
  */
 window.NEWS_DATA = [
   {
-    id: "2026-07-01-angela-collins-regional-vp-southeast",
-    date: "July 1, 2026",
-    isoDate: "2026-07-01",
+    id: "2026-08-10-chris-landreth-svp-mergers-integration",
+    date: "August 10, 2026",
+    isoDate: "2026-08-10",
     category: "company",
     categoryLabel: "Leadership",
-    headline: "Angela Collins Joins FirstCall as Regional Vice President, Southeast",
-    summary: "Angela Collins joins FirstCall as Regional Vice President, Southeast, bringing 25+ years of commercial HVAC/R experience including leadership roles at Climate Pros, CoolSys, and Comfort Systems USA.",
+    headline: "Chris Landreth Named SVP of Mergers & Integration",
+    summary: "FirstCall has promoted Chris Landreth to Senior Vice President of Mergers & Integration. Chris co-founded STR Mechanical, FirstCall's first partner branch, and joined FirstCall in 2022.",
     body: [
-      "We are excited to welcome Angela Collins as our Regional Vice President, Southeast.",
-      "Angela brings more than 25 years of experience in the commercial HVAC/R industry, with a proven track record of driving revenue growth, building high-performing sales teams, and leading complex multi-region operations. She joins FirstCall from Climate Pros, where she led Northeast regional sales strategy for a multi-location HVAC/R platform. Previously, as Divisional Vice President at CoolSys Light Commercial Solutions, Angela significantly grew the division's revenue while expanding EBITDA margins. Before that, she spent six years as Regional Service Vice President at Comfort Systems USA, growing regional revenue and more than doubling operating income. Angela's earlier career includes leadership roles at Johnson Controls and Trane, and she was featured in Contracting Business Magazine's \"Contractors to Watch.\"",
-      "Angela is a LEED Green Associate."
+      "We are excited to announce that Chris Landreth has been named Senior Vice President of Mergers & Integration.",
+      "Chris joined FirstCall in 2022 as Group President, most recently overseeing operations for Ohio, New York, Virginia, and the Carolinas. In his new role, Chris will lead the integration of new partner branches onto the FirstCall platform — ensuring every company we partner with keeps what makes it great while gaining the full support of the national platform. Chris brings over 20 years of experience in the commercial HVAC industry, previously serving as President and Co-Founder of STR Mechanical, FirstCall's first partnership in 2022. Chris holds a BS from the University of North Carolina — Charlotte.",
+      "Chris is based in Charlotte, NC."
     ]
   },
   {
-    id: "2026-06-24-mike-hadrick-regional-vp-central",
-    date: "June 24, 2026",
-    isoDate: "2026-06-24",
+    id: "2026-08-03-matthew-hunt-chief-commercial-officer",
+    date: "August 3, 2026",
+    isoDate: "2026-08-03",
+    category: "company",
+    categoryLabel: "Leadership",
+    headline: "Matthew Hunt Named Chief Commercial Officer",
+    summary: "FirstCall has promoted Matthew Hunt to Chief Commercial Officer. Matthew joined FirstCall in 2024 as Group President and previously founded C2H Air and Electric.",
+    body: [
+      "We are excited to announce that Matthew Hunt has been named Chief Commercial Officer.",
+      "Matthew joined FirstCall in 2024 as Group President, overseeing operations for Georgia, Florida, and Texas. As Chief Commercial Officer, Matthew will lead commercial strategy across the FirstCall platform — deepening relationships with our customers and helping our partner branches grow. Matthew brings 20+ years of experience in commercial HVAC and electrical contracting. Prior to FirstCall, he was President and Founder of C2H Air and Electric, which partnered with FirstCall in 2024. Matthew is a licensed Professional Engineer and holds a BS in Mechanical Engineering from the Georgia Institute of Technology.",
+      "Matthew is based in Atlanta, GA."
+    ]
+  },
+  {
+    id: "2026-07-27-mike-hadrick-regional-vp-central",
+    date: "July 27, 2026",
+    isoDate: "2026-07-27",
     category: "company",
     categoryLabel: "Leadership",
     headline: "Mike Hadrick Joins FirstCall as Regional Vice President, Central",
@@ -41,9 +58,9 @@ window.NEWS_DATA = [
     ]
   },
   {
-    id: "2026-06-17-lee-guill-regional-vp-northeast",
-    date: "June 17, 2026",
-    isoDate: "2026-06-17",
+    id: "2026-07-20-lee-guill-regional-vp-northeast",
+    date: "July 20, 2026",
+    isoDate: "2026-07-20",
     category: "company",
     categoryLabel: "Leadership",
     headline: "Lee Guill Joins FirstCall as Regional Vice President, Northeast",
@@ -55,9 +72,23 @@ window.NEWS_DATA = [
     ]
   },
   {
-    id: "2026-06-10-jeff-holland-president-coo",
-    date: "June 10, 2026",
-    isoDate: "2026-06-10",
+    id: "2026-07-13-angela-collins-regional-vp-southeast",
+    date: "July 13, 2026",
+    isoDate: "2026-07-13",
+    category: "company",
+    categoryLabel: "Leadership",
+    headline: "Angela Collins Joins FirstCall as Regional Vice President, Southeast",
+    summary: "Angela Collins joins FirstCall as Regional Vice President, Southeast, bringing 25+ years of commercial HVAC/R experience including leadership roles at Climate Pros, CoolSys, and Comfort Systems USA.",
+    body: [
+      "We are excited to welcome Angela Collins as our Regional Vice President, Southeast.",
+      "Angela brings more than 25 years of experience in the commercial HVAC/R industry, with a proven track record of driving revenue growth, building high-performing sales teams, and leading complex multi-region operations. She joins FirstCall from Climate Pros, where she led Northeast regional sales strategy for a multi-location HVAC/R platform. Previously, as Divisional Vice President at CoolSys Light Commercial Solutions, Angela significantly grew the division's revenue while expanding EBITDA margins. Before that, she spent six years as Regional Service Vice President at Comfort Systems USA, growing regional revenue and more than doubling operating income. Angela's earlier career includes leadership roles at Johnson Controls and Trane, and she was featured in Contracting Business Magazine's \"Contractors to Watch.\"",
+      "Angela is a LEED Green Associate."
+    ]
+  },
+  {
+    id: "2026-07-06-jeff-holland-president-coo",
+    date: "July 6, 2026",
+    isoDate: "2026-07-06",
     category: "company",
     categoryLabel: "Leadership",
     headline: "Jeff Holland Joins FirstCall as President and Chief Operating Officer",

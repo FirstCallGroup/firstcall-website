@@ -442,7 +442,12 @@
       function initNewsList() {
         var list = document.querySelector("[data-news-list]");
         if (!list || !window.NEWS_DATA) return;
-        var html = window.NEWS_DATA.map(function (n) {
+        // Scheduled publishing: a release is visible from its isoDate onward
+        // (midnight US Central). Future-dated entries stay hidden until then.
+        var today = new Date().toLocaleDateString("en-CA", { timeZone: "America/Chicago" });
+        var html = window.NEWS_DATA.filter(function (n) {
+          return n.isoDate <= today;
+        }).map(function (n) {
           return ''
             + '<article class="news-item" data-cat="' + escapeHtml(n.category) + '">'
               + '<div class="news-item__meta">'

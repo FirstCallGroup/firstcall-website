@@ -325,6 +325,10 @@
       function renderArticle() {
         var id = getId();
         var article = (window.NEWS_DATA || []).find(function (n) { return n.id === id; });
+        // Scheduled publishing: future-dated releases (isoDate after today,
+        // midnight US Central) render as not-found until their date arrives.
+        var today = new Date().toLocaleDateString("en-CA", { timeZone: "America/Chicago" });
+        if (article && article.isoDate > today) article = null;
         var missing = document.querySelector("[data-missing]");
         var dateEl = document.querySelector("[data-date]");
         var catEl = document.querySelector("[data-cat]");
