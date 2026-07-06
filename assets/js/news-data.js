@@ -13,6 +13,62 @@
  */
 window.NEWS_DATA = [
   {
+    id: "2026-07-01-angela-collins-regional-vp-southeast",
+    date: "July 1, 2026",
+    isoDate: "2026-07-01",
+    category: "company",
+    categoryLabel: "Leadership",
+    headline: "Angela Collins Joins FirstCall as Regional Vice President, Southeast",
+    summary: "Angela Collins joins FirstCall as Regional Vice President, Southeast, bringing 25+ years of commercial HVAC/R experience including leadership roles at Climate Pros, CoolSys, and Comfort Systems USA.",
+    body: [
+      "We are excited to welcome Angela Collins as our Regional Vice President, Southeast.",
+      "Angela brings more than 25 years of experience in the commercial HVAC/R industry, with a proven track record of driving revenue growth, building high-performing sales teams, and leading complex multi-region operations. She joins FirstCall from Climate Pros, where she led Northeast regional sales strategy for a multi-location HVAC/R platform. Previously, as Divisional Vice President at CoolSys Light Commercial Solutions, Angela significantly grew the division's revenue while expanding EBITDA margins. Before that, she spent six years as Regional Service Vice President at Comfort Systems USA, growing regional revenue and more than doubling operating income. Angela's earlier career includes leadership roles at Johnson Controls and Trane, and she was featured in Contracting Business Magazine's \"Contractors to Watch.\"",
+      "Angela is a LEED Green Associate."
+    ]
+  },
+  {
+    id: "2026-06-24-mike-hadrick-regional-vp-central",
+    date: "June 24, 2026",
+    isoDate: "2026-06-24",
+    category: "company",
+    categoryLabel: "Leadership",
+    headline: "Mike Hadrick Joins FirstCall as Regional Vice President, Central",
+    summary: "Mike Hadrick joins FirstCall as Regional Vice President, Central, bringing 25+ years of HVAC, refrigeration, and industrial service leadership from Smart Care, Schindler, Siemens, and York International.",
+    body: [
+      "We are excited to welcome Mike Hadrick as our Regional Vice President, Central.",
+      "Mike brings more than 25 years of operations and service leadership experience across HVAC, refrigeration, and industrial services. He joins FirstCall from Smart Care, a nationwide leader in commercial foodservice, refrigeration, and HVAC services, where he served as Vice President of Operations and previously as Vice President of Service for the West. Prior to Smart Care, Mike was Vice President of Schindler's Large Projects Division for the South, and earlier held general management roles at Siemens and led the P&L of York International's Chicago District HVAC service business. Across every stop, Mike has built a reputation for disciplined service operations, strong field cultures, and consistent delivery for customers.",
+      "Mike attended Purdue University and is based in Houston, TX."
+    ]
+  },
+  {
+    id: "2026-06-17-lee-guill-regional-vp-northeast",
+    date: "June 17, 2026",
+    isoDate: "2026-06-17",
+    category: "company",
+    categoryLabel: "Leadership",
+    headline: "Lee Guill Joins FirstCall as Regional Vice President, Northeast",
+    summary: "Lee Guill joins FirstCall as Regional Vice President, Northeast, bringing 25+ years scaling building technology and services businesses at Schneider Electric, Kirlin Group, and Johnson Controls.",
+    body: [
+      "We are excited to welcome Lee Guill as our Regional Vice President, Northeast.",
+      "Lee brings more than 25 years of experience scaling building technology and services businesses, with deep expertise across HVAC/MEP, building automation, security, fire/life safety, and federal markets. Most recently, Lee led Schneider Electric's national Digital Buildings Security business, managing more than 400 employees and contractors across all 50 states. Previously, he was Executive Vice President — Eastern US at Kirlin Group, where he managed a construction unit and national service organization and positioned a business unit for a successful acquisition. Lee's career also includes senior leadership roles at Johnson Controls, Southland Industries, and Versar, where he led post-acquisition integrations, carve-outs, and major federal contract wins including a national FAA program.",
+      "Lee is a graduate of the Virginia Military Institute with a BS in Mechanical Engineering. He is based in Reston, VA."
+    ]
+  },
+  {
+    id: "2026-06-10-jeff-holland-president-coo",
+    date: "June 10, 2026",
+    isoDate: "2026-06-10",
+    category: "company",
+    categoryLabel: "Leadership",
+    headline: "Jeff Holland Joins FirstCall as President and Chief Operating Officer",
+    summary: "Jeff Holland joins FirstCall as President and Chief Operating Officer, bringing 30+ years of leadership scaling multi-site commercial services businesses, most recently at Convergint Technologies.",
+    body: [
+      "We are excited to welcome Jeff Holland as our President and Chief Operating Officer.",
+      "Jeff brings more than 30 years of leadership experience building and scaling multi-site, field-intensive commercial services businesses. He joins FirstCall from Convergint Technologies, where he served as Senior Vice President of U.S. Eastern Operations, leading the company's top-performing U.S. operating P&L — an organization spanning nearly 50 field locations across 27 states. During his tenure, Convergint grew many times over and earned the industry's #1 systems integrator ranking for eight consecutive years. Prior to Convergint, Jeff was President and equity owner of Vision Security Technologies, where he led the company's turnaround and successfully exited the business in 2015. Jeff began his career in banking and financial services, co-founding and successfully exiting multiple operating companies.",
+      "Jeff is based in Birmingham, AL."
+    ]
+  },
+  {
     id: "2026-06-05-comfort-indoor-solutions",
     date: "June 5, 2026",
     isoDate: "2026-06-05",
