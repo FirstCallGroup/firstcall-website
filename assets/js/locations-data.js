@@ -15,7 +15,7 @@ window.FC_LOCATIONS = [
     "state": "GA",
     "addr": "1625 Lakes Parkway, Suite H, Lawrenceville, GA 30043",
     "url": "https://c2h.com/",
-    "phone": "(678) 837-3224",
+    "phone": "(678) 837-1224",
     "lat": 33.9562,
     "lng": -83.9879
   },

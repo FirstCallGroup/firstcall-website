@@ -26,7 +26,7 @@ const root = path.resolve(__dirname, "..");
    =========================================================== */
 const branches = [
   // Georgia
-  { brand: "C2H",                       city: "Lawrenceville",  state: "GA", addr: "1625 Lakes Parkway, Suite H, Lawrenceville, GA 30043", url: "https://c2h.com/",                                      phone: "(678) 837-3224", lat: 33.9562, lng: -83.9879 },
+  { brand: "C2H",                       city: "Lawrenceville",  state: "GA", addr: "1625 Lakes Parkway, Suite H, Lawrenceville, GA 30043", url: "https://c2h.com/",                                      phone: "(678) 837-1224", lat: 33.9562, lng: -83.9879 },
   { brand: "Conditioned Air",           city: "Macon",          state: "GA", addr: "241 South Street, Macon, GA 31206",                    url: "https://www.conditionedairinc.com/",                    phone: null,             lat: 32.8407, lng: -83.6324 },
   { brand: "Starr",                     city: "Macon",          state: "GA", addr: "539 Bartlett Street, Macon, GA 31204",                 url: "https://www.starrelectric.biz/",                        phone: null,             lat: 32.8430, lng: -83.6190 },
   { brand: "Timco",                     city: "Buford",         state: "GA", addr: "5309 Palmero Court, Suite 200, Buford, GA 30518",      url: "https://timcoair.com/",                                 phone: null,             lat: 34.1209, lng: -83.9889 },
