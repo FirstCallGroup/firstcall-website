@@ -85,6 +85,7 @@ const BRANCHES_DROPDOWN = `<div class="site-nav__dropdown-wrap" data-dropdown>
             <a class="site-nav__dropdown-link" href="/columbus">Columbus, OH</a>
             <a class="site-nav__dropdown-link" href="/dfw">Dallas-Fort Worth, TX</a>
             <a class="site-nav__dropdown-link" href="/central-texas">Austin, TX</a>
+            <a class="site-nav__dropdown-link" href="/locations">All Other</a>
           </div>
         </div>`;
 
