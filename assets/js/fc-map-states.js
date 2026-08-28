@@ -34,9 +34,11 @@
   // Combined with branch states from FC_LOCATIONS to produce the shaded set.
   var COVERAGE_STATES = ["OK", "MS", "AL", "TN", "KY", "CT"];
 
-  var BASE_TILES = "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}@2x.png";
-  var LABEL_TILES = "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}@2x.png";
-  var BASE_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions" rel="noopener">CARTO</a>';
+  // Esri Light Gray Canvas — no API key required. Note the {z}/{y}/{x} tile
+  // order (y before x), unlike the previous CARTO tiles.
+  var BASE_TILES = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}";
+  var LABEL_TILES = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}";
+  var BASE_ATTR = 'Tiles &copy; <a href="https://www.esri.com/" rel="noopener">Esri</a> &mdash; Esri, HERE, Garmin, &copy; <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a> contributors';
   var STATES_URL = "/assets/data/us-states.geo.json";
 
   // Served states are derived from FC_LOCATIONS so the map stays in sync with
@@ -87,8 +89,7 @@
     }
 
     L.tileLayer(BASE_TILES, {
-      subdomains: "abcd",
-      maxZoom: 19,
+      maxZoom: 16,
       noWrap: true,
       bounds: [[-85, -180], [85, 180]],
       attribution: BASE_ATTR
@@ -121,7 +122,7 @@
       });
 
     L.tileLayer(LABEL_TILES, {
-      subdomains: "abcd",
+      maxZoom: 16,
       noWrap: true,
       bounds: [[-85, -180], [85, 180]],
       pane: "fcLabelsPane",
