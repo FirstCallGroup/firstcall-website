@@ -97,7 +97,7 @@ const org = {
     "Emergency HVAC Service",
     "Commercial Mechanical Service",
   ],
-  numberOfEmployees: { "@type": "QuantitativeValue", value: "500+" },
+  numberOfEmployees: { "@type": "QuantitativeValue", value: "840" },
   areaServed,
 };
 

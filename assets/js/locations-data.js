@@ -258,5 +258,15 @@ window.FC_LOCATIONS = [
     "phone": null,
     "lat": 41.9647,
     "lng": -87.9486
+  },
+  {
+    "brand": "Lowder Brothers",
+    "city": "Pocola",
+    "state": "OK",
+    "addr": "230 Pryor Ave E, Pocola, OK 74902",
+    "url": "https://lowderbrothershvac.com/",
+    "phone": "(918) 436-6464",
+    "lat": 35.2312,
+    "lng": -94.4780
   }
 ];
