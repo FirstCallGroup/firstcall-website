@@ -16,6 +16,20 @@
  */
 window.NEWS_DATA = [
   {
+    id: "2026-09-03-lowder-brothers",
+    date: "September 3, 2026",
+    isoDate: "2026-09-03",
+    category: "acquisition",
+    categoryLabel: "Partnership",
+    headline: "FirstCall Partners with Lowder Brothers to Expand in Arkansas and Oklahoma",
+    summary: "FirstCall has partnered with Lowder Brothers Heating and Air, an HVAC services company based in Pocola, Oklahoma, serving customers across western Arkansas and eastern Oklahoma.",
+    body: [
+      "FirstCall Group (\"FirstCall\"), a leading commercial services company, has partnered with Lowder Brothers Heating and Air, an HVAC services company serving customers across western Arkansas and eastern Oklahoma.",
+      "Founded in 2008 by brothers Justin and Heath Lowder, Lowder Brothers has built a strong reputation for quality heating and cooling services and a commitment to its local communities. Based in Pocola, Oklahoma, the company provides HVAC service, planned maintenance, replacement, and installation and has developed experience supporting larger commercial and institutional facilities throughout the region.",
+      "Evan Eachus, CEO of FirstCall, said, “We're excited to welcome the Lowder Brothers team to FirstCall. Lowder Brothers has earned a strong reputation for dependable, trustworthy service across Arkansas and Oklahoma. We believe this partnership will fuel continued growth and open up great career opportunities for the team.”"
+    ]
+  },
+  {
     id: "2026-08-10-chris-landreth-svp-mergers-integration",
     date: "August 10, 2026",
     isoDate: "2026-08-10",

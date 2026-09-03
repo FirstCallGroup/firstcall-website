@@ -1,0 +1,32 @@
+/* FirstCall — system diagram shared styles */
+.fc-spin { animation: fcspin var(--spinDur, 5s) linear infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes fcspin { to { transform: rotate(360deg); } }
+
+.fc-steam { animation: fcsteam 5.2s ease-out infinite; opacity: 0; transform-box: fill-box; transform-origin: center; }
+@keyframes fcsteam {
+  0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
+  18% { opacity: var(--steamO, 0.26); }
+  100% { transform: translate(7px, -52px) scale(1.6); opacity: 0; }
+}
+
+.fc-pulse { animation: fcpulse 3s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes fcpulse { 0% { transform: scale(0.4); opacity: 0.9; } 70% { transform: scale(2.4); opacity: 0; } 100% { transform: scale(2.4); opacity: 0; } }
+
+.fc-blink { animation: fcblink 1.7s steps(2, start) infinite; }
+@keyframes fcblink { 0% { opacity: 1; } 50% { opacity: 0.25; } 100% { opacity: 1; } }
+
+.fc-fault { animation: fcfault 1.1s ease-in-out infinite; }
+@keyframes fcfault { 0%, 100% { opacity: 0.12; } 50% { opacity: 0.55; } }
+
+svg.fc-paused .fc-spin, svg.fc-paused .fc-steam, svg.fc-paused .fc-pulse, svg.fc-paused .fc-blink, svg.fc-paused .fc-fault { animation-play-state: paused; }
+
+[data-comp] { transition: opacity 0.3s; cursor: pointer; outline: none; }
+[data-dimmable] { transition: opacity 0.3s; }
+svg.fc-hasactive [data-comp]:not(.fc-on) { opacity: 0.2; }
+svg.fc-hasactive [data-dimmable] { opacity: 0.22; }
+[data-comp]:focus-visible { filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.85)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .fc-spin, .fc-steam, .fc-pulse, .fc-blink, .fc-fault { animation: none !important; }
+  .fc-steam { opacity: 0 !important; }
+}

@@ -260,6 +260,16 @@ window.FC_LOCATIONS = [
     "lng": -87.9486
   },
   {
+    "brand": "IMEC",
+    "city": "Devens",
+    "state": "MA",
+    "addr": "135 Barnum Road, Devens, MA 01434",
+    "url": "https://imec-us.com/",
+    "phone": "(800) 888-6554",
+    "lat": 42.5445,
+    "lng": -71.6132
+  },
+  {
     "brand": "Lowder Brothers",
     "city": "Pocola",
     "state": "OK",
