@@ -67,7 +67,6 @@ const org = {
   contactPoint: [
     {
       "@type": "ContactPoint",
-      telephone: "+1-844-715-0220",
       contactType: "customer service",
       email: "info@firstcallgroup.com",
       areaServed: "US",
