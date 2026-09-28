@@ -175,9 +175,13 @@ async function fetchAssetFollowingRedirects(env, originalRequest, targetUrl) {
 // Form-submission handler
 // =============================================================================
 
-// FirstCall Building Solutions form recipients: Matthew Hunt, Joel Lowery,
-// Thomas Disser (addresses pending), plus Adam.
-const FCBS_RECIPIENTS = ["info@firstcallgroup.com", "Adam.Hostetter@firstcallgroup.com"];
+// FirstCall Building Solutions form recipients (all three FCBS forms).
+const FCBS_RECIPIENTS = [
+  "matthew@firstcallgroup.com",        // Matthew Hunt
+  "joel.lowery@firstcallgroup.com",    // Joel Lowery
+  "thomas.disser@firstcallgroup.com",  // Thomas Disser
+  "adam.hostetter@firstcallgroup.com", // Adam Hostetter
+];
 
 // One row per form. Each value is the recipient list for that form.
 // Adding a new form: add a row here AND set <input name="_form" value="..."> in the page.
@@ -191,9 +195,7 @@ const FORM_ROUTING = {
   "fcm-columbus-contact": ["ohioservice@firstcallmechanical.com", "Adam.Hostetter@firstcallgroup.com", "spriest@firstcallmechanical.com"],
   "fcm-dfw-contact":      ["dispatch@firstcallmechanical.com",  "Adam.Hostetter@firstcallgroup.com", "scott.smith@firstcallmechanical.com"],
   "fcm-atx-contact":      ["dispatch@firstcallmechanical.com",  "Adam.Hostetter@firstcallgroup.com", "scott.smith@firstcallmechanical.com"],
-  // FirstCall Building Solutions (national accounts).
-  // TODO: replace with the addresses for Matthew Hunt, Joel Lowery, and
-  // Thomas Disser (all three FCBS forms) — update FCBS_RECIPIENTS below.
+  // FirstCall Building Solutions (national accounts) — see FCBS_RECIPIENTS above.
   "fcbs-contact":         FCBS_RECIPIENTS,
   "fcbs-data-center":     FCBS_RECIPIENTS,
   "fcbs-partner":         FCBS_RECIPIENTS,
