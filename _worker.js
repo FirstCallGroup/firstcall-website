@@ -28,9 +28,46 @@ export default {
     const path = url.pathname;
 
     // =========================================================================
+    // firstcallbuildingsolutions.com  (National / Strategic Accounts)
+    // Pages are generated into /building-solutions/ by
+    // scripts/build-building-solutions.js. Every FCBS URL is rewritten to that
+    // folder; shared assets and the form endpoint pass straight through.
+    // =========================================================================
+    // The same routing applies to the "fcbs" branch preview
+    // (fcbs.firstcall-website.pages.dev) so the site can be reviewed before the
+    // custom domain is attached. Redirects stay on whichever origin served them.
+    const isFcbs = host === "firstcallbuildingsolutions.com" || /^fcbs\./.test(host);
+    if (isFcbs) {
+      const fcbsOrigin = host === "firstcallbuildingsolutions.com" ? "https://firstcallbuildingsolutions.com" : url.origin;
+      if (/^\/(shared|assets)\//.test(path) || path === "/robots.txt" || path === "/favicon.ico") {
+        return env.ASSETS.fetch(request);
+      }
+      if (path === "/sitemap.xml") {
+        return fetchAssetFollowingRedirects(env, request, new URL("/sitemap-building-solutions.xml", url.origin));
+      }
+      // Never expose the internal folder on the public domain.
+      if (path === "/building-solutions" || path.startsWith("/building-solutions/")) {
+        const rest = path.replace(/^\/building-solutions\/?/, "/");
+        return Response.redirect(`${fcbsOrigin}${rest}${url.search}`, 301);
+      }
+      // Canonicalize .html URLs to the clean form.
+      if (path.endsWith("/index.html")) {
+        return Response.redirect(`${fcbsOrigin}${path.slice(0, -"index.html".length)}${url.search}`, 301);
+      }
+      if (path.endsWith(".html")) {
+        return Response.redirect(`${fcbsOrigin}${path.slice(0, -5)}${url.search}`, 301);
+      }
+      return fetchAssetFollowingRedirects(env, request, new URL("/building-solutions" + path, url.origin));
+    }
+
+    // =========================================================================
     // firstcallmechanical.com
     // =========================================================================
     if (host === "firstcallmechanical.com") {
+      if (/^\/building-solutions(\/.*)?$/.test(path)) {
+        const rest = path.replace(/^\/building-solutions\/?/, "/");
+        return Response.redirect(`https://firstcallbuildingsolutions.com${rest}${url.search}`, 301);
+      }
       // Map firstcallmechanical.com URLs → the actual file paths in /mechanical/.
       // Use the canonical (no-.html) form Pages serves, otherwise Pages 301s
       // /mechanical/foo.html → /mechanical/foo and the redirect leaks through
@@ -65,6 +102,10 @@ export default {
     // firstcallgroup.com
     // =========================================================================
     if (host === "firstcallgroup.com") {
+      if (/^\/building-solutions(\/.*)?$/.test(path)) {
+        const rest = path.replace(/^\/building-solutions\/?/, "/");
+        return Response.redirect(`https://firstcallbuildingsolutions.com${rest}${url.search}`, 301);
+      }
       if (/^\/(columbus|dfw|central-texas)(\/.*)?$/.test(path)) {
         return Response.redirect(`https://firstcallmechanical.com${path}${url.search}`, 301);
       }
@@ -119,19 +160,24 @@ async function fetchAssetFollowingRedirects(env, originalRequest, targetUrl) {
   }
   // Always wrap the final response body in a fresh 200. Even if Pages couldn't
   // be coaxed into giving us a 200, this guarantees the browser sees no
-  // redirect and stays on the user-typed URL.
+  // redirect and stays on the user-typed URL. A genuine 404 stays a 404 so
+  // wildcard rewrites (FCBS) don't turn missing pages into soft-200s.
   const body = await response.arrayBuffer();
   const headers = new Headers();
   const ct = response.headers.get("content-type") || "text/html; charset=utf-8";
   headers.set("content-type", ct);
   const cc = response.headers.get("cache-control");
   if (cc) headers.set("cache-control", cc);
-  return new Response(body, { status: 200, headers });
+  return new Response(body, { status: response.status === 404 ? 404 : 200, headers });
 }
 
 // =============================================================================
 // Form-submission handler
 // =============================================================================
+
+// FirstCall Building Solutions form recipients: Matthew Hunt, Joel Lowery,
+// Thomas Disser (addresses pending), plus Adam.
+const FCBS_RECIPIENTS = ["info@firstcallgroup.com", "Adam.Hostetter@firstcallgroup.com"];
 
 // One row per form. Each value is the recipient list for that form.
 // Adding a new form: add a row here AND set <input name="_form" value="..."> in the page.
@@ -145,6 +191,12 @@ const FORM_ROUTING = {
   "fcm-columbus-contact": ["ohioservice@firstcallmechanical.com", "Adam.Hostetter@firstcallgroup.com", "spriest@firstcallmechanical.com"],
   "fcm-dfw-contact":      ["dispatch@firstcallmechanical.com",  "Adam.Hostetter@firstcallgroup.com", "scott.smith@firstcallmechanical.com"],
   "fcm-atx-contact":      ["dispatch@firstcallmechanical.com",  "Adam.Hostetter@firstcallgroup.com", "scott.smith@firstcallmechanical.com"],
+  // FirstCall Building Solutions (national accounts).
+  // TODO: replace with the addresses for Matthew Hunt, Joel Lowery, and
+  // Thomas Disser (all three FCBS forms) — update FCBS_RECIPIENTS below.
+  "fcbs-contact":         FCBS_RECIPIENTS,
+  "fcbs-data-center":     FCBS_RECIPIENTS,
+  "fcbs-partner":         FCBS_RECIPIENTS,
 };
 
 const FORM_LABELS = {
@@ -157,6 +209,9 @@ const FORM_LABELS = {
   "fcm-columbus-contact": "Columbus contact form",
   "fcm-dfw-contact":      "DFW contact form",
   "fcm-atx-contact":      "Austin contact form",
+  "fcbs-contact":         "FirstCall Building Solutions contact form",
+  "fcbs-data-center":     "FirstCall Building Solutions data center inquiry",
+  "fcbs-partner":         "FirstCall Building Solutions partner application",
 };
 
 // The "from" address must be on a domain you've verified in Resend.
@@ -185,7 +240,10 @@ const ALLOWED_ORIGINS = new Set([
   "https://www.firstcallgroup.com",
   "https://firstcallmechanical.com",
   "https://www.firstcallmechanical.com",
+  "https://firstcallbuildingsolutions.com",
+  "https://www.firstcallbuildingsolutions.com",
   "https://firstcall-website.pages.dev",
+  "https://fcbs.firstcall-website.pages.dev",
 ]);
 
 const MIN_SUBMIT_MS = 3000;
