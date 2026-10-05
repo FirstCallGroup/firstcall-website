@@ -240,7 +240,7 @@ window.NEWS_DATA = [
     summary: "FirstCall has partnered with Comfortrol, a nearly 60-year-old commercial and industrial HVAC services company based in Columbus, OH.",
     body: [
       "FirstCall Mechanical Group (\"FirstCall\"), a leading commercial services company, has partnered with Comfortrol, a commercial and industrial HVAC services company based in Columbus, OH.",
-      "For nearly 60 years, Comfortrol has provided HVAC services to industrial, distribution center, and commercial customers across the Columbus market. Mike Balistreri will continue to oversee day-to-day operations. Comfortrol's HVAC services offering will complement FirstCall's existing HVAC and plumbing services in the region through Capital City Mechanical.",
+      "For nearly 60 years, Comfortrol has provided HVAC services to industrial, distribution center, and commercial customers across the Columbus market. Mike Balistreri will continue to oversee day-to-day operations. Comfortrol's HVAC services offering will complement FirstCall's existing HVAC and plumbing services in the region.",
       "Evan Eachus, CEO of FirstCall, said, “Over his 36 years of ownership, Mike Kimmet has grown the business and established a stellar reputation in the Columbus market. We believe the FirstCall partnership will bolster our ability to serve our customers across the region. We are excited to welcome Mike Kimmet, Mike Balistreri, and the whole Comfortrol team to FirstCall.”"
     ]
   },
@@ -256,20 +256,6 @@ window.NEWS_DATA = [
       "FirstCall Mechanical Group (\"FirstCall\"), a leading commercial services company, has partnered with Industrial Cooling Applied Chiller Services (ICACS), a services company focused on large tonnage chiller services.",
       "ICACS specializes in large tonnage chiller service and controls for commercial office towers, industrial facilities, public utilities, hospital systems, and universities. Founded by Vito Costanza, ICACS and its long-tenured employees are some of the most respected service providers in the country for this specialty. Vito Costanza, President, and Dominic DiDonna, Vice President, will continue to oversee day-to-day operations and the growth of ICACS into the future.",
       "Evan Eachus, CEO of FirstCall, said, “We are thrilled to partner with Vito, Dom, and the whole team at ICACS. The ICACS chiller service and controls offering is 'best-in-class,' and we are excited to expand ICACS's chiller offering across FirstCall's industrial customer network.”"
-    ]
-  },
-  {
-    id: "2024-08-07-capital-city",
-    date: "August 7, 2024",
-    isoDate: "2024-08-07",
-    category: "acquisition",
-    categoryLabel: "Partnership",
-    headline: "FirstCall Partners with Capital City to Establish Ohio Operations",
-    summary: "FirstCall has partnered with Capital City Mechanical, a Columbus-based commercial HVAC and plumbing services company founded in 2001.",
-    body: [
-      "FirstCall Mechanical Group (\"FirstCall\"), a leading commercial services company, has partnered with Capital City Mechanical, a commercial HVAC and plumbing services company based in Columbus, OH.",
-      "Capital City was founded in 2001 and provides HVAC and plumbing services to education, government, and commercial customers across the Columbus metro area. Andy Morbitzer, founder of Capital City, will continue to lead its operations.",
-      "Evan Eachus, CEO of FirstCall, said, “We are excited to partner with Andy and the Capital City team to expand our operations in the Columbus market. Andy has built a terrific team and we are thrilled to support him to continue to grow in this fast-growing region.”"
     ]
   },
   {
