@@ -50,7 +50,7 @@ Files: `central-texas.html`, `central-texas/planned-maintenance.html`, `central-
 ## Cross-site cleanup
 
 - [ ] **`columbus_downtown.mp4` lives at `reference/columbus/videos/`.** Once DFW and Austin videos exist, move them to `reference/dfw/videos/` and `reference/central-texas/videos/` respectively to match the placeholder paths the sites expect.
-- [ ] **`scripts/build-directory.js` and `scripts/inline-map.js`** — these source files still contain a `Capital City` entry from the pre-divest data. If the directory ever gets rebuilt from source, Capital City will reappear. Strip it.
+- [x] **`scripts/build-directory.js` and `scripts/inline-map.js`** — `Capital City` entry from the pre-divest data stripped from both (2026-10-05).
 
 ## Anti-spam — Cloudflare Turnstile (FCG + FCM contact forms)
 

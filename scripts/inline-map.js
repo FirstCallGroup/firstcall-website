@@ -52,10 +52,9 @@ function project(lat, lng) {
  */
 const branches = [
   ["c2h",        "C2H",                       "Lawrenceville", "GA", 33.95, -83.99],
-  ["capcity",    "Capital City",              "Grove City",    "OH", 39.88, -83.09,  -3, 0],
   ["ctc",        "Charlotte Temp Controls",   "Charlotte",     "NC", 35.23, -80.84,  -4, -4],
   ["cls",        "CLS",                       "Mentor",        "OH", 41.67, -81.34],
-  ["comfortrol", "Comfortrol",                "Columbus",      "OH", 39.96, -82.99,   3, 0],
+  ["comfortrol", "Comfortrol",                "Columbus",      "OH", 39.96, -82.99],
   ["cond-air",   "Conditioned Air",           "Macon",         "GA", 32.83, -83.63,  -3, -3],
   ["dfw",        "FirstCall Mechanical DFW",  "Carrollton",    "TX", 32.95, -96.89],
   ["fc-atx",     "FirstCall Mechanical ATX",  "Austin",        "TX", 30.27, -97.74],
