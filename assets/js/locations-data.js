@@ -15,7 +15,7 @@ window.FC_LOCATIONS = [
     "state": "GA",
     "addr": "2150 Boggs Road, Suite 500, Duluth, GA 30096",
     "url": "https://c2h.com/",
-    "phone": "(678) 837-1224",
+    "phone": "(678) 827-1224",
     "lat": 33.9749,
     "lng": -84.1010
   },
