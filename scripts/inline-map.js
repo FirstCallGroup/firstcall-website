@@ -51,7 +51,7 @@ function project(lat, lng) {
  * Nudges are pixel offsets (+ right / + down) applied to the projected pin.
  */
 const branches = [
-  ["c2h",        "C2H",                       "Lawrenceville", "GA", 33.95, -83.99],
+  ["c2h",        "C2H",                       "Duluth",        "GA", 33.97, -84.10],
   ["ctc",        "Charlotte Temp Controls",   "Charlotte",     "NC", 35.23, -80.84,  -4, -4],
   ["cls",        "CLS",                       "Mentor",        "OH", 41.67, -81.34],
   ["comfortrol", "Comfortrol",                "Columbus",      "OH", 39.96, -82.99],
