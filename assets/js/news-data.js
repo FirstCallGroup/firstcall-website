@@ -16,6 +16,22 @@
  */
 window.NEWS_DATA = [
   {
+    id: "2026-10-07-air-comfort-group",
+    date: "October 7, 2026",
+    isoDate: "2026-10-07",
+    category: "acquisition",
+    categoryLabel: "Partnership",
+    headline: "FirstCall Partners with Air Comfort Group to Expand in Southeast Texas and Industrial Markets",
+    summary: "FirstCall has partnered with Air Comfort Group, a Beaumont, Texas–based provider of commercial and industrial HVAC and building controls serving customers across Texas and the Gulf Coast since 1954.",
+    body: [
+      "FirstCall Group (\"FirstCall\") has partnered with Air Comfort Group, a leading provider of commercial and industrial HVAC solutions and building controls. Air Comfort Group is based in Beaumont, Texas and serves industrial, marine, and commercial customers across Texas and the Gulf Coast. This strategic partnership positions Air Comfort to expand its commercial and industrial capabilities, invest in growth, and continue delivering the exceptional service that customers have come to trust since 1954.",
+      "Air Comfort will continue operating under its current leadership team, including President Bret Babineaux. “I'm excited for the path we're on and what we will achieve with FirstCall as our partner,” said Bret Babineaux. “After 72 years servicing Jefferson and surrounding counties, offshore assets, and customers across the globe, ACG has found a likeminded partner in FirstCall. I never thought we would find a partner that cares for our greatest asset—our coworkers—as we do. We have already seen positive changes to bring greater opportunities to ACG and our team.”",
+      "Evan Eachus, CEO of FirstCall Group, added, “It's been a great privilege getting to know Bret and his family over the last year and we are excited to partner with Air Comfort to expand our capabilities together. Customers will continue to work with the same trusted team members—whether they need a custom chiller modification, a controls upgrade, or hazardous-duty equipment for a plant environment—now with the added support of a national network of resources. I look forward to what we'll achieve together.”",
+      "About Air Comfort",
+      "Founded in 1954, Air Comfort is a leading commercial and industrial HVACR contractor based in Beaumont, Texas, serving the Golden Triangle and the Gulf Coast. Known for its chiller modifications and customizations, controls expertise, and extensive experience in the most demanding industrial, hazardous-duty, and marine environments, Air Comfort helps clients keep their facilities running efficiently, safely, and reliably."
+    ]
+  },
+  {
     id: "2026-09-03-lowder-brothers",
     date: "September 3, 2026",
     isoDate: "2026-09-03",

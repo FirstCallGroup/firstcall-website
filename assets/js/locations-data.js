@@ -278,5 +278,15 @@ window.FC_LOCATIONS = [
     "phone": "(918) 436-6464",
     "lat": 35.2312,
     "lng": -94.4780
+  },
+  {
+    "brand": "Air Comfort Group",
+    "city": "Beaumont",
+    "state": "TX",
+    "addr": "625 North Main Street, Beaumont, TX 77701",
+    "url": "https://www.aircomfort.ac/",
+    "phone": "(409) 833-5665",
+    "lat": 30.0879,
+    "lng": -94.0999
   }
 ];
