@@ -88,6 +88,11 @@ const IMG = {
   hall: "https://images.unsplash.com/photo-1586772002130-b0f3daa6288b?w=1800&q=80&auto=format&fit=crop",
   hallSm: "https://images.unsplash.com/photo-1586772002130-b0f3daa6288b?w=900&q=75&auto=format&fit=crop",
   racksSm: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&q=75&auto=format&fit=crop",
+  // Data center / cooling photos supplied by FCBS strategic accounts (Oct 2026).
+  gpuHall: "/assets/building-solutions/photos/fcbs-gpu-deployment-hall.avif",
+  gpuRacks: "/assets/building-solutions/photos/fcbs-gpu-racks-white.avif",
+  liquidCooling: "/assets/building-solutions/photos/fcbs-liquid-cooling-manifolds.avif",
+  cdu: "/assets/building-solutions/photos/fcbs-cdu-maintenance.avif",
 };
 
 // ---------------------------------------------------------------------------
@@ -836,7 +841,7 @@ ${INDUSTRIES.map(function (n) { return `          <a class="chip${n.mc ? " chip-
         </div>
         <div class="photo-strip">
           <img src="${IMG.chiller1}" alt="Commercial chiller serviced by FirstCall" loading="lazy" />
-          <img src="${IMG.racksSm}" alt="Data center server racks" loading="lazy" />
+          <img src="${IMG.gpuRacks}" alt="Rows of white server racks with GPU compute trays in a data center" loading="lazy" />
           <img src="${IMG.tower}" alt="Rooftop cooling tower" loading="lazy" />
           <img src="${IMG.crew}" alt="A FirstCall service crew on site" loading="lazy" />
         </div>
@@ -892,7 +897,7 @@ function mcHubBody() {
   }).join("\n");
   return `  <main id="main">
 ${pageHero({
-    photo: IMG.hall,
+    photo: IMG.cdu,
     crumb: crumb([{ label: "Mission Critical" }]),
     eyebrow: BRAND + " · Mission Critical",
     h1: "Mechanical, electrical, and controls for facilities that can't go down.",
@@ -941,7 +946,7 @@ ${ctaBand("Tell us what keeps your facility up at night.", "Whether it's a cooli
 function dataCentersBody() {
   return `  <main id="main">
 ${pageHero({
-    photo: IMG.racks,
+    photo: IMG.gpuHall,
     crumb: crumb([{ label: "Mission Critical", href: "/mission-critical/" }, { label: "Data Centers" }]),
     eyebrow: "Mission Critical · Data Centers",
     h1: "Keep the cooling on. Keep the racks up.",
@@ -994,7 +999,7 @@ ${feature(I.clock, "24/7 emergency response", "Critical spares and on-call crews
     <section class="section" id="liquid-cooling">
       <div class="container">
         <div class="split split--photo">
-          <div class="split__photo"><img src="${IMG.hallSm}" alt="Rows of server racks in a data hall" loading="lazy" /></div>
+          <div class="split__photo"><img src="${IMG.liquidCooling}" alt="Liquid cooling manifolds and coolant hoses connected to server racks in a data center aisle" loading="lazy" /></div>
           <div>
             <div class="section-head" style="margin-bottom:var(--space-5);">
               <span class="eyebrow">Liquid cooling</span>
