@@ -37,6 +37,15 @@ http
       res.writeHead(400);
       return res.end("bad url");
     }
+    // Host-based site prefix for local preview of the multi-domain setup.
+    // http://fcbs.localhost:5173/ mirrors firstcallbuildingsolutions.com the
+    // way _worker.js does in production (root URLs -> /building-solutions/).
+    const hostHeader = String(req.headers.host || "");
+    if (/^fcbs\./i.test(hostHeader) && !/^\/(shared|assets|reference|building-solutions)(\/|$)/.test(pathname)) {
+      if (pathname === "/sitemap.xml") pathname = "/sitemap-building-solutions.xml";
+      else pathname = "/building-solutions" + pathname;
+    }
+
     if (pathname === "/") pathname = "/index.html";
 
     // Resolve and ensure inside ROOT (prevent path traversal).
